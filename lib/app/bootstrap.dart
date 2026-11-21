@@ -4,7 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:provai/app/app.dart';
+import 'package:provai/data/services/local_storage_service.dart';
 import 'package:provai/utils/logger.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 /// Uygulama başlangıcı: binding, global hata yakalama ve ProviderScope.
 /// SDK init'leri (Supabase vb.) ilgili servis eklendiğinde buraya gelir.
@@ -24,5 +26,19 @@ Future<void> bootstrap() async {
     return true;
   };
 
-  runApp(const ProviderScope(child: ProvaiApp()));
+  // Tercihler ilk karede senkron okunabilsin diye önbellekli instance önceden yüklenir.
+  final prefs = await SharedPreferencesWithCache.create(
+    cacheOptions: const SharedPreferencesWithCacheOptions(),
+  );
+
+  runApp(
+    ProviderScope(
+      overrides: [
+        localStorageServiceProvider.overrideWithValue(
+          LocalStorageService(prefs),
+        ),
+      ],
+      child: const ProvaiApp(),
+    ),
+  );
 }

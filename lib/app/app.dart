@@ -7,6 +7,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:provai/app/router/app_router.dart';
 import 'package:provai/l10n/gen/app_localizations.dart';
 import 'package:provai/ui/core/theme/app_theme.dart';
+import 'package:provai/ui/core/theme/theme_mode_controller.dart';
 
 class ProvaiApp extends ConsumerWidget {
   const ProvaiApp({super.key});
@@ -19,6 +20,7 @@ class ProvaiApp extends ConsumerWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),
+      themeMode: ref.watch(themeModeControllerProvider),
       routerConfig: router,
       localizationsDelegates: const [
         AppLocalizations.delegate,

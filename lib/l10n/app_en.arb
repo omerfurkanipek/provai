@@ -158,7 +158,7 @@
   "sessionOpenSettings": "Settings",
   "sessionWpm": "words/min",
   "sessionFillers": "filler words",
-  "sessionIdealDuration": "ideal length",
+  "sessionIdealDuration": "target 1:30–2:00",
   "sessionAnswerTooShort": "Your answer is too short. Say a bit more so it can be evaluated.",
   "sessionYourAnswer": "Your answer",
   "sessionDuration": "{seconds}s",

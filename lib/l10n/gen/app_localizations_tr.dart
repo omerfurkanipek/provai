@@ -554,7 +554,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sessionFillers => 'dolgu kelime';
 
   @override
-  String get sessionIdealDuration => 'ideal süre';
+  String get sessionIdealDuration => 'hedef 1:30–2:00';
 
   @override
   String get sessionAnswerTooShort =>

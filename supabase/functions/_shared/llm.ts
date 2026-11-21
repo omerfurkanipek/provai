@@ -22,13 +22,16 @@ export interface LlmProvider {
 /** Hız/kalite seviyesi: soru üretimi hızlı, değerlendirme daha güçlü model ister. */
 export type ModelTier = "fast" | "smart";
 
-// 2026-11-21 ölçümü (ücretsiz katman): değerlendirmede flash-lite 2.5–4 sn,
-// 3.5 Flash 33–39 sn sürdü ve puanlar aynı çıktı. Bu yüzden ikisi de lite ile
-// başlıyor; 3.5 Flash yoğunluk (503) ve geçersiz çıktı durumunda yedek.
+// 2026-11-21 ölçümü (ücretsiz katman, değerlendirme isteği):
+//   gemini-3.5-flash-lite 2.5–4 sn · gemini-3.1-flash-lite 3.8–5.8 sn ·
+//   gemini-3.5-flash 33–39 sn. Puanlar üçünde de aynı çıktı.
+// Lite modeller ücretsiz katmanda ara ara 503 (yoğunluk) veriyor; bu yüzden
+// iki hızlı model sırayla denenir, 3.5 Flash son çare.
 // "smart" seviyesi daha yüksek düşünme bütçesiyle çağrılır (bkz. evaluate-answer).
+const FALLBACK_CHAIN = ["gemini-3.5-flash-lite", "gemini-3.1-flash-lite", "gemini-3.5-flash"];
 const DEFAULT_MODELS: Record<ModelTier, string[]> = {
-  fast: ["gemini-3.5-flash-lite", "gemini-3.5-flash"],
-  smart: ["gemini-3.5-flash-lite", "gemini-3.5-flash"],
+  fast: FALLBACK_CHAIN,
+  smart: FALLBACK_CHAIN,
 };
 
 export function createProvider(tier: ModelTier): LlmProvider {
@@ -42,7 +45,8 @@ class GeminiProvider implements LlmProvider {
   constructor(
     private readonly apiKey: string,
     private readonly models: string[],
-    private readonly timeoutMs = 40_000,
+    // Takılan bir model tüm isteği kilitlemesin; sıradakine geçilsin.
+    private readonly timeoutMs = 25_000,
   ) {}
 
   async generateJson(request: LlmRequest): Promise<unknown> {

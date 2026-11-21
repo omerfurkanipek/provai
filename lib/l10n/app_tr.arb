@@ -1,0 +1,14 @@
+{
+  "@@locale": "tr",
+  "appName": "provAi",
+  "appTagline": "İlana özel mülakat provası",
+  "@appTagline": { "description": "Splash ekranındaki slogan" },
+  "commonContinue": "Devam",
+  "commonRetry": "Tekrar dene",
+  "commonClose": "Kapat",
+  "commonBack": "Geri",
+  "errorNetwork": "İnternet bağlantısı yok. Bağlantını kontrol edip tekrar dene.",
+  "errorServer": "Sunucuda bir sorun oluştu. Biraz sonra tekrar dene.",
+  "errorRateLimit": "Şu an çok fazla istek var. Bir dakika sonra tekrar dene.",
+  "errorUnknown": "Beklenmeyen bir hata oluştu."
+}

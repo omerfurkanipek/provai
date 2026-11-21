@@ -1,4 +1,51 @@
+# OS / IDE
 .DS_Store
 .idea/
 .vscode/
+*.iml
+*.ipr
+*.iws
+
+# Flutter / Dart
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+coverage/
+*.log
+
+# FVM (sürüm .fvm/fvm_config.json'da, SDK linki hariç)
+.fvm/flutter_sdk
+.fvm/versions
+
+# Android
+android/.gradle/
+android/local.properties
+android/key.properties
+android/app/*.jks
+android/app/*.keystore
+android/captures/
+android/.kotlin/
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Flutter/ephemeral/
+ios/Runner.xcworkspace/xcuserdata/
+ios/Runner.xcodeproj/xcuserdata/
+
+# Ortam değişkenleri (örnek dosya hariç)
+env/*.json
+!env/example.json
+
+# Supabase yerel
+supabase/.temp/
+supabase/.branches/
+
+# Yerel planlama notları
 docs/REQUIREMENTS.md
+docs/DESIGN_PROMPTS.md

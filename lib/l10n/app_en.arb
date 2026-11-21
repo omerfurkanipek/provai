@@ -1,0 +1,13 @@
+{
+  "@@locale": "en",
+  "appName": "provAi",
+  "appTagline": "Mock interviews built from the job posting",
+  "commonContinue": "Continue",
+  "commonRetry": "Try again",
+  "commonClose": "Close",
+  "commonBack": "Back",
+  "errorNetwork": "No internet connection. Check your connection and try again.",
+  "errorServer": "Something went wrong on our side. Please try again shortly.",
+  "errorRateLimit": "Too many requests right now. Try again in a minute.",
+  "errorUnknown": "Something unexpected happened."
+}

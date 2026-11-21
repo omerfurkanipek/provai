@@ -148,6 +148,7 @@ fvm flutter test      # 53 test
 
 - iOS projesi yapılandırıldı (izin metinleri, ikon, splash) ancak geliştirme makinesinde Xcode olmadığı için iOS'ta derlenip test edilmedi.
 - Gemini'nin ücretsiz katmanında ara ara yoğunluk (503) yaşanabiliyor; yedek model zinciri bunu büyük ölçüde karşılıyor. Prod'da faturalandırılmış bir katman kullanılır.
+- Sesli cevap, cihazın kendi konuşma tanıyıcısıyla (Android'de Google, iOS'ta Apple) metne çevrilir; teknik terimlerde ve uzun sessizliklerden sonra doğruluk düşebilir. Ses kaydını sunucuda bir transkripsiyon modeliyle çevirmek daha doğru sonuç verir, ancak sesin cihazdan çıkması ve ek AI kotası gerektirdiği için bilinçli olarak tercih edilmedi.
 - Ücretsiz hak sayacı cihazda tutuluyor (statik paywall kapsamına uygun). Prod'da hak sunucuda tutulur.
 
 ## Geliştirmede AI araçları

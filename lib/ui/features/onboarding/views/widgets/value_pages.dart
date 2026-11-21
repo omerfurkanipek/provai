@@ -138,7 +138,9 @@ class _StoryCards extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      l10n.onbValue1PostingLabel.toUpperCaseFor(l10n.localeName),
+                      l10n.onbValue1PostingLabel.toUpperCaseFor(
+                        l10n.localeName,
+                      ),
                       style: styles.caption.copyWith(color: colors.inkMuted),
                     ),
                     const SizedBox(height: AppSpacing.xs),

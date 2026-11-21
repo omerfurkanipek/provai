@@ -112,5 +112,96 @@
         "type": "String"
       }
     }
+  },
+  "paywallRestore": "Geri yükle",
+  "paywallTitleOnboardingThisWeek": "Bu haftaki {role} mülakatına hazır ol.",
+  "paywallTitleOnboardingThisMonth": "{role} mülakatına bu ay hazır ol.",
+  "paywallTitleOnboardingLater": "{role} mülakatlarına şimdiden hazırlan.",
+  "paywallTitleFreeLimit": "Ücretsiz provan bitti. Hazırlığı yarıda bırakma.",
+  "paywallTitleDefault": "Her cevabın, bir koçun kalemiyle.",
+  "paywallExampleLabel": "Senin cevabın",
+  "paywallExampleBefore": "Uygulamanın performansını ",
+  "paywallExamplePhrase": "epey iyileştirdim",
+  "paywallExampleAfter": " ve ekip de memnun kaldı.",
+  "paywallExampleFix": "\"Epey\" yerine ölçü ver: açılış süresi 3,2 sn'den 1,1 sn'ye indi.",
+  "paywallFeature1": "Sınırsız prova, ilanına özel sorular",
+  "paywallFeature2": "Her cevaba puan ve yeniden yazılmış örnek",
+  "paywallFeature3": "İngilizce ve Türkçe mülakat provası",
+  "paywallPlanYearly": "Yıllık",
+  "paywallPlanWeekly": "Haftalık",
+  "paywallSavings": "%{percent} tasarruf",
+  "paywallYearlyTrialSubtitle": "{days} gün ücretsiz, sonra {price}/yıl",
+  "paywallYearlySubtitle": "{price}/yıl",
+  "paywallWeeklySubtitle": "İstediğin zaman iptal et",
+  "paywallPerWeek": "{price}/hf",
+  "paywallCtaTrial": "Ücretsiz denemeyi başlat",
+  "paywallCtaWeekly": "Haftalık planla devam et",
+  "paywallCtaYearly": "Yıllık planla devam et",
+  "paywallFinePrintTrial": "{days} gün boyunca ücret alınmaz. Deneme bitmeden iptal edebilirsin.",
+  "paywallFinePrint": "Abonelik, iptal edilmediği sürece otomatik yenilenir.",
+  "paywallContinueFree": "Önce ücretsiz dene",
+  "paywallTerms": "Kullanım Koşulları",
+  "paywallPrivacy": "Gizlilik",
+  "paywallNothingToRestore": "Geri yüklenecek bir satın alım bulunamadı.",
+  "paywallPurchaseFailed": "İşlem tamamlanamadı. Tekrar dene.",
+  "paywallUnlocked": "provAi Pro açıldı. İyi provalar!",
+  "@paywallTitleOnboardingThisWeek": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "@paywallTitleOnboardingThisMonth": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "@paywallTitleOnboardingLater": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "@paywallSavings": {
+    "placeholders": {
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "@paywallYearlyTrialSubtitle": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@paywallYearlySubtitle": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@paywallPerWeek": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "@paywallFinePrintTrial": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
   }
 }

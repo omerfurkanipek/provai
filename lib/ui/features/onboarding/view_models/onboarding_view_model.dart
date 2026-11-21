@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:provai/data/repositories/profile_repository_impl.dart';
+import 'package:provai/data/services/analytics_service.dart';
 import 'package:provai/domain/models/user_profile.dart';
 import 'package:provai/ui/features/onboarding/view_models/onboarding_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -14,8 +15,9 @@ class OnboardingViewModel extends _$OnboardingViewModel {
 
   @override
   OnboardingState build() {
-    // Yarıda bırakılmış onboarding'e dönülürse önceki cevaplar korunur.
+    // Taslak her adımda kaydedilir; yarıda bırakılıp dönülürse cevaplar dolu gelir.
     final saved = ref.read(profileRepositoryProvider).getProfile();
+    _trackStep(OnboardingStep.valueStory);
     return OnboardingState(profile: saved ?? const UserProfile());
   }
 
@@ -29,8 +31,17 @@ class OnboardingViewModel extends _$OnboardingViewModel {
         name: state.profile.name.trim(),
       ),
     );
-    if (nextStep == OnboardingStep.preparing) unawaited(_finish());
+    _trackStep(nextStep);
+    if (nextStep == OnboardingStep.preparing) {
+      unawaited(_finish());
+    } else if (!nextStep.isIntro) {
+      unawaited(ref.read(profileRepositoryProvider).saveProfile(state.profile));
+    }
   }
+
+  void _trackStep(OnboardingStep step) => ref
+      .read(analyticsServiceProvider)
+      .track(AnalyticsEvents.onboardingStepViewed, {'step': step.name});
 
   /// Geri gidilebildiyse true döner; ilk adımda false (sistem geri tuşu çalışsın).
   bool back() {
@@ -73,6 +84,14 @@ class OnboardingViewModel extends _$OnboardingViewModel {
       Future<void>.delayed(preparingDuration),
     ]);
     if (!ref.mounted) return;
+    ref.read(analyticsServiceProvider).track(
+      AnalyticsEvents.onboardingCompleted,
+      {
+        'role': state.profile.targetRole,
+        'seniority': state.profile.seniority.name,
+        'language': state.profile.interviewLanguage.name,
+      },
+    );
     state = state.copyWith(effect: const OnboardingEffect.finished());
   }
 }

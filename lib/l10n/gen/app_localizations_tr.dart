@@ -264,4 +264,120 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get onbRoleFallback => 'Genel';
+
+  @override
+  String get paywallRestore => 'Geri yükle';
+
+  @override
+  String paywallTitleOnboardingThisWeek(String role) {
+    return 'Bu haftaki $role mülakatına hazır ol.';
+  }
+
+  @override
+  String paywallTitleOnboardingThisMonth(String role) {
+    return '$role mülakatına bu ay hazır ol.';
+  }
+
+  @override
+  String paywallTitleOnboardingLater(String role) {
+    return '$role mülakatlarına şimdiden hazırlan.';
+  }
+
+  @override
+  String get paywallTitleFreeLimit =>
+      'Ücretsiz provan bitti. Hazırlığı yarıda bırakma.';
+
+  @override
+  String get paywallTitleDefault => 'Her cevabın, bir koçun kalemiyle.';
+
+  @override
+  String get paywallExampleLabel => 'Senin cevabın';
+
+  @override
+  String get paywallExampleBefore => 'Uygulamanın performansını ';
+
+  @override
+  String get paywallExamplePhrase => 'epey iyileştirdim';
+
+  @override
+  String get paywallExampleAfter => ' ve ekip de memnun kaldı.';
+
+  @override
+  String get paywallExampleFix =>
+      '\"Epey\" yerine ölçü ver: açılış süresi 3,2 sn\'den 1,1 sn\'ye indi.';
+
+  @override
+  String get paywallFeature1 => 'Sınırsız prova, ilanına özel sorular';
+
+  @override
+  String get paywallFeature2 => 'Her cevaba puan ve yeniden yazılmış örnek';
+
+  @override
+  String get paywallFeature3 => 'İngilizce ve Türkçe mülakat provası';
+
+  @override
+  String get paywallPlanYearly => 'Yıllık';
+
+  @override
+  String get paywallPlanWeekly => 'Haftalık';
+
+  @override
+  String paywallSavings(int percent) {
+    return '%$percent tasarruf';
+  }
+
+  @override
+  String paywallYearlyTrialSubtitle(int days, String price) {
+    return '$days gün ücretsiz, sonra $price/yıl';
+  }
+
+  @override
+  String paywallYearlySubtitle(String price) {
+    return '$price/yıl';
+  }
+
+  @override
+  String get paywallWeeklySubtitle => 'İstediğin zaman iptal et';
+
+  @override
+  String paywallPerWeek(String price) {
+    return '$price/hf';
+  }
+
+  @override
+  String get paywallCtaTrial => 'Ücretsiz denemeyi başlat';
+
+  @override
+  String get paywallCtaWeekly => 'Haftalık planla devam et';
+
+  @override
+  String get paywallCtaYearly => 'Yıllık planla devam et';
+
+  @override
+  String paywallFinePrintTrial(int days) {
+    return '$days gün boyunca ücret alınmaz. Deneme bitmeden iptal edebilirsin.';
+  }
+
+  @override
+  String get paywallFinePrint =>
+      'Abonelik, iptal edilmediği sürece otomatik yenilenir.';
+
+  @override
+  String get paywallContinueFree => 'Önce ücretsiz dene';
+
+  @override
+  String get paywallTerms => 'Kullanım Koşulları';
+
+  @override
+  String get paywallPrivacy => 'Gizlilik';
+
+  @override
+  String get paywallNothingToRestore =>
+      'Geri yüklenecek bir satın alım bulunamadı.';
+
+  @override
+  String get paywallPurchaseFailed => 'İşlem tamamlanamadı. Tekrar dene.';
+
+  @override
+  String get paywallUnlocked => 'provAi Pro açıldı. İyi provalar!';
 }

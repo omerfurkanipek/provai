@@ -266,4 +266,122 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onbRoleFallback => 'General';
+
+  @override
+  String get paywallRestore => 'Restore';
+
+  @override
+  String paywallTitleOnboardingThisWeek(String role) {
+    return 'Get ready for this week\'s $role interview.';
+  }
+
+  @override
+  String paywallTitleOnboardingThisMonth(String role) {
+    return 'Be ready for your $role interview this month.';
+  }
+
+  @override
+  String paywallTitleOnboardingLater(String role) {
+    return 'Start preparing for $role interviews now.';
+  }
+
+  @override
+  String get paywallTitleFreeLimit =>
+      'Your free mock is done. Don\'t stop halfway.';
+
+  @override
+  String get paywallTitleDefault => 'Every answer, marked by a coach.';
+
+  @override
+  String get paywallExampleLabel => 'Your answer';
+
+  @override
+  String get paywallExampleBefore => 'I ';
+
+  @override
+  String get paywallExamplePhrase => 'improved the app\'s performance a lot';
+
+  @override
+  String get paywallExampleAfter => ' and the team was happy.';
+
+  @override
+  String get paywallExampleFix =>
+      'Replace \"a lot\" with a number: launch time dropped from 3.2 s to 1.1 s.';
+
+  @override
+  String get paywallFeature1 =>
+      'Unlimited mocks with questions from your posting';
+
+  @override
+  String get paywallFeature2 =>
+      'A score and a rewritten sample for every answer';
+
+  @override
+  String get paywallFeature3 => 'Practice in English and Turkish';
+
+  @override
+  String get paywallPlanYearly => 'Yearly';
+
+  @override
+  String get paywallPlanWeekly => 'Weekly';
+
+  @override
+  String paywallSavings(int percent) {
+    return 'Save $percent%';
+  }
+
+  @override
+  String paywallYearlyTrialSubtitle(int days, String price) {
+    return '$days days free, then $price/year';
+  }
+
+  @override
+  String paywallYearlySubtitle(String price) {
+    return '$price/year';
+  }
+
+  @override
+  String get paywallWeeklySubtitle => 'Cancel anytime';
+
+  @override
+  String paywallPerWeek(String price) {
+    return '$price/wk';
+  }
+
+  @override
+  String get paywallCtaTrial => 'Start free trial';
+
+  @override
+  String get paywallCtaWeekly => 'Continue with weekly';
+
+  @override
+  String get paywallCtaYearly => 'Continue with yearly';
+
+  @override
+  String paywallFinePrintTrial(int days) {
+    return 'No charge for $days days. Cancel before the trial ends.';
+  }
+
+  @override
+  String get paywallFinePrint =>
+      'Subscription renews automatically unless cancelled.';
+
+  @override
+  String get paywallContinueFree => 'Try it free first';
+
+  @override
+  String get paywallTerms => 'Terms of Use';
+
+  @override
+  String get paywallPrivacy => 'Privacy';
+
+  @override
+  String get paywallNothingToRestore => 'No purchases found to restore.';
+
+  @override
+  String get paywallPurchaseFailed =>
+      'Couldn\'t complete that. Please try again.';
+
+  @override
+  String get paywallUnlocked => 'provAi Pro is unlocked. Happy practicing!';
 }

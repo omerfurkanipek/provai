@@ -31,6 +31,9 @@ class PaperTextField extends StatelessWidget {
       autofocus: true,
       onChanged: onChanged,
       onSubmitted: onSubmitted,
+      // Varsayılan davranış odağı sonraki alana taşır; adımlar arası geçişte
+      // yeni sayfanın autofocus'unu ezmesin diye kapatıldı.
+      onEditingComplete: () {},
       textInputAction: TextInputAction.next,
       textCapitalization: textCapitalization,
       style: context.textStyles.bodyLarge,

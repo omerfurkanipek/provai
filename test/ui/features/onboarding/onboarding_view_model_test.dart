@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:provai/data/repositories/profile_repository_impl.dart';
+import 'package:provai/data/services/analytics_service.dart';
 import 'package:provai/domain/models/user_profile.dart';
 import 'package:provai/domain/repositories/profile_repository.dart';
 import 'package:provai/ui/features/onboarding/view_models/onboarding_state.dart';
@@ -19,8 +20,14 @@ void main() {
     repository = _MockProfileRepository();
     when(() => repository.getProfile()).thenReturn(null);
     when(() => repository.completeOnboarding(any())).thenAnswer((_) async {});
+    when(() => repository.saveProfile(any())).thenAnswer((_) async {});
     container = ProviderContainer(
-      overrides: [profileRepositoryProvider.overrideWithValue(repository)],
+      overrides: [
+        profileRepositoryProvider.overrideWithValue(repository),
+        analyticsServiceProvider.overrideWithValue(
+          const DebugAnalyticsService(),
+        ),
+      ],
     );
     addTearDown(container.dispose);
     // autoDispose provider'ı test boyunca canlı tut.

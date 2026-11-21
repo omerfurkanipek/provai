@@ -35,4 +35,6 @@ abstract final class StorageKeys {
   static const themeMode = 'theme_mode';
   static const userProfile = 'user_profile';
   static const onboardingCompleted = 'onboarding_completed';
+  static const purchasedPlanId = 'purchased_plan_id';
+  static const subscriptionRenewsAt = 'subscription_renews_at';
 }

@@ -40,6 +40,11 @@
 
          In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin. -->
     <queries>
+        <!-- url_launcher: Kullanım Koşulları / Gizlilik bağlantıları -->
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
         <!-- speech_to_text: Android 11+ cihazdaki tanıma servisini görebilmek için -->
         <intent>
             <action android:name="android.speech.RecognitionService" />

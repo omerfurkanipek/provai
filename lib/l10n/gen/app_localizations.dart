@@ -571,6 +571,198 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Genel'**
   String get onbRoleFallback;
+
+  /// No description provided for @paywallRestore.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geri yükle'**
+  String get paywallRestore;
+
+  /// No description provided for @paywallTitleOnboardingThisWeek.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu haftaki {role} mülakatına hazır ol.'**
+  String paywallTitleOnboardingThisWeek(String role);
+
+  /// No description provided for @paywallTitleOnboardingThisMonth.
+  ///
+  /// In tr, this message translates to:
+  /// **'{role} mülakatına bu ay hazır ol.'**
+  String paywallTitleOnboardingThisMonth(String role);
+
+  /// No description provided for @paywallTitleOnboardingLater.
+  ///
+  /// In tr, this message translates to:
+  /// **'{role} mülakatlarına şimdiden hazırlan.'**
+  String paywallTitleOnboardingLater(String role);
+
+  /// No description provided for @paywallTitleFreeLimit.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ücretsiz provan bitti. Hazırlığı yarıda bırakma.'**
+  String get paywallTitleFreeLimit;
+
+  /// No description provided for @paywallTitleDefault.
+  ///
+  /// In tr, this message translates to:
+  /// **'Her cevabın, bir koçun kalemiyle.'**
+  String get paywallTitleDefault;
+
+  /// No description provided for @paywallExampleLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Senin cevabın'**
+  String get paywallExampleLabel;
+
+  /// No description provided for @paywallExampleBefore.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uygulamanın performansını '**
+  String get paywallExampleBefore;
+
+  /// No description provided for @paywallExamplePhrase.
+  ///
+  /// In tr, this message translates to:
+  /// **'epey iyileştirdim'**
+  String get paywallExamplePhrase;
+
+  /// No description provided for @paywallExampleAfter.
+  ///
+  /// In tr, this message translates to:
+  /// **' ve ekip de memnun kaldı.'**
+  String get paywallExampleAfter;
+
+  /// No description provided for @paywallExampleFix.
+  ///
+  /// In tr, this message translates to:
+  /// **'\"Epey\" yerine ölçü ver: açılış süresi 3,2 sn\'den 1,1 sn\'ye indi.'**
+  String get paywallExampleFix;
+
+  /// No description provided for @paywallFeature1.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sınırsız prova, ilanına özel sorular'**
+  String get paywallFeature1;
+
+  /// No description provided for @paywallFeature2.
+  ///
+  /// In tr, this message translates to:
+  /// **'Her cevaba puan ve yeniden yazılmış örnek'**
+  String get paywallFeature2;
+
+  /// No description provided for @paywallFeature3.
+  ///
+  /// In tr, this message translates to:
+  /// **'İngilizce ve Türkçe mülakat provası'**
+  String get paywallFeature3;
+
+  /// No description provided for @paywallPlanYearly.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yıllık'**
+  String get paywallPlanYearly;
+
+  /// No description provided for @paywallPlanWeekly.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haftalık'**
+  String get paywallPlanWeekly;
+
+  /// No description provided for @paywallSavings.
+  ///
+  /// In tr, this message translates to:
+  /// **'%{percent} tasarruf'**
+  String paywallSavings(int percent);
+
+  /// No description provided for @paywallYearlyTrialSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'{days} gün ücretsiz, sonra {price}/yıl'**
+  String paywallYearlyTrialSubtitle(int days, String price);
+
+  /// No description provided for @paywallYearlySubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'{price}/yıl'**
+  String paywallYearlySubtitle(String price);
+
+  /// No description provided for @paywallWeeklySubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'İstediğin zaman iptal et'**
+  String get paywallWeeklySubtitle;
+
+  /// No description provided for @paywallPerWeek.
+  ///
+  /// In tr, this message translates to:
+  /// **'{price}/hf'**
+  String paywallPerWeek(String price);
+
+  /// No description provided for @paywallCtaTrial.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ücretsiz denemeyi başlat'**
+  String get paywallCtaTrial;
+
+  /// No description provided for @paywallCtaWeekly.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haftalık planla devam et'**
+  String get paywallCtaWeekly;
+
+  /// No description provided for @paywallCtaYearly.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yıllık planla devam et'**
+  String get paywallCtaYearly;
+
+  /// No description provided for @paywallFinePrintTrial.
+  ///
+  /// In tr, this message translates to:
+  /// **'{days} gün boyunca ücret alınmaz. Deneme bitmeden iptal edebilirsin.'**
+  String paywallFinePrintTrial(int days);
+
+  /// No description provided for @paywallFinePrint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Abonelik, iptal edilmediği sürece otomatik yenilenir.'**
+  String get paywallFinePrint;
+
+  /// No description provided for @paywallContinueFree.
+  ///
+  /// In tr, this message translates to:
+  /// **'Önce ücretsiz dene'**
+  String get paywallContinueFree;
+
+  /// No description provided for @paywallTerms.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanım Koşulları'**
+  String get paywallTerms;
+
+  /// No description provided for @paywallPrivacy.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gizlilik'**
+  String get paywallPrivacy;
+
+  /// No description provided for @paywallNothingToRestore.
+  ///
+  /// In tr, this message translates to:
+  /// **'Geri yüklenecek bir satın alım bulunamadı.'**
+  String get paywallNothingToRestore;
+
+  /// No description provided for @paywallPurchaseFailed.
+  ///
+  /// In tr, this message translates to:
+  /// **'İşlem tamamlanamadı. Tekrar dene.'**
+  String get paywallPurchaseFailed;
+
+  /// No description provided for @paywallUnlocked.
+  ///
+  /// In tr, this message translates to:
+  /// **'provAi Pro açıldı. İyi provalar!'**
+  String get paywallUnlocked;
 }
 
 class _AppLocalizationsDelegate

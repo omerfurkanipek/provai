@@ -457,5 +457,6 @@
   "paywallPurchaseFailedTitle": "Satın alma gerçekleşemedi",
   "paywallPurchaseFailedBody": "Ödeme tamamlanamadı ve senden ücret alınmadı. Bu demo sürümünde mağaza bağlantısı bulunmuyor.",
   "commonOk": "Tamam",
-  "homePostingRequired": "Lütfen önce iş ilanını ya da hazırlandığın pozisyonu anlatan bir metin gir."
+  "homePostingRequired": "Lütfen önce iş ilanını ya da hazırlandığın pozisyonu anlatan bir metin gir.",
+  "profileNetworkInspector": "Ağ istekleri (debug)"
 }

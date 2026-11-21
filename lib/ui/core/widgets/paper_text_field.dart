@@ -11,6 +11,7 @@ class PaperTextField extends StatelessWidget {
     this.onSubmitted,
     this.textCapitalization = TextCapitalization.none,
     this.autofocus = true,
+    this.focusNode,
     super.key,
   });
 
@@ -20,6 +21,7 @@ class PaperTextField extends StatelessWidget {
   final ValueChanged<String>? onSubmitted;
   final TextCapitalization textCapitalization;
   final bool autofocus;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,7 @@ class PaperTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       autofocus: autofocus,
+      focusNode: focusNode,
       onChanged: onChanged,
       onSubmitted: onSubmitted,
       // Varsayılan davranış odağı sonraki alana taşır; adımlar arası geçişte

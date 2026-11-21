@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:material_ui/material_ui.dart';
 import 'package:provai/app/router/routes.dart';
 import 'package:provai/config/app_links.dart';
+import 'package:provai/data/services/http_inspector.dart';
 import 'package:provai/domain/models/paywall_placement.dart';
 import 'package:provai/domain/models/user_profile.dart';
 import 'package:provai/ui/core/extensions/context_x.dart';
@@ -267,6 +268,12 @@ class ProfileScreen extends ConsumerWidget {
                 mode: LaunchMode.inAppBrowserView,
               ),
             ),
+            // Yalnızca debug build: Chucker benzeri HTTP inspector.
+            if (ref.watch(httpInspectorProvider) case final inspector?)
+              SettingsRow(
+                label: l10n.profileNetworkInspector,
+                onTap: inspector.showInspector,
+              ),
             SettingsRow(
               label: l10n.profileReset,
               destructive: true,

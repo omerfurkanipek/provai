@@ -103,11 +103,11 @@ class PaywallScreen extends ConsumerWidget {
                               duration: 300.ms,
                             ),
                       ),
+                      const SizedBox(height: AppSpacing.sm),
+                      Text(_title(l10n, state), style: styles.titleLarge),
                       const SizedBox(height: AppSpacing.md),
-                      Text(_title(l10n, state), style: styles.display),
-                      const SizedBox(height: AppSpacing.lg),
                       const MarkedAnswerCard(),
-                      const SizedBox(height: AppSpacing.lg),
+                      const SizedBox(height: AppSpacing.md),
                       for (final feature in [
                         l10n.paywallFeature1,
                         l10n.paywallFeature2,
@@ -115,7 +115,7 @@ class PaywallScreen extends ConsumerWidget {
                       ])
                         _FeatureRow(text: feature),
                       const Spacer(),
-                      const SizedBox(height: AppSpacing.lg),
+                      const SizedBox(height: AppSpacing.sm),
                       if (state.plans.isNotEmpty)
                         PlanSelector(
                           plans: state.plans,
@@ -123,7 +123,7 @@ class PaywallScreen extends ConsumerWidget {
                           savingsPercentOf: state.savingsPercentFor,
                           onSelect: viewModel.selectPlan,
                         ),
-                      const SizedBox(height: AppSpacing.md),
+                      const SizedBox(height: AppSpacing.sm),
                       AppButton(
                         label: _cta(l10n, state.selectedPlan),
                         isLoading: state.isPurchasing,
@@ -206,7 +206,7 @@ class _FeatureRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final colors = context.colors;
     return Padding(
-      padding: const EdgeInsets.only(bottom: AppSpacing.sm - 2),
+      padding: const EdgeInsets.only(bottom: AppSpacing.xs),
       child: Row(
         children: [
           Container(

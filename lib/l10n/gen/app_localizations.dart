@@ -1489,6 +1489,12 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Lütfen önce iş ilanını ya da hazırlandığın pozisyonu anlatan bir metin gir.'**
   String get homePostingRequired;
+
+  /// No description provided for @profileNetworkInspector.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ağ istekleri (debug)'**
+  String get profileNetworkInspector;
 }
 
 class _AppLocalizationsDelegate

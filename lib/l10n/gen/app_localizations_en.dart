@@ -798,4 +798,7 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get homePostingRequired =>
       'Please enter the job posting or a few sentences about the role first.';
+
+  @override
+  String get profileNetworkInspector => 'Network requests (debug)';
 }

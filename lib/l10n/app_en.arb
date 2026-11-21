@@ -231,5 +231,6 @@
   "paywallPurchaseFailedTitle": "Purchase couldn't be completed",
   "paywallPurchaseFailedBody": "The payment didn't go through and you weren't charged. This demo build has no store connection.",
   "commonOk": "OK",
-  "homePostingRequired": "Please enter the job posting or a few sentences about the role first."
+  "homePostingRequired": "Please enter the job posting or a few sentences about the role first.",
+  "profileNetworkInspector": "Network requests (debug)"
 }

@@ -794,4 +794,7 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get homePostingRequired =>
       'Lütfen önce iş ilanını ya da hazırlandığın pozisyonu anlatan bir metin gir.';
+
+  @override
+  String get profileNetworkInspector => 'Ağ istekleri (debug)';
 }

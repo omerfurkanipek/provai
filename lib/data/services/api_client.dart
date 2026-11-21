@@ -1,7 +1,9 @@
+import 'package:alice_dio/alice_dio_adapter.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:provai/config/env.dart';
 import 'package:provai/data/services/auth_service.dart';
+import 'package:provai/data/services/http_inspector.dart';
 import 'package:provai/utils/app_exception.dart';
 import 'package:provai/utils/cancel_handle.dart';
 import 'package:provai/utils/logger.dart';
@@ -86,6 +88,13 @@ Dio dio(Ref ref) {
       headers: {'apikey': Env.supabasePublishableKey},
     ),
   );
+  // Debug'da istek/cevaplar uygulama içi inspector'a da kaydedilir.
+  final inspector = ref.watch(httpInspectorProvider);
+  if (inspector != null) {
+    final adapter = AliceDioAdapter();
+    inspector.addAdapter(adapter);
+    dio.interceptors.add(adapter);
+  }
   if (kDebugMode) {
     dio.interceptors.add(
       LogInterceptor(

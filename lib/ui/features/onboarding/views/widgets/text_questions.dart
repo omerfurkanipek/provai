@@ -4,6 +4,26 @@ import 'package:provai/ui/core/theme/app_spacing.dart';
 import 'package:provai/ui/core/widgets/paper_text_field.dart';
 import 'package:provai/ui/features/onboarding/views/widgets/question_layout.dart';
 
+/// Adımlar arası geçişte eski sayfanın alanı hâlâ odaklı olduğu için `autofocus`
+/// çalışmaz; geçiş animasyonu bittikten sonra odak açıkça istenir.
+mixin _FocusAfterTransition<T extends StatefulWidget> on State<T> {
+  final focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    Future<void>.delayed(const Duration(milliseconds: 300), () {
+      if (mounted) focusNode.requestFocus();
+    });
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
+}
+
 /// İsim sorusu (opsiyonel).
 class NameQuestion extends StatefulWidget {
   const NameQuestion({
@@ -21,7 +41,8 @@ class NameQuestion extends StatefulWidget {
   State<NameQuestion> createState() => _NameQuestionState();
 }
 
-class _NameQuestionState extends State<NameQuestion> {
+class _NameQuestionState extends State<NameQuestion>
+    with _FocusAfterTransition {
   late final _controller = TextEditingController(text: widget.initialValue);
 
   @override
@@ -38,6 +59,8 @@ class _NameQuestionState extends State<NameQuestion> {
       subtitle: l10n.onbNameSubtitle,
       child: PaperTextField(
         controller: _controller,
+        focusNode: focusNode,
+        autofocus: false,
         hint: l10n.onbNameHint,
         textCapitalization: TextCapitalization.words,
         onChanged: widget.onChanged,
@@ -64,7 +87,8 @@ class RoleQuestion extends StatefulWidget {
   State<RoleQuestion> createState() => _RoleQuestionState();
 }
 
-class _RoleQuestionState extends State<RoleQuestion> {
+class _RoleQuestionState extends State<RoleQuestion>
+    with _FocusAfterTransition {
   late final _controller = TextEditingController(text: widget.initialValue);
 
   @override
@@ -100,6 +124,8 @@ class _RoleQuestionState extends State<RoleQuestion> {
         children: [
           PaperTextField(
             controller: _controller,
+            focusNode: focusNode,
+            autofocus: false,
             hint: l10n.onbRoleHint,
             textCapitalization: TextCapitalization.words,
             onChanged: widget.onChanged,

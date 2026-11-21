@@ -11,7 +11,6 @@ import 'package:provai/utils/string_x.dart';
 class PostingCard extends StatefulWidget {
   const PostingCard({
     required this.value,
-    required this.role,
     required this.showTooShort,
     required this.enabled,
     required this.onChanged,
@@ -19,7 +18,6 @@ class PostingCard extends StatefulWidget {
   });
 
   final String value;
-  final String role;
   final bool showTooShort;
   final bool enabled;
   final ValueChanged<String> onChanged;
@@ -115,7 +113,7 @@ class _PostingCardState extends State<PostingCard> {
               keyboardType: TextInputType.multiline,
               style: styles.bodySmall.copyWith(height: _lineHeight / 15),
               decoration: InputDecoration(
-                hintText: l10n.homePostingHint(widget.role),
+                hintText: l10n.homePostingHint,
                 hintMaxLines: 6,
                 hintStyle: styles.bodySmall.copyWith(
                   color: colors.inkSubtle,

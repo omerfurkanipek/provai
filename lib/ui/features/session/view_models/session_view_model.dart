@@ -25,10 +25,12 @@ class SessionViewModel extends _$SessionViewModel {
   /// Kullanıcı durdurdu mu? Tanıyıcı kendiliğinden durursa yeniden başlatılır.
   bool _userStopped = true;
 
-  SpeechService get _speech => ref.read(speechServiceProvider);
+  /// build'de bir kez alınır: onDispose içinde ref.read kullanılamaz.
+  late SpeechService _speech;
 
   @override
   SessionState build(String sessionId) {
+    _speech = ref.read(speechServiceProvider);
     final session = ref.read(interviewRepositoryProvider).getSession(sessionId);
     final isPro = ref.read(subscriptionRepositoryProvider).currentStatus.isPro;
 

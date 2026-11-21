@@ -66,22 +66,29 @@ class _ValueLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: AppSpacing.screen,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(child: illustration),
-          const SizedBox(height: AppSpacing.lg),
-          Text(title, style: context.textStyles.display),
-          const SizedBox(height: AppSpacing.sm),
-          Text(
-            body,
-            style: context.textStyles.body.copyWith(
-              color: context.colors.inkMuted,
+    // Çizim yüksekliği ekrana göre ölçeklenir; çok kısa ekranda sayfa kayar.
+    return LayoutBuilder(
+      builder: (context, constraints) => SingleChildScrollView(
+        padding: AppSpacing.screen,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: (constraints.maxHeight * 0.55).clamp(220.0, 420.0),
+              child: illustration,
             ),
-          ),
-        ],
+            const SizedBox(height: AppSpacing.lg),
+            Text(title, style: context.textStyles.display),
+            const SizedBox(height: AppSpacing.sm),
+            Text(
+              body,
+              style: context.textStyles.body.copyWith(
+                color: context.colors.inkMuted,
+              ),
+            ),
+            const SizedBox(height: AppSpacing.md),
+          ],
+        ),
       ),
     );
   }

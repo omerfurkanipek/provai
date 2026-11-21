@@ -73,6 +73,11 @@ class HomeViewModel extends _$HomeViewModel {
 
   Future<void> startSession() async {
     if (!state.canSubmit) return;
+    // Girdi yoksa sunucuya istek gönderilmez.
+    if (state.isPostingEmpty) {
+      state = state.copyWith(effect: const HomeEffect.postingRequired());
+      return;
+    }
     if (!state.canStartSession) {
       state = state.copyWith(effect: const HomeEffect.openPaywall());
       return;
@@ -96,7 +101,6 @@ class HomeViewModel extends _$HomeViewModel {
       case Success(:final data):
         ref.read(analyticsServiceProvider).track('session_started', {
           'questions': data.questions.length,
-          'has_posting': state.jobPosting.trim().isNotEmpty,
           'language': state.language.name,
         });
         refresh();

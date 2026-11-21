@@ -8,6 +8,7 @@ extension AppExceptionMessage on AppException {
     QuotaExceededException() => l10n.errorQuota,
     RateLimitException() => l10n.errorAiBusy,
     ValidationException() => l10n.errorValidation,
+    PurchaseFailedException() => l10n.paywallPurchaseFailedTitle,
     ServerException() || ParseException() => l10n.errorServer,
     CancelledException() || UnknownException() => l10n.errorUnknown,
   };

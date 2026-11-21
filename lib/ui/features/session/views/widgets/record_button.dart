@@ -11,11 +11,15 @@ class RecordButton extends StatefulWidget {
   const RecordButton({
     required this.isListening,
     required this.onPressed,
+    this.size = 96,
     super.key,
   });
 
   final bool isListening;
   final VoidCallback onPressed;
+
+  /// Dış halka dahil toplam boyut; iç buton bunun ~%80'i.
+  final double size;
 
   @override
   State<RecordButton> createState() => _RecordButtonState();
@@ -71,7 +75,7 @@ class _RecordButtonState extends State<RecordButton>
           widget.onPressed();
         },
         child: SizedBox.square(
-          dimension: 96,
+          dimension: widget.size,
           child: Stack(
             alignment: Alignment.center,
             children: [
@@ -79,9 +83,10 @@ class _RecordButtonState extends State<RecordButton>
                 animation: _pulse,
                 builder: (context, _) {
                   final t = _pulse.value;
+                  final inner = widget.size * 0.79;
                   return Container(
-                    width: 76 + 20 * t,
-                    height: 76 + 20 * t,
+                    width: inner + (widget.size - inner) * t,
+                    height: inner + (widget.size - inner) * t,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       color: colors.pen.withValues(
@@ -93,15 +98,15 @@ class _RecordButtonState extends State<RecordButton>
               ),
               AnimatedContainer(
                 duration: const Duration(milliseconds: 200),
-                width: 76,
-                height: 76,
+                width: widget.size * 0.79,
+                height: widget.size * 0.79,
                 decoration: BoxDecoration(color: fill, shape: BoxShape.circle),
                 child: AnimatedSwitcher(
                   duration: const Duration(milliseconds: 150),
                   child: Icon(
                     active ? PenIcons.stop : PenIcons.mic,
                     key: ValueKey(active),
-                    size: 32,
+                    size: widget.size / 3,
                     color: colors.onInk,
                   ),
                 ),

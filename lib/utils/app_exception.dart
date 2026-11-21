@@ -29,6 +29,11 @@ final class QuotaExceededException extends AppException {
   const QuotaExceededException([super.debugMessage]);
 }
 
+/// Mağaza satın almayı tamamlamadı (demo sürümünde mağaza bağlantısı yok).
+final class PurchaseFailedException extends AppException {
+  const PurchaseFailedException([super.debugMessage]);
+}
+
 /// Kullanıcı girdisi geçersiz (ör. ilan metni çok kısa).
 final class ValidationException extends AppException {
   const ValidationException([super.debugMessage]);

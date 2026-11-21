@@ -3,13 +3,15 @@ import 'dart:async';
 import 'package:provai/data/services/local_storage_service.dart';
 import 'package:provai/domain/models/subscription.dart';
 import 'package:provai/domain/repositories/subscription_repository.dart';
+import 'package:provai/utils/app_exception.dart';
 import 'package:provai/utils/result.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'mock_subscription_repository.g.dart';
 
-/// Gerçek ödeme almadan satın alma akışını taklit eder. Satın alınan plan yerelde
-/// saklanır; "Geri yükle" bu kaydı bulur (mağazadaki geçmişin karşılığı).
+/// Mağaza bağlantısı olmayan demo: planlar sabit, satın alma her zaman başarısız
+/// döner (brief statik paywall istiyor). "Geri yükle" yerelde kayıtlı bir satın alım
+/// arar; demo'da böyle bir kayıt oluşmadığı için "bulunamadı" sonucu verir.
 class MockSubscriptionRepository implements SubscriptionRepository {
   MockSubscriptionRepository(this._storage) : _status = _read(_storage);
 
@@ -47,24 +49,15 @@ class MockSubscriptionRepository implements SubscriptionRepository {
   Future<Result<List<SubscriptionPlan>>> fetchPlans() async =>
       const Success(plans);
 
+  /// Brief statik paywall istiyor: satın alma gerçekleşmez. Gecikmeden sonra
+  /// mağazanın işlemi tamamlamadığı durum döner; UI bunu yerel uyarı penceresiyle
+  /// gösterir. Prod'da RevenueCat `Purchases.purchasePackage` buraya gelir.
   @override
   Future<Result<SubscriptionStatus>> purchase(SubscriptionPlan plan) async {
     await Future<void>.delayed(_latency);
-    final now = DateTime.now();
-    final renewsAt = plan.hasTrial
-        ? now.add(Duration(days: plan.trialDays))
-        : now.add(
-            plan.period == PlanPeriod.weekly
-                ? const Duration(days: 7)
-                : const Duration(days: 365),
-          );
-    await _storage.setString(StorageKeys.purchasedPlanId, plan.id);
-    await _storage.setInt(
-      StorageKeys.subscriptionRenewsAt,
-      renewsAt.millisecondsSinceEpoch,
+    return const Failure(
+      PurchaseFailedException('Store is not connected in the demo build'),
     );
-    _emit(_read(_storage));
-    return Success(_status);
   }
 
   @override

@@ -31,6 +31,38 @@ class ProvaiApp extends ConsumerWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
+      builder: (context, child) => AppFrame(child: child!),
+    );
+  }
+}
+
+/// Tüm ekranları saran çerçeve:
+/// - Cihazın yazı boyutu ayarı uygulanmaz; tasarım her cihazda aynı ölçekte kalır
+///   (büyük yazılı telefonlarda düzen bozulmasın diye bilinçli tercih).
+/// - Tablet ve yatay ekranda içerik okunabilir genişlikte ortalanır; kenarlar
+///   kâğıt rengiyle dolar.
+class AppFrame extends StatelessWidget {
+  const AppFrame({required this.child, super.key});
+
+  final Widget child;
+
+  /// Telefon tasarımının taşınabileceği en geniş içerik genişliği.
+  static const maxContentWidth = 600.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final media = MediaQuery.of(context);
+    return MediaQuery(
+      data: media.copyWith(textScaler: TextScaler.noScaling),
+      child: ColoredBox(
+        color: Theme.of(context).scaffoldBackgroundColor,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: maxContentWidth),
+            child: child,
+          ),
+        ),
+      ),
     );
   }
 }

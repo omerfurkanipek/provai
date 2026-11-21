@@ -51,6 +51,8 @@ class HomeScreen extends ConsumerWidget {
             const PaywallRoute(placement: PaywallPlacement.freeLimit)
                 .push<bool>(context),
           );
+        case HomeEffectPostingRequired():
+          context.showMessage(context.l10n.homePostingRequired);
         case HomeEffectShowError(:final error):
           context.showMessage(error.message(context.l10n));
       }
@@ -59,9 +61,6 @@ class HomeScreen extends ConsumerWidget {
 
     final state = ref.watch(homeViewModelProvider);
     final l10n = context.l10n;
-    final role = state.profile.targetRole.isEmpty
-        ? l10n.onbRoleFallback
-        : state.profile.targetRole;
 
     return Scaffold(
       body: SafeArea(
@@ -89,7 +88,6 @@ class HomeScreen extends ConsumerWidget {
               const SizedBox(height: AppSpacing.lg),
               PostingCard(
                 value: state.jobPosting,
-                role: role,
                 enabled: !state.isGenerating,
                 showTooShort: state.isPostingTooShort,
                 onChanged: viewModel.onPostingChanged,

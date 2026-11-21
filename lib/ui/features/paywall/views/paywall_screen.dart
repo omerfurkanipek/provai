@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:cupertino_ui/cupertino_ui.dart' show CupertinoDialogAction;
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -51,7 +54,7 @@ class PaywallScreen extends ConsumerWidget {
         case PaywallEffectNothingToRestore():
           context.showMessage(l10n.paywallNothingToRestore);
         case PaywallEffectFailed():
-          context.showMessage(l10n.paywallPurchaseFailed);
+          unawaited(_showPurchaseFailed(context));
       }
       ref.read(provider.notifier).consumeEffect();
     });
@@ -86,13 +89,19 @@ class PaywallScreen extends ConsumerWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      _TopBar(
-                        // Onboarding'de kapat butonu kısa bir gecikmeyle belirir;
-                        // "Önce ücretsiz dene" seçeneği ise baştan görünür.
-                        closeDelay: _isOnboarding ? 1500.ms : Duration.zero,
-                        isRestoring: state.isRestoring,
-                        onClose: viewModel.dismiss,
-                        onRestore: viewModel.restore,
+                      // Onboarding'de kapat butonu kısa bir gecikmeyle belirir;
+                      // "Önce ücretsiz dene" seçeneği ise baştan görünür.
+                      Align(
+                        alignment: AlignmentDirectional.centerStart,
+                        child:
+                            CircleIconButton(
+                              icon: PenIcons.close,
+                              semanticLabel: l10n.commonClose,
+                              onPressed: viewModel.dismiss,
+                            ).animate().fadeIn(
+                              delay: _isOnboarding ? 1500.ms : Duration.zero,
+                              duration: 300.ms,
+                            ),
                       ),
                       const SizedBox(height: AppSpacing.md),
                       Text(_title(l10n, state), style: styles.display),
@@ -146,7 +155,10 @@ class PaywallScreen extends ConsumerWidget {
                             ),
                           ),
                         ),
-                      _LegalLinks(l10n: l10n),
+                      _FooterLinks(
+                        isRestoring: state.isRestoring,
+                        onRestore: state.isBusy ? null : viewModel.restore,
+                      ),
                     ],
                   ),
                 ),
@@ -185,57 +197,6 @@ class PaywallScreen extends ConsumerWidget {
       : l10n.paywallFinePrint;
 }
 
-class _TopBar extends StatelessWidget {
-  const _TopBar({
-    required this.closeDelay,
-    required this.isRestoring,
-    required this.onClose,
-    required this.onRestore,
-  });
-
-  final Duration closeDelay;
-  final bool isRestoring;
-  final VoidCallback onClose;
-  final VoidCallback onRestore;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    return Row(
-      children: [
-        CircleIconButton(
-          icon: PenIcons.close,
-          semanticLabel: context.l10n.commonClose,
-          onPressed: onClose,
-        ).animate().fadeIn(delay: closeDelay, duration: 300.ms),
-        const Spacer(),
-        TextButton(
-          onPressed: isRestoring ? null : onRestore,
-          style: TextButton.styleFrom(
-            foregroundColor: colors.inkMuted,
-            minimumSize: const Size(AppSpacing.minTouch, AppSpacing.minTouch),
-          ),
-          child: isRestoring
-              ? SizedBox.square(
-                  dimension: 18,
-                  child: CircularProgressIndicator(
-                    strokeWidth: 2,
-                    color: colors.inkMuted,
-                  ),
-                )
-              : Text(
-                  context.l10n.paywallRestore,
-                  style: context.textStyles.bodySmall.copyWith(
-                    color: colors.inkMuted,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-        ),
-      ],
-    );
-  }
-}
-
 class _FeatureRow extends StatelessWidget {
   const _FeatureRow({required this.text});
 
@@ -264,32 +225,88 @@ class _FeatureRow extends StatelessWidget {
   }
 }
 
-class _LegalLinks extends StatelessWidget {
-  const _LegalLinks({required this.l10n});
+/// Alt satır: Geri yükle · Kullanım Koşulları · Gizlilik (mağaza paywall'larındaki
+/// alışılmış yerleşim).
+class _FooterLinks extends StatelessWidget {
+  const _FooterLinks({required this.isRestoring, required this.onRestore});
 
-  final AppLocalizations l10n;
+  final bool isRestoring;
+  final VoidCallback? onRestore;
 
   @override
   Widget build(BuildContext context) {
-    Widget link(String label, Uri uri) => TextButton(
-      onPressed: () => launchUrl(uri, mode: LaunchMode.inAppBrowserView),
-      style: TextButton.styleFrom(
-        foregroundColor: context.colors.inkMuted,
-        minimumSize: const Size(AppSpacing.minTouch, AppSpacing.minTouch),
-      ),
-      child: Text(
-        label,
-        style: context.textStyles.label.copyWith(
-          color: context.colors.inkMuted,
-        ),
-      ),
-    );
+    final l10n = context.l10n;
+    final colors = context.colors;
+    final style = context.textStyles.label.copyWith(color: colors.inkMuted);
+
+    Widget link(String label, VoidCallback? onTap, {bool loading = false}) =>
+        TextButton(
+          onPressed: onTap,
+          style: TextButton.styleFrom(
+            foregroundColor: colors.inkMuted,
+            minimumSize: const Size(AppSpacing.minTouch, AppSpacing.minTouch),
+            padding: const EdgeInsets.symmetric(horizontal: AppSpacing.xs),
+          ),
+          child: loading
+              ? SizedBox.square(
+                  dimension: 14,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                    color: colors.inkMuted,
+                  ),
+                )
+              : Text(label, style: style),
+        );
+    final dot = Text('·', style: style);
+
     return Wrap(
       alignment: WrapAlignment.center,
+      crossAxisAlignment: WrapCrossAlignment.center,
       children: [
-        link(l10n.paywallTerms, AppLinks.terms),
-        link(l10n.paywallPrivacy, AppLinks.privacy),
+        link(l10n.paywallRestore, onRestore, loading: isRestoring),
+        dot,
+        link(
+          l10n.paywallTerms,
+          () => launchUrl(AppLinks.terms, mode: LaunchMode.inAppBrowserView),
+        ),
+        dot,
+        link(
+          l10n.paywallPrivacy,
+          () => launchUrl(AppLinks.privacy, mode: LaunchMode.inAppBrowserView),
+        ),
       ],
     );
   }
+}
+
+/// Platformun yerel uyarı penceresi (Android'de Material, iOS'ta Cupertino).
+Future<void> _showPurchaseFailed(BuildContext context) {
+  final l10n = context.l10n;
+  return showAdaptiveDialog<void>(
+    context: context,
+    builder: (context) => AlertDialog.adaptive(
+      title: Text(l10n.paywallPurchaseFailedTitle),
+      content: Text(l10n.paywallPurchaseFailedBody),
+      actions: [
+        adaptiveDialogAction(
+          context: context,
+          label: l10n.commonOk,
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+      ],
+    ),
+  );
+}
+
+/// AlertDialog.adaptive içinde iOS'ta CupertinoDialogAction, diğerlerinde TextButton.
+Widget adaptiveDialogAction({
+  required BuildContext context,
+  required String label,
+  required VoidCallback onPressed,
+}) {
+  final platform = Theme.of(context).platform;
+  if (platform == TargetPlatform.iOS || platform == TargetPlatform.macOS) {
+    return CupertinoDialogAction(onPressed: onPressed, child: Text(label));
+  }
+  return TextButton(onPressed: onPressed, child: Text(label));
 }

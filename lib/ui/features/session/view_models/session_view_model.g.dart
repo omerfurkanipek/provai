@@ -58,7 +58,7 @@ final class SessionViewModelProvider
   }
 }
 
-String _$sessionViewModelHash() => r'f97be0bdb4e8ed898f5f945329cb3520845490f9';
+String _$sessionViewModelHash() => r'86488c1237d90aa867c407a62d3f51e5a561a522';
 
 final class SessionViewModelFamily extends $Family
     with

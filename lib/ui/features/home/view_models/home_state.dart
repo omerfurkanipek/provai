@@ -11,6 +11,9 @@ sealed class HomeEffect with _$HomeEffect {
   const factory HomeEffect.openSession(String sessionId) =
       HomeEffectOpenSession;
   const factory HomeEffect.openPaywall() = HomeEffectOpenPaywall;
+
+  /// İlan/pozisyon metni boşken başlatılmaya çalışıldı.
+  const factory HomeEffect.postingRequired() = HomeEffectPostingRequired;
   const factory HomeEffect.showError(AppException error) = HomeEffectShowError;
 }
 
@@ -39,7 +42,9 @@ abstract class HomeState with _$HomeState {
 
   bool get canStartSession => isPro || freeSessionsLeft > 0;
 
-  /// Boş ilan serbest (rol bazlı prova); dolu ise anlamlı uzunlukta olmalı.
+  bool get isPostingEmpty => jobPosting.trim().isEmpty;
+
+  /// Boş ilan başlatmada uyarı verir; dolu ise anlamlı uzunlukta olmalı.
   bool get isPostingTooShort {
     final length = jobPosting.trim().length;
     return length > 0 && length < minPostingLength;

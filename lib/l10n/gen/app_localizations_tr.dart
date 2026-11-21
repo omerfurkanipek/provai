@@ -426,9 +426,8 @@ class AppLocalizationsTr extends AppLocalizations {
   String get homePaste => 'Yapıştır';
 
   @override
-  String homePostingHint(String role) {
-    return 'İlan metnini buraya yapıştır. Boş bırakırsan sorular $role pozisyonuna göre hazırlanır.';
-  }
+  String get homePostingHint =>
+      'İş ilanını buraya yapıştır ya da hazırlandığın pozisyonu birkaç cümleyle anlat.';
 
   @override
   String homePostingCounter(int count, int max) {
@@ -781,4 +780,18 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profileUpdated => 'Profil güncellendi.';
+
+  @override
+  String get paywallPurchaseFailedTitle => 'Satın alma gerçekleşemedi';
+
+  @override
+  String get paywallPurchaseFailedBody =>
+      'Ödeme tamamlanamadı ve senden ücret alınmadı. Bu demo sürümünde mağaza bağlantısı bulunmuyor.';
+
+  @override
+  String get commonOk => 'Tamam';
+
+  @override
+  String get homePostingRequired =>
+      'Lütfen önce iş ilanını ya da hazırlandığın pozisyonu anlatan bir metin gir.';
 }

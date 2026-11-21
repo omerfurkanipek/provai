@@ -121,7 +121,7 @@
   "homePro": "provAi Pro · unlimited mocks",
   "homePostingLabel": "Job posting",
   "homePaste": "Paste",
-  "homePostingHint": "Paste the job posting here. Leave it empty and questions will be based on the {role} role.",
+  "homePostingHint": "Paste the job posting here, or describe the role you're preparing for in a few sentences.",
   "homePostingCounter": "{count} / {max}",
   "homePostingTooShort": "The posting is too short. Paste at least {min} characters for better questions, or leave it empty.",
   "homeLanguage": "Interview language",
@@ -227,5 +227,9 @@
   "profileNameLabel": "Your name",
   "profileVersion": "provAi {version}",
   "profileRestored": "Your purchase was restored.",
-  "profileUpdated": "Profile updated."
+  "profileUpdated": "Profile updated.",
+  "paywallPurchaseFailedTitle": "Purchase couldn't be completed",
+  "paywallPurchaseFailedBody": "The payment didn't go through and you weren't charged. This demo build has no store connection.",
+  "commonOk": "OK",
+  "homePostingRequired": "Please enter the job posting or a few sentences about the role first."
 }

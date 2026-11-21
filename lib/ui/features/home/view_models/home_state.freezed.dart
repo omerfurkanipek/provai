@@ -56,12 +56,13 @@ extension HomeEffectPatterns on HomeEffect {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( HomeEffectOpenSession value)?  openSession,TResult Function( HomeEffectOpenPaywall value)?  openPaywall,TResult Function( HomeEffectShowError value)?  showError,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( HomeEffectOpenSession value)?  openSession,TResult Function( HomeEffectOpenPaywall value)?  openPaywall,TResult Function( HomeEffectPostingRequired value)?  postingRequired,TResult Function( HomeEffectShowError value)?  showError,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case HomeEffectOpenSession() when openSession != null:
 return openSession(_that);case HomeEffectOpenPaywall() when openPaywall != null:
-return openPaywall(_that);case HomeEffectShowError() when showError != null:
+return openPaywall(_that);case HomeEffectPostingRequired() when postingRequired != null:
+return postingRequired(_that);case HomeEffectShowError() when showError != null:
 return showError(_that);case _:
   return orElse();
 
@@ -80,12 +81,13 @@ return showError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( HomeEffectOpenSession value)  openSession,required TResult Function( HomeEffectOpenPaywall value)  openPaywall,required TResult Function( HomeEffectShowError value)  showError,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( HomeEffectOpenSession value)  openSession,required TResult Function( HomeEffectOpenPaywall value)  openPaywall,required TResult Function( HomeEffectPostingRequired value)  postingRequired,required TResult Function( HomeEffectShowError value)  showError,}){
 final _that = this;
 switch (_that) {
 case HomeEffectOpenSession():
 return openSession(_that);case HomeEffectOpenPaywall():
-return openPaywall(_that);case HomeEffectShowError():
+return openPaywall(_that);case HomeEffectPostingRequired():
+return postingRequired(_that);case HomeEffectShowError():
 return showError(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -100,12 +102,13 @@ return showError(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( HomeEffectOpenSession value)?  openSession,TResult? Function( HomeEffectOpenPaywall value)?  openPaywall,TResult? Function( HomeEffectShowError value)?  showError,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( HomeEffectOpenSession value)?  openSession,TResult? Function( HomeEffectOpenPaywall value)?  openPaywall,TResult? Function( HomeEffectPostingRequired value)?  postingRequired,TResult? Function( HomeEffectShowError value)?  showError,}){
 final _that = this;
 switch (_that) {
 case HomeEffectOpenSession() when openSession != null:
 return openSession(_that);case HomeEffectOpenPaywall() when openPaywall != null:
-return openPaywall(_that);case HomeEffectShowError() when showError != null:
+return openPaywall(_that);case HomeEffectPostingRequired() when postingRequired != null:
+return postingRequired(_that);case HomeEffectShowError() when showError != null:
 return showError(_that);case _:
   return null;
 
@@ -123,11 +126,12 @@ return showError(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String sessionId)?  openSession,TResult Function()?  openPaywall,TResult Function( AppException error)?  showError,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function( String sessionId)?  openSession,TResult Function()?  openPaywall,TResult Function()?  postingRequired,TResult Function( AppException error)?  showError,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case HomeEffectOpenSession() when openSession != null:
 return openSession(_that.sessionId);case HomeEffectOpenPaywall() when openPaywall != null:
-return openPaywall();case HomeEffectShowError() when showError != null:
+return openPaywall();case HomeEffectPostingRequired() when postingRequired != null:
+return postingRequired();case HomeEffectShowError() when showError != null:
 return showError(_that.error);case _:
   return orElse();
 
@@ -146,11 +150,12 @@ return showError(_that.error);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String sessionId)  openSession,required TResult Function()  openPaywall,required TResult Function( AppException error)  showError,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function( String sessionId)  openSession,required TResult Function()  openPaywall,required TResult Function()  postingRequired,required TResult Function( AppException error)  showError,}) {final _that = this;
 switch (_that) {
 case HomeEffectOpenSession():
 return openSession(_that.sessionId);case HomeEffectOpenPaywall():
-return openPaywall();case HomeEffectShowError():
+return openPaywall();case HomeEffectPostingRequired():
+return postingRequired();case HomeEffectShowError():
 return showError(_that.error);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -165,11 +170,12 @@ return showError(_that.error);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String sessionId)?  openSession,TResult? Function()?  openPaywall,TResult? Function( AppException error)?  showError,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function( String sessionId)?  openSession,TResult? Function()?  openPaywall,TResult? Function()?  postingRequired,TResult? Function( AppException error)?  showError,}) {final _that = this;
 switch (_that) {
 case HomeEffectOpenSession() when openSession != null:
 return openSession(_that.sessionId);case HomeEffectOpenPaywall() when openPaywall != null:
-return openPaywall();case HomeEffectShowError() when showError != null:
+return openPaywall();case HomeEffectPostingRequired() when postingRequired != null:
+return postingRequired();case HomeEffectShowError() when showError != null:
 return showError(_that.error);case _:
   return null;
 
@@ -270,6 +276,38 @@ int get hashCode => runtimeType.hashCode;
 @override
 String toString() {
     return 'HomeEffect.openPaywall()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class HomeEffectPostingRequired implements HomeEffect {
+  const HomeEffectPostingRequired();
+  
+
+
+
+
+
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeEffectPostingRequired);
+}
+
+
+@override
+int get hashCode => runtimeType.hashCode;
+
+@override
+String toString() {
+    return 'HomeEffect.postingRequired()';
 }
 
 

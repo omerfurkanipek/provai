@@ -111,22 +111,45 @@ class SessionScreen extends ConsumerWidget {
                     child: KeyedSubtree(
                       key: ValueKey('${state.currentIndex}-${state.phase}'),
                       child: switch (state.phase) {
-                        SessionPhase.answering => Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            QuestionCard(question: question),
-                            const SizedBox(height: AppSpacing.lg),
-                            Expanded(
-                              child: AnswerComposer(
-                                state: state,
-                                language: session.language,
-                                onToggleRecording: viewModel.toggleRecording,
-                                onRestart: viewModel.restartAnswer,
-                                onModeChanged: viewModel.setInputMode,
-                                onTypedChanged: viewModel.onTypedAnswerChanged,
-                              ),
-                            ),
-                          ],
+                        // Kısa ekranlarda soru sınırlı yükseklikte kendi içinde
+                        // kayar; cevap alanı ve kontroller her zaman sığar.
+                        SessionPhase.answering => LayoutBuilder(
+                          builder: (context, constraints) {
+                            final compact = constraints.maxHeight < 480;
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    maxHeight:
+                                        constraints.maxHeight *
+                                        (compact ? 0.24 : 0.32),
+                                  ),
+                                  child: SingleChildScrollView(
+                                    child: QuestionCard(question: question),
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: compact
+                                      ? AppSpacing.sm
+                                      : AppSpacing.lg,
+                                ),
+                                Expanded(
+                                  child: AnswerComposer(
+                                    state: state,
+                                    language: session.language,
+                                    compact: compact,
+                                    onToggleRecording:
+                                        viewModel.toggleRecording,
+                                    onRestart: viewModel.restartAnswer,
+                                    onModeChanged: viewModel.setInputMode,
+                                    onTypedChanged:
+                                        viewModel.onTypedAnswerChanged,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
                         ),
                         SessionPhase.evaluating => _Evaluating(
                           questionCard: QuestionCard(question: question),

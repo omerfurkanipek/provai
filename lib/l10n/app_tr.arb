@@ -214,7 +214,7 @@
   "homePro": "provAi Pro · sınırsız prova",
   "homePostingLabel": "İş ilanı",
   "homePaste": "Yapıştır",
-  "homePostingHint": "İlan metnini buraya yapıştır. Boş bırakırsan sorular {role} pozisyonuna göre hazırlanır.",
+  "homePostingHint": "İş ilanını buraya yapıştır ya da hazırlandığın pozisyonu birkaç cümleyle anlat.",
   "homePostingCounter": "{count} / {max}",
   "homePostingTooShort": "İlan çok kısa. Daha iyi sorular için en az {min} karakter yapıştır ya da alanı boş bırak.",
   "homeLanguage": "Mülakat dili",
@@ -296,13 +296,6 @@
     "placeholders": {
       "count": {
         "type": "int"
-      }
-    }
-  },
-  "@homePostingHint": {
-    "placeholders": {
-      "role": {
-        "type": "String"
       }
     }
   },
@@ -460,5 +453,9 @@
         "type": "String"
       }
     }
-  }
+  },
+  "paywallPurchaseFailedTitle": "Satın alma gerçekleşemedi",
+  "paywallPurchaseFailedBody": "Ödeme tamamlanamadı ve senden ücret alınmadı. Bu demo sürümünde mağaza bağlantısı bulunmuyor.",
+  "commonOk": "Tamam",
+  "homePostingRequired": "Lütfen önce iş ilanını ya da hazırlandığın pozisyonu anlatan bir metin gir."
 }

@@ -97,9 +97,11 @@ class HomeHeader extends StatelessWidget {
               ),
             ),
             const SizedBox(width: AppSpacing.xs),
-            Text(
-              isPro ? l10n.homePro : l10n.homeFreeLeft(freeSessionsLeft),
-              style: styles.label.copyWith(color: colors.inkMuted),
+            Expanded(
+              child: Text(
+                isPro ? l10n.homePro : l10n.homeFreeLeft(freeSessionsLeft),
+                style: styles.label.copyWith(color: colors.inkMuted),
+              ),
             ),
           ],
         ),

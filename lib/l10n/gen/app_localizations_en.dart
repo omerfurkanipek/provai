@@ -430,9 +430,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get homePaste => 'Paste';
 
   @override
-  String homePostingHint(String role) {
-    return 'Paste the job posting here. Leave it empty and questions will be based on the $role role.';
-  }
+  String get homePostingHint =>
+      'Paste the job posting here, or describe the role you\'re preparing for in a few sentences.';
 
   @override
   String homePostingCounter(int count, int max) {
@@ -785,4 +784,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileUpdated => 'Profile updated.';
+
+  @override
+  String get paywallPurchaseFailedTitle => 'Purchase couldn\'t be completed';
+
+  @override
+  String get paywallPurchaseFailedBody =>
+      'The payment didn\'t go through and you weren\'t charged. This demo build has no store connection.';
+
+  @override
+  String get commonOk => 'OK';
+
+  @override
+  String get homePostingRequired =>
+      'Please enter the job posting or a few sentences about the role first.';
 }

@@ -827,8 +827,8 @@ abstract class AppLocalizations {
   /// No description provided for @homePostingHint.
   ///
   /// In tr, this message translates to:
-  /// **'İlan metnini buraya yapıştır. Boş bırakırsan sorular {role} pozisyonuna göre hazırlanır.'**
-  String homePostingHint(String role);
+  /// **'İş ilanını buraya yapıştır ya da hazırlandığın pozisyonu birkaç cümleyle anlat.'**
+  String get homePostingHint;
 
   /// No description provided for @homePostingCounter.
   ///
@@ -1465,6 +1465,30 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Profil güncellendi.'**
   String get profileUpdated;
+
+  /// No description provided for @paywallPurchaseFailedTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Satın alma gerçekleşemedi'**
+  String get paywallPurchaseFailedTitle;
+
+  /// No description provided for @paywallPurchaseFailedBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ödeme tamamlanamadı ve senden ücret alınmadı. Bu demo sürümünde mağaza bağlantısı bulunmuyor.'**
+  String get paywallPurchaseFailedBody;
+
+  /// No description provided for @commonOk.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tamam'**
+  String get commonOk;
+
+  /// No description provided for @homePostingRequired.
+  ///
+  /// In tr, this message translates to:
+  /// **'Lütfen önce iş ilanını ya da hazırlandığın pozisyonu anlatan bir metin gir.'**
+  String get homePostingRequired;
 }
 
 class _AppLocalizationsDelegate

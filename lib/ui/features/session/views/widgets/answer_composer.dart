@@ -20,9 +20,12 @@ class AnswerComposer extends StatelessWidget {
     required this.onRestart,
     required this.onModeChanged,
     required this.onTypedChanged,
+    this.compact = false,
     super.key,
   });
 
+  /// Kısa ekran: boşluklar ve kayıt butonu küçülür.
+  final bool compact;
   final SessionState state;
   final InterviewLanguage language;
   final VoidCallback onToggleRecording;
@@ -52,7 +55,7 @@ class AnswerComposer extends StatelessWidget {
         const SizedBox(height: AppSpacing.sm),
         if (isVoice) ...[
           _Metrics(state: state, language: language),
-          const SizedBox(height: AppSpacing.md),
+          SizedBox(height: compact ? AppSpacing.xs : AppSpacing.md),
           Row(
             children: [
               Expanded(
@@ -65,6 +68,7 @@ class AnswerComposer extends StatelessWidget {
               RecordButton(
                 isListening: state.recording == RecordingState.listening,
                 onPressed: onToggleRecording,
+                size: compact ? 72 : 96,
               ),
               Expanded(
                 child: _SideAction(

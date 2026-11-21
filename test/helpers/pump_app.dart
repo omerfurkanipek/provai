@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:material_ui/material_ui.dart';
+import 'package:provai/app/app.dart';
 import 'package:provai/l10n/gen/app_localizations.dart';
 import 'package:provai/ui/core/theme/app_theme.dart';
 
@@ -15,11 +16,12 @@ extension PumpApp on WidgetTester {
   Future<void> pumpApp(
     Widget child, {
     List<Override> overrides = const [],
+    // Mantıksal ekran boyutu; varsayılan orta boy bir Android telefon.
+    Size size = const Size(393, 873),
   }) async {
-    // Küçük test ekranında taşma olmasın diye gerçek telefon boyutu.
     view
-      ..physicalSize = const Size(1080, 2400)
-      ..devicePixelRatio = 2.75;
+      ..physicalSize = size * 3
+      ..devicePixelRatio = 3;
     addTearDown(view.reset);
 
     await pumpWidget(
@@ -35,6 +37,7 @@ extension PumpApp on WidgetTester {
             GlobalCupertinoLocalizations.delegate,
           ],
           supportedLocales: AppLocalizations.supportedLocales,
+          builder: (context, child) => AppFrame(child: child!),
           home: child,
         ),
       ),

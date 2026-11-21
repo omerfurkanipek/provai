@@ -380,4 +380,288 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get paywallUnlocked => 'provAi Pro açıldı. İyi provalar!';
+
+  @override
+  String get errorQuota =>
+      'Bugünkü AI kullanım limitine ulaştın. Yarın tekrar dene.';
+
+  @override
+  String get errorValidation =>
+      'Gönderilen bilgi geçersiz görünüyor. Metni kontrol edip tekrar dene.';
+
+  @override
+  String get errorAiBusy =>
+      'Koç şu an çok yoğun. Birkaç saniye sonra tekrar dene.';
+
+  @override
+  String homeGreeting(String name) {
+    return 'Merhaba $name';
+  }
+
+  @override
+  String get homeGreetingAnonymous => 'Merhaba';
+
+  @override
+  String get homeTitle => 'Bugün neye hazırlanıyoruz?';
+
+  @override
+  String homeFreeLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: '$count ücretsiz prova hakkın var',
+      one: '1 ücretsiz prova hakkın var',
+      zero: 'Ücretsiz provan kullanıldı',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homePro => 'provAi Pro · sınırsız prova';
+
+  @override
+  String get homePostingLabel => 'İş ilanı';
+
+  @override
+  String get homePaste => 'Yapıştır';
+
+  @override
+  String homePostingHint(String role) {
+    return 'İlan metnini buraya yapıştır. Boş bırakırsan sorular $role pozisyonuna göre hazırlanır.';
+  }
+
+  @override
+  String homePostingCounter(int count, int max) {
+    return '$count / $max';
+  }
+
+  @override
+  String homePostingTooShort(int min) {
+    return 'İlan çok kısa. Daha iyi sorular için en az $min karakter yapıştır ya da alanı boş bırak.';
+  }
+
+  @override
+  String get homeLanguage => 'Mülakat dili';
+
+  @override
+  String get homeQuestionCount => 'Soru sayısı';
+
+  @override
+  String homeQuestionCountValue(int count) {
+    return '$count soru';
+  }
+
+  @override
+  String get homeQuestionCountLocked => 'Pro ile 5 veya 7 soru';
+
+  @override
+  String get homeStart => 'Provayı başlat';
+
+  @override
+  String get homeStartLocked => 'Pro ile yeni prova başlat';
+
+  @override
+  String get homeGenerating => 'Sorular ilanına göre hazırlanıyor…';
+
+  @override
+  String get homeCancel => 'Vazgeç';
+
+  @override
+  String get homeRecent => 'Son provalar';
+
+  @override
+  String get homeRecentEmpty => 'İlk provan burada görünecek.';
+
+  @override
+  String homeSessionMeta(String date, int count, String language) {
+    return '$date · $count soru · $language';
+  }
+
+  @override
+  String homeSessionInProgress(int answered, int total) {
+    return 'Devam ediyor · $answered/$total';
+  }
+
+  @override
+  String get homeProfile => 'Profil';
+
+  @override
+  String get sessionExit => 'Provadan çık';
+
+  @override
+  String sessionProgress(int current, int total) {
+    return 'Soru $current / $total';
+  }
+
+  @override
+  String get questionTypeMotivation => 'Motivasyon';
+
+  @override
+  String get questionTypeBehavioral => 'Davranışsal';
+
+  @override
+  String get questionTypeTechnical => 'Teknik';
+
+  @override
+  String get questionTypeSituational => 'Durumsal';
+
+  @override
+  String get sessionTapToSpeak => 'Konuşmak için dokun';
+
+  @override
+  String get sessionListening => 'Dinliyorum';
+
+  @override
+  String get sessionPaused => 'Duraklatıldı';
+
+  @override
+  String get sessionType => 'Yazarak cevapla';
+
+  @override
+  String get sessionSpeak => 'Sesle cevapla';
+
+  @override
+  String get sessionTypeHint => 'Cevabını buraya yaz…';
+
+  @override
+  String get sessionTranscriptPlaceholder =>
+      'Konuştukça cevabın burada belirecek.';
+
+  @override
+  String get sessionRestart => 'Baştan';
+
+  @override
+  String get sessionSubmit => 'Değerlendir';
+
+  @override
+  String get sessionEvaluating => 'Koç cevabını okuyor…';
+
+  @override
+  String get sessionMicDenied =>
+      'Mikrofon izni verilmedi. Cevabını yazarak verebilir ya da ayarlardan izin verebilirsin.';
+
+  @override
+  String get sessionMicUnavailable =>
+      'Bu cihazda konuşma tanıma kullanılamıyor. Cevabını yazarak verebilirsin.';
+
+  @override
+  String get sessionOpenSettings => 'Ayarlar';
+
+  @override
+  String get sessionWpm => 'kelime/dk';
+
+  @override
+  String get sessionFillers => 'dolgu kelime';
+
+  @override
+  String get sessionIdealDuration => 'ideal süre';
+
+  @override
+  String get sessionAnswerTooShort =>
+      'Cevabın çok kısa. Değerlendirme için biraz daha anlat.';
+
+  @override
+  String get sessionYourAnswer => 'Cevabın';
+
+  @override
+  String sessionDuration(int seconds) {
+    return '$seconds sn';
+  }
+
+  @override
+  String get sessionStrengths => 'İyi yaptıkların';
+
+  @override
+  String get sessionImprovements => 'Düzeltilecekler';
+
+  @override
+  String get sessionImprovedAnswer => 'Örnek cevap';
+
+  @override
+  String get sessionShowImproved => 'Örnek cevabı gör';
+
+  @override
+  String get sessionImprovedLocked => 'Örnek cevaplar Pro\'da';
+
+  @override
+  String get sessionFollowUp => 'Mülakatçı devam etseydi:';
+
+  @override
+  String get sessionNext => 'Sonraki soru';
+
+  @override
+  String get sessionFinish => 'Raporu gör';
+
+  @override
+  String get sessionExitTitle => 'Provadan çıkılsın mı?';
+
+  @override
+  String get sessionExitBody =>
+      'Verdiğin cevaplar kaydedildi. Kaldığın yerden devam edebilirsin.';
+
+  @override
+  String get sessionExitConfirm => 'Çık';
+
+  @override
+  String get sessionExitCancel => 'Devam et';
+
+  @override
+  String get sessionNotFound => 'Bu prova bulunamadı.';
+
+  @override
+  String get resultTitle => 'Prova raporu';
+
+  @override
+  String get resultShare => 'Paylaş';
+
+  @override
+  String get resultOverall => 'Genel puan';
+
+  @override
+  String get criteriaStructure => 'Yapı (STAR)';
+
+  @override
+  String get criteriaRelevance => 'Alakalılık';
+
+  @override
+  String get criteriaSpecificity => 'Somutluk';
+
+  @override
+  String get criteriaClarity => 'Netlik';
+
+  @override
+  String get resultHeadlineGreat => 'Güçlü bir prova. Bu seviyeyi koru.';
+
+  @override
+  String resultHeadlineGood(String weakest) {
+    return 'İyi bir temel. $weakest seni geri tutuyor.';
+  }
+
+  @override
+  String resultHeadlineWeak(String weakest) {
+    return 'Başlangıç için iyi. Önce $weakest üzerine çalış.';
+  }
+
+  @override
+  String get resultPractice => 'Önce bunları çalış';
+
+  @override
+  String get resultQuestions => 'Soru soru';
+
+  @override
+  String get resultRetry => 'Aynı ilanla tekrar prova et';
+
+  @override
+  String get resultHome => 'Ana sayfaya dön';
+
+  @override
+  String resultShareText(int score, String role) {
+    return 'provAi prova raporum: $score/100 ($role)';
+  }
+
+  @override
+  String get scoreOutOf => '/10';
+
+  @override
+  String get scoreOutOf100 => '/100';
 }

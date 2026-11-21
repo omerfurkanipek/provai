@@ -8,21 +8,21 @@ part of 'user_profile.dart';
 
 _UserProfile _$UserProfileFromJson(Map<String, dynamic> json) => _UserProfile(
   name: json['name'] as String? ?? '',
-  targetRole: json['target_role'] as String? ?? '',
+  targetRole: json['targetRole'] as String? ?? '',
   seniority:
       $enumDecodeNullable(_$SeniorityEnumMap, json['seniority']) ??
       Seniority.junior,
   interviewLanguage:
       $enumDecodeNullable(
         _$InterviewLanguageEnumMap,
-        json['interview_language'],
+        json['interviewLanguage'],
       ) ??
       InterviewLanguage.tr,
   struggle:
       $enumDecodeNullable(_$StruggleEnumMap, json['struggle']) ??
       Struggle.technical,
   interviewTiming:
-      $enumDecodeNullable(_$InterviewTimingEnumMap, json['interview_timing']) ??
+      $enumDecodeNullable(_$InterviewTimingEnumMap, json['interviewTiming']) ??
       InterviewTiming.notScheduled,
 );
 
@@ -30,11 +30,11 @@ Map<String, dynamic> _$UserProfileToJson(
   _UserProfile instance,
 ) => <String, dynamic>{
   'name': instance.name,
-  'target_role': instance.targetRole,
+  'targetRole': instance.targetRole,
   'seniority': _$SeniorityEnumMap[instance.seniority]!,
-  'interview_language': _$InterviewLanguageEnumMap[instance.interviewLanguage]!,
+  'interviewLanguage': _$InterviewLanguageEnumMap[instance.interviewLanguage]!,
   'struggle': _$StruggleEnumMap[instance.struggle]!,
-  'interview_timing': _$InterviewTimingEnumMap[instance.interviewTiming]!,
+  'interviewTiming': _$InterviewTimingEnumMap[instance.interviewTiming]!,
 };
 
 const _$SeniorityEnumMap = {

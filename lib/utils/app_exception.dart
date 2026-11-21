@@ -24,6 +24,11 @@ final class RateLimitException extends AppException {
   const RateLimitException([super.debugMessage]);
 }
 
+/// Kullanıcının günlük AI istek kotası doldu (sunucu tarafı koruma).
+final class QuotaExceededException extends AppException {
+  const QuotaExceededException([super.debugMessage]);
+}
+
 /// Kullanıcı girdisi geçersiz (ör. ilan metni çok kısa).
 final class ValidationException extends AppException {
   const ValidationException([super.debugMessage]);

@@ -203,5 +203,195 @@
         "type": "int"
       }
     }
+  },
+  "errorQuota": "Bugünkü AI kullanım limitine ulaştın. Yarın tekrar dene.",
+  "errorValidation": "Gönderilen bilgi geçersiz görünüyor. Metni kontrol edip tekrar dene.",
+  "errorAiBusy": "Koç şu an çok yoğun. Birkaç saniye sonra tekrar dene.",
+  "homeGreeting": "Merhaba {name}",
+  "homeGreetingAnonymous": "Merhaba",
+  "homeTitle": "Bugün neye hazırlanıyoruz?",
+  "homeFreeLeft": "{count, plural, =0{Ücretsiz provan kullanıldı} =1{1 ücretsiz prova hakkın var} other{{count} ücretsiz prova hakkın var}}",
+  "homePro": "provAi Pro · sınırsız prova",
+  "homePostingLabel": "İş ilanı",
+  "homePaste": "Yapıştır",
+  "homePostingHint": "İlan metnini buraya yapıştır. Boş bırakırsan sorular {role} pozisyonuna göre hazırlanır.",
+  "homePostingCounter": "{count} / {max}",
+  "homePostingTooShort": "İlan çok kısa. Daha iyi sorular için en az {min} karakter yapıştır ya da alanı boş bırak.",
+  "homeLanguage": "Mülakat dili",
+  "homeQuestionCount": "Soru sayısı",
+  "homeQuestionCountValue": "{count} soru",
+  "homeQuestionCountLocked": "Pro ile 5 veya 7 soru",
+  "homeStart": "Provayı başlat",
+  "homeStartLocked": "Pro ile yeni prova başlat",
+  "homeGenerating": "Sorular ilanına göre hazırlanıyor…",
+  "homeCancel": "Vazgeç",
+  "homeRecent": "Son provalar",
+  "homeRecentEmpty": "İlk provan burada görünecek.",
+  "homeSessionMeta": "{date} · {count} soru · {language}",
+  "homeSessionInProgress": "Devam ediyor · {answered}/{total}",
+  "homeProfile": "Profil",
+  "sessionExit": "Provadan çık",
+  "sessionProgress": "Soru {current} / {total}",
+  "questionTypeMotivation": "Motivasyon",
+  "questionTypeBehavioral": "Davranışsal",
+  "questionTypeTechnical": "Teknik",
+  "questionTypeSituational": "Durumsal",
+  "sessionTapToSpeak": "Konuşmak için dokun",
+  "sessionListening": "Dinliyorum",
+  "sessionPaused": "Duraklatıldı",
+  "sessionType": "Yazarak cevapla",
+  "sessionSpeak": "Sesle cevapla",
+  "sessionTypeHint": "Cevabını buraya yaz…",
+  "sessionTranscriptPlaceholder": "Konuştukça cevabın burada belirecek.",
+  "sessionRestart": "Baştan",
+  "sessionSubmit": "Değerlendir",
+  "sessionEvaluating": "Koç cevabını okuyor…",
+  "sessionMicDenied": "Mikrofon izni verilmedi. Cevabını yazarak verebilir ya da ayarlardan izin verebilirsin.",
+  "sessionMicUnavailable": "Bu cihazda konuşma tanıma kullanılamıyor. Cevabını yazarak verebilirsin.",
+  "sessionOpenSettings": "Ayarlar",
+  "sessionWpm": "kelime/dk",
+  "sessionFillers": "dolgu kelime",
+  "sessionIdealDuration": "ideal süre",
+  "sessionAnswerTooShort": "Cevabın çok kısa. Değerlendirme için biraz daha anlat.",
+  "sessionYourAnswer": "Cevabın",
+  "sessionDuration": "{seconds} sn",
+  "sessionStrengths": "İyi yaptıkların",
+  "sessionImprovements": "Düzeltilecekler",
+  "sessionImprovedAnswer": "Örnek cevap",
+  "sessionShowImproved": "Örnek cevabı gör",
+  "sessionImprovedLocked": "Örnek cevaplar Pro'da",
+  "sessionFollowUp": "Mülakatçı devam etseydi:",
+  "sessionNext": "Sonraki soru",
+  "sessionFinish": "Raporu gör",
+  "sessionExitTitle": "Provadan çıkılsın mı?",
+  "sessionExitBody": "Verdiğin cevaplar kaydedildi. Kaldığın yerden devam edebilirsin.",
+  "sessionExitConfirm": "Çık",
+  "sessionExitCancel": "Devam et",
+  "sessionNotFound": "Bu prova bulunamadı.",
+  "resultTitle": "Prova raporu",
+  "resultShare": "Paylaş",
+  "resultOverall": "Genel puan",
+  "criteriaStructure": "Yapı (STAR)",
+  "criteriaRelevance": "Alakalılık",
+  "criteriaSpecificity": "Somutluk",
+  "criteriaClarity": "Netlik",
+  "resultHeadlineGreat": "Güçlü bir prova. Bu seviyeyi koru.",
+  "resultHeadlineGood": "İyi bir temel. {weakest} seni geri tutuyor.",
+  "resultHeadlineWeak": "Başlangıç için iyi. Önce {weakest} üzerine çalış.",
+  "resultPractice": "Önce bunları çalış",
+  "resultQuestions": "Soru soru",
+  "resultRetry": "Aynı ilanla tekrar prova et",
+  "resultHome": "Ana sayfaya dön",
+  "resultShareText": "provAi prova raporum: {score}/100 ({role})",
+  "scoreOutOf": "/10",
+  "scoreOutOf100": "/100",
+  "@homeGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@homeFreeLeft": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@homePostingHint": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "@homePostingCounter": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "@homePostingTooShort": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "@homeQuestionCountValue": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@homeSessionMeta": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      },
+      "language": {
+        "type": "String"
+      }
+    }
+  },
+  "@homeSessionInProgress": {
+    "placeholders": {
+      "answered": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@sessionProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@sessionDuration": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "@resultHeadlineGood": {
+    "placeholders": {
+      "weakest": {
+        "type": "String"
+      }
+    }
+  },
+  "@resultHeadlineWeak": {
+    "placeholders": {
+      "weakest": {
+        "type": "String"
+      }
+    }
+  },
+  "@resultShareText": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "role": {
+        "type": "String"
+      }
+    }
   }
 }

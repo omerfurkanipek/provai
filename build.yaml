@@ -3,5 +3,7 @@ targets:
     builders:
       json_serializable:
         options:
-          field_rename: snake
+          # provAi backend sözleşmesi camelCase (Edge Function'lar TypeScript).
+          # Tek strateji: alan adları Dart'taki isimleriyle aynı.
+          field_rename: none
           explicit_to_json: true

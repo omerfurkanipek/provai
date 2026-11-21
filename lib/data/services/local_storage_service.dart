@@ -37,4 +37,6 @@ abstract final class StorageKeys {
   static const onboardingCompleted = 'onboarding_completed';
   static const purchasedPlanId = 'purchased_plan_id';
   static const subscriptionRenewsAt = 'subscription_renews_at';
+  static const sessions = 'interview_sessions';
+  static const startedSessionCount = 'started_session_count';
 }

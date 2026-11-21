@@ -384,4 +384,288 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get paywallUnlocked => 'provAi Pro is unlocked. Happy practicing!';
+
+  @override
+  String get errorQuota =>
+      'You\'ve reached today\'s AI limit. Try again tomorrow.';
+
+  @override
+  String get errorValidation =>
+      'That input looks invalid. Check the text and try again.';
+
+  @override
+  String get errorAiBusy =>
+      'The coach is very busy right now. Try again in a few seconds.';
+
+  @override
+  String homeGreeting(String name) {
+    return 'Hi $name';
+  }
+
+  @override
+  String get homeGreetingAnonymous => 'Hi';
+
+  @override
+  String get homeTitle => 'What are we preparing for today?';
+
+  @override
+  String homeFreeLeft(int count) {
+    String _temp0 = intl.Intl.pluralLogic(
+      count,
+      locale: localeName,
+      other: 'You have $count free mocks',
+      one: 'You have 1 free mock',
+      zero: 'Your free mock is used',
+    );
+    return '$_temp0';
+  }
+
+  @override
+  String get homePro => 'provAi Pro · unlimited mocks';
+
+  @override
+  String get homePostingLabel => 'Job posting';
+
+  @override
+  String get homePaste => 'Paste';
+
+  @override
+  String homePostingHint(String role) {
+    return 'Paste the job posting here. Leave it empty and questions will be based on the $role role.';
+  }
+
+  @override
+  String homePostingCounter(int count, int max) {
+    return '$count / $max';
+  }
+
+  @override
+  String homePostingTooShort(int min) {
+    return 'The posting is too short. Paste at least $min characters for better questions, or leave it empty.';
+  }
+
+  @override
+  String get homeLanguage => 'Interview language';
+
+  @override
+  String get homeQuestionCount => 'Questions';
+
+  @override
+  String homeQuestionCountValue(int count) {
+    return '$count questions';
+  }
+
+  @override
+  String get homeQuestionCountLocked => '5 or 7 questions with Pro';
+
+  @override
+  String get homeStart => 'Start mock interview';
+
+  @override
+  String get homeStartLocked => 'Start a new mock with Pro';
+
+  @override
+  String get homeGenerating => 'Building questions from your posting…';
+
+  @override
+  String get homeCancel => 'Cancel';
+
+  @override
+  String get homeRecent => 'Recent mocks';
+
+  @override
+  String get homeRecentEmpty => 'Your first mock will show up here.';
+
+  @override
+  String homeSessionMeta(String date, int count, String language) {
+    return '$date · $count questions · $language';
+  }
+
+  @override
+  String homeSessionInProgress(int answered, int total) {
+    return 'In progress · $answered/$total';
+  }
+
+  @override
+  String get homeProfile => 'Profile';
+
+  @override
+  String get sessionExit => 'Leave mock';
+
+  @override
+  String sessionProgress(int current, int total) {
+    return 'Question $current / $total';
+  }
+
+  @override
+  String get questionTypeMotivation => 'Motivation';
+
+  @override
+  String get questionTypeBehavioral => 'Behavioral';
+
+  @override
+  String get questionTypeTechnical => 'Technical';
+
+  @override
+  String get questionTypeSituational => 'Situational';
+
+  @override
+  String get sessionTapToSpeak => 'Tap to speak';
+
+  @override
+  String get sessionListening => 'Listening';
+
+  @override
+  String get sessionPaused => 'Paused';
+
+  @override
+  String get sessionType => 'Type instead';
+
+  @override
+  String get sessionSpeak => 'Answer by voice';
+
+  @override
+  String get sessionTypeHint => 'Type your answer…';
+
+  @override
+  String get sessionTranscriptPlaceholder =>
+      'Your answer appears here as you speak.';
+
+  @override
+  String get sessionRestart => 'Restart';
+
+  @override
+  String get sessionSubmit => 'Evaluate';
+
+  @override
+  String get sessionEvaluating => 'The coach is reading your answer…';
+
+  @override
+  String get sessionMicDenied =>
+      'Microphone access was denied. You can type your answer or allow access in settings.';
+
+  @override
+  String get sessionMicUnavailable =>
+      'Speech recognition isn\'t available on this device. You can type your answer.';
+
+  @override
+  String get sessionOpenSettings => 'Settings';
+
+  @override
+  String get sessionWpm => 'words/min';
+
+  @override
+  String get sessionFillers => 'filler words';
+
+  @override
+  String get sessionIdealDuration => 'ideal length';
+
+  @override
+  String get sessionAnswerTooShort =>
+      'Your answer is too short. Say a bit more so it can be evaluated.';
+
+  @override
+  String get sessionYourAnswer => 'Your answer';
+
+  @override
+  String sessionDuration(int seconds) {
+    return '${seconds}s';
+  }
+
+  @override
+  String get sessionStrengths => 'What worked';
+
+  @override
+  String get sessionImprovements => 'What to fix';
+
+  @override
+  String get sessionImprovedAnswer => 'Sample answer';
+
+  @override
+  String get sessionShowImproved => 'Show sample answer';
+
+  @override
+  String get sessionImprovedLocked => 'Sample answers are in Pro';
+
+  @override
+  String get sessionFollowUp => 'If the interviewer kept going:';
+
+  @override
+  String get sessionNext => 'Next question';
+
+  @override
+  String get sessionFinish => 'See report';
+
+  @override
+  String get sessionExitTitle => 'Leave this mock?';
+
+  @override
+  String get sessionExitBody =>
+      'Your answers are saved. You can pick up where you left off.';
+
+  @override
+  String get sessionExitConfirm => 'Leave';
+
+  @override
+  String get sessionExitCancel => 'Keep going';
+
+  @override
+  String get sessionNotFound => 'This mock couldn\'t be found.';
+
+  @override
+  String get resultTitle => 'Mock report';
+
+  @override
+  String get resultShare => 'Share';
+
+  @override
+  String get resultOverall => 'Overall score';
+
+  @override
+  String get criteriaStructure => 'Structure (STAR)';
+
+  @override
+  String get criteriaRelevance => 'Relevance';
+
+  @override
+  String get criteriaSpecificity => 'Specificity';
+
+  @override
+  String get criteriaClarity => 'Clarity';
+
+  @override
+  String get resultHeadlineGreat => 'A strong mock. Keep this level.';
+
+  @override
+  String resultHeadlineGood(String weakest) {
+    return 'A good base. $weakest is holding you back.';
+  }
+
+  @override
+  String resultHeadlineWeak(String weakest) {
+    return 'A fine start. Work on $weakest first.';
+  }
+
+  @override
+  String get resultPractice => 'Practice these first';
+
+  @override
+  String get resultQuestions => 'Question by question';
+
+  @override
+  String get resultRetry => 'Practice again with this posting';
+
+  @override
+  String get resultHome => 'Back to home';
+
+  @override
+  String resultShareText(int score, String role) {
+    return 'My provAi mock report: $score/100 ($role)';
+  }
+
+  @override
+  String get scoreOutOf => '/10';
+
+  @override
+  String get scoreOutOf100 => '/100';
 }

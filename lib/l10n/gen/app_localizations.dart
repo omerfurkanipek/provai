@@ -763,6 +763,492 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'provAi Pro açıldı. İyi provalar!'**
   String get paywallUnlocked;
+
+  /// No description provided for @errorQuota.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugünkü AI kullanım limitine ulaştın. Yarın tekrar dene.'**
+  String get errorQuota;
+
+  /// No description provided for @errorValidation.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gönderilen bilgi geçersiz görünüyor. Metni kontrol edip tekrar dene.'**
+  String get errorValidation;
+
+  /// No description provided for @errorAiBusy.
+  ///
+  /// In tr, this message translates to:
+  /// **'Koç şu an çok yoğun. Birkaç saniye sonra tekrar dene.'**
+  String get errorAiBusy;
+
+  /// No description provided for @homeGreeting.
+  ///
+  /// In tr, this message translates to:
+  /// **'Merhaba {name}'**
+  String homeGreeting(String name);
+
+  /// No description provided for @homeGreetingAnonymous.
+  ///
+  /// In tr, this message translates to:
+  /// **'Merhaba'**
+  String get homeGreetingAnonymous;
+
+  /// No description provided for @homeTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bugün neye hazırlanıyoruz?'**
+  String get homeTitle;
+
+  /// No description provided for @homeFreeLeft.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count, plural, =0{Ücretsiz provan kullanıldı} =1{1 ücretsiz prova hakkın var} other{{count} ücretsiz prova hakkın var}}'**
+  String homeFreeLeft(int count);
+
+  /// No description provided for @homePro.
+  ///
+  /// In tr, this message translates to:
+  /// **'provAi Pro · sınırsız prova'**
+  String get homePro;
+
+  /// No description provided for @homePostingLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'İş ilanı'**
+  String get homePostingLabel;
+
+  /// No description provided for @homePaste.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yapıştır'**
+  String get homePaste;
+
+  /// No description provided for @homePostingHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'İlan metnini buraya yapıştır. Boş bırakırsan sorular {role} pozisyonuna göre hazırlanır.'**
+  String homePostingHint(String role);
+
+  /// No description provided for @homePostingCounter.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} / {max}'**
+  String homePostingCounter(int count, int max);
+
+  /// No description provided for @homePostingTooShort.
+  ///
+  /// In tr, this message translates to:
+  /// **'İlan çok kısa. Daha iyi sorular için en az {min} karakter yapıştır ya da alanı boş bırak.'**
+  String homePostingTooShort(int min);
+
+  /// No description provided for @homeLanguage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mülakat dili'**
+  String get homeLanguage;
+
+  /// No description provided for @homeQuestionCount.
+  ///
+  /// In tr, this message translates to:
+  /// **'Soru sayısı'**
+  String get homeQuestionCount;
+
+  /// No description provided for @homeQuestionCountValue.
+  ///
+  /// In tr, this message translates to:
+  /// **'{count} soru'**
+  String homeQuestionCountValue(int count);
+
+  /// No description provided for @homeQuestionCountLocked.
+  ///
+  /// In tr, this message translates to:
+  /// **'Pro ile 5 veya 7 soru'**
+  String get homeQuestionCountLocked;
+
+  /// No description provided for @homeStart.
+  ///
+  /// In tr, this message translates to:
+  /// **'Provayı başlat'**
+  String get homeStart;
+
+  /// No description provided for @homeStartLocked.
+  ///
+  /// In tr, this message translates to:
+  /// **'Pro ile yeni prova başlat'**
+  String get homeStartLocked;
+
+  /// No description provided for @homeGenerating.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sorular ilanına göre hazırlanıyor…'**
+  String get homeGenerating;
+
+  /// No description provided for @homeCancel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Vazgeç'**
+  String get homeCancel;
+
+  /// No description provided for @homeRecent.
+  ///
+  /// In tr, this message translates to:
+  /// **'Son provalar'**
+  String get homeRecent;
+
+  /// No description provided for @homeRecentEmpty.
+  ///
+  /// In tr, this message translates to:
+  /// **'İlk provan burada görünecek.'**
+  String get homeRecentEmpty;
+
+  /// No description provided for @homeSessionMeta.
+  ///
+  /// In tr, this message translates to:
+  /// **'{date} · {count} soru · {language}'**
+  String homeSessionMeta(String date, int count, String language);
+
+  /// No description provided for @homeSessionInProgress.
+  ///
+  /// In tr, this message translates to:
+  /// **'Devam ediyor · {answered}/{total}'**
+  String homeSessionInProgress(int answered, int total);
+
+  /// No description provided for @homeProfile.
+  ///
+  /// In tr, this message translates to:
+  /// **'Profil'**
+  String get homeProfile;
+
+  /// No description provided for @sessionExit.
+  ///
+  /// In tr, this message translates to:
+  /// **'Provadan çık'**
+  String get sessionExit;
+
+  /// No description provided for @sessionProgress.
+  ///
+  /// In tr, this message translates to:
+  /// **'Soru {current} / {total}'**
+  String sessionProgress(int current, int total);
+
+  /// No description provided for @questionTypeMotivation.
+  ///
+  /// In tr, this message translates to:
+  /// **'Motivasyon'**
+  String get questionTypeMotivation;
+
+  /// No description provided for @questionTypeBehavioral.
+  ///
+  /// In tr, this message translates to:
+  /// **'Davranışsal'**
+  String get questionTypeBehavioral;
+
+  /// No description provided for @questionTypeTechnical.
+  ///
+  /// In tr, this message translates to:
+  /// **'Teknik'**
+  String get questionTypeTechnical;
+
+  /// No description provided for @questionTypeSituational.
+  ///
+  /// In tr, this message translates to:
+  /// **'Durumsal'**
+  String get questionTypeSituational;
+
+  /// No description provided for @sessionTapToSpeak.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konuşmak için dokun'**
+  String get sessionTapToSpeak;
+
+  /// No description provided for @sessionListening.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dinliyorum'**
+  String get sessionListening;
+
+  /// No description provided for @sessionPaused.
+  ///
+  /// In tr, this message translates to:
+  /// **'Duraklatıldı'**
+  String get sessionPaused;
+
+  /// No description provided for @sessionType.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yazarak cevapla'**
+  String get sessionType;
+
+  /// No description provided for @sessionSpeak.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sesle cevapla'**
+  String get sessionSpeak;
+
+  /// No description provided for @sessionTypeHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Cevabını buraya yaz…'**
+  String get sessionTypeHint;
+
+  /// No description provided for @sessionTranscriptPlaceholder.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konuştukça cevabın burada belirecek.'**
+  String get sessionTranscriptPlaceholder;
+
+  /// No description provided for @sessionRestart.
+  ///
+  /// In tr, this message translates to:
+  /// **'Baştan'**
+  String get sessionRestart;
+
+  /// No description provided for @sessionSubmit.
+  ///
+  /// In tr, this message translates to:
+  /// **'Değerlendir'**
+  String get sessionSubmit;
+
+  /// No description provided for @sessionEvaluating.
+  ///
+  /// In tr, this message translates to:
+  /// **'Koç cevabını okuyor…'**
+  String get sessionEvaluating;
+
+  /// No description provided for @sessionMicDenied.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mikrofon izni verilmedi. Cevabını yazarak verebilir ya da ayarlardan izin verebilirsin.'**
+  String get sessionMicDenied;
+
+  /// No description provided for @sessionMicUnavailable.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu cihazda konuşma tanıma kullanılamıyor. Cevabını yazarak verebilirsin.'**
+  String get sessionMicUnavailable;
+
+  /// No description provided for @sessionOpenSettings.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ayarlar'**
+  String get sessionOpenSettings;
+
+  /// No description provided for @sessionWpm.
+  ///
+  /// In tr, this message translates to:
+  /// **'kelime/dk'**
+  String get sessionWpm;
+
+  /// No description provided for @sessionFillers.
+  ///
+  /// In tr, this message translates to:
+  /// **'dolgu kelime'**
+  String get sessionFillers;
+
+  /// No description provided for @sessionIdealDuration.
+  ///
+  /// In tr, this message translates to:
+  /// **'ideal süre'**
+  String get sessionIdealDuration;
+
+  /// No description provided for @sessionAnswerTooShort.
+  ///
+  /// In tr, this message translates to:
+  /// **'Cevabın çok kısa. Değerlendirme için biraz daha anlat.'**
+  String get sessionAnswerTooShort;
+
+  /// No description provided for @sessionYourAnswer.
+  ///
+  /// In tr, this message translates to:
+  /// **'Cevabın'**
+  String get sessionYourAnswer;
+
+  /// No description provided for @sessionDuration.
+  ///
+  /// In tr, this message translates to:
+  /// **'{seconds} sn'**
+  String sessionDuration(int seconds);
+
+  /// No description provided for @sessionStrengths.
+  ///
+  /// In tr, this message translates to:
+  /// **'İyi yaptıkların'**
+  String get sessionStrengths;
+
+  /// No description provided for @sessionImprovements.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düzeltilecekler'**
+  String get sessionImprovements;
+
+  /// No description provided for @sessionImprovedAnswer.
+  ///
+  /// In tr, this message translates to:
+  /// **'Örnek cevap'**
+  String get sessionImprovedAnswer;
+
+  /// No description provided for @sessionShowImproved.
+  ///
+  /// In tr, this message translates to:
+  /// **'Örnek cevabı gör'**
+  String get sessionShowImproved;
+
+  /// No description provided for @sessionImprovedLocked.
+  ///
+  /// In tr, this message translates to:
+  /// **'Örnek cevaplar Pro\'da'**
+  String get sessionImprovedLocked;
+
+  /// No description provided for @sessionFollowUp.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mülakatçı devam etseydi:'**
+  String get sessionFollowUp;
+
+  /// No description provided for @sessionNext.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sonraki soru'**
+  String get sessionNext;
+
+  /// No description provided for @sessionFinish.
+  ///
+  /// In tr, this message translates to:
+  /// **'Raporu gör'**
+  String get sessionFinish;
+
+  /// No description provided for @sessionExitTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Provadan çıkılsın mı?'**
+  String get sessionExitTitle;
+
+  /// No description provided for @sessionExitBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Verdiğin cevaplar kaydedildi. Kaldığın yerden devam edebilirsin.'**
+  String get sessionExitBody;
+
+  /// No description provided for @sessionExitConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çık'**
+  String get sessionExitConfirm;
+
+  /// No description provided for @sessionExitCancel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Devam et'**
+  String get sessionExitCancel;
+
+  /// No description provided for @sessionNotFound.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu prova bulunamadı.'**
+  String get sessionNotFound;
+
+  /// No description provided for @resultTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Prova raporu'**
+  String get resultTitle;
+
+  /// No description provided for @resultShare.
+  ///
+  /// In tr, this message translates to:
+  /// **'Paylaş'**
+  String get resultShare;
+
+  /// No description provided for @resultOverall.
+  ///
+  /// In tr, this message translates to:
+  /// **'Genel puan'**
+  String get resultOverall;
+
+  /// No description provided for @criteriaStructure.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yapı (STAR)'**
+  String get criteriaStructure;
+
+  /// No description provided for @criteriaRelevance.
+  ///
+  /// In tr, this message translates to:
+  /// **'Alakalılık'**
+  String get criteriaRelevance;
+
+  /// No description provided for @criteriaSpecificity.
+  ///
+  /// In tr, this message translates to:
+  /// **'Somutluk'**
+  String get criteriaSpecificity;
+
+  /// No description provided for @criteriaClarity.
+  ///
+  /// In tr, this message translates to:
+  /// **'Netlik'**
+  String get criteriaClarity;
+
+  /// No description provided for @resultHeadlineGreat.
+  ///
+  /// In tr, this message translates to:
+  /// **'Güçlü bir prova. Bu seviyeyi koru.'**
+  String get resultHeadlineGreat;
+
+  /// No description provided for @resultHeadlineGood.
+  ///
+  /// In tr, this message translates to:
+  /// **'İyi bir temel. {weakest} seni geri tutuyor.'**
+  String resultHeadlineGood(String weakest);
+
+  /// No description provided for @resultHeadlineWeak.
+  ///
+  /// In tr, this message translates to:
+  /// **'Başlangıç için iyi. Önce {weakest} üzerine çalış.'**
+  String resultHeadlineWeak(String weakest);
+
+  /// No description provided for @resultPractice.
+  ///
+  /// In tr, this message translates to:
+  /// **'Önce bunları çalış'**
+  String get resultPractice;
+
+  /// No description provided for @resultQuestions.
+  ///
+  /// In tr, this message translates to:
+  /// **'Soru soru'**
+  String get resultQuestions;
+
+  /// No description provided for @resultRetry.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aynı ilanla tekrar prova et'**
+  String get resultRetry;
+
+  /// No description provided for @resultHome.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ana sayfaya dön'**
+  String get resultHome;
+
+  /// No description provided for @resultShareText.
+  ///
+  /// In tr, this message translates to:
+  /// **'provAi prova raporum: {score}/100 ({role})'**
+  String resultShareText(int score, String role);
+
+  /// No description provided for @scoreOutOf.
+  ///
+  /// In tr, this message translates to:
+  /// **'/10'**
+  String get scoreOutOf;
+
+  /// No description provided for @scoreOutOf100.
+  ///
+  /// In tr, this message translates to:
+  /// **'/100'**
+  String get scoreOutOf100;
 }
 
 class _AppLocalizationsDelegate

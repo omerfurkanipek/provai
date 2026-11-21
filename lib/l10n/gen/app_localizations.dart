@@ -1249,6 +1249,222 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'/100'**
   String get scoreOutOf100;
+
+  /// No description provided for @profileTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Profil'**
+  String get profileTitle;
+
+  /// No description provided for @profileEdit.
+  ///
+  /// In tr, this message translates to:
+  /// **'Düzenle'**
+  String get profileEdit;
+
+  /// No description provided for @profileNameFallback.
+  ///
+  /// In tr, this message translates to:
+  /// **'Aday'**
+  String get profileNameFallback;
+
+  /// No description provided for @profileSubscription.
+  ///
+  /// In tr, this message translates to:
+  /// **'Abonelik'**
+  String get profileSubscription;
+
+  /// No description provided for @profileFreePlan.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ücretsiz plan'**
+  String get profileFreePlan;
+
+  /// No description provided for @profileFreeLeft.
+  ///
+  /// In tr, this message translates to:
+  /// **'{left}/{total} prova kaldı'**
+  String profileFreeLeft(int left, int total);
+
+  /// No description provided for @profileUpgrade.
+  ///
+  /// In tr, this message translates to:
+  /// **'Pro\'ya geç'**
+  String get profileUpgrade;
+
+  /// No description provided for @profileProPlan.
+  ///
+  /// In tr, this message translates to:
+  /// **'provAi Pro'**
+  String get profileProPlan;
+
+  /// No description provided for @profileProYearly.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yıllık plan'**
+  String get profileProYearly;
+
+  /// No description provided for @profileProWeekly.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haftalık plan'**
+  String get profileProWeekly;
+
+  /// No description provided for @profileTrialUntil.
+  ///
+  /// In tr, this message translates to:
+  /// **'Deneme {date} tarihinde bitiyor'**
+  String profileTrialUntil(String date);
+
+  /// No description provided for @profileRenewsOn.
+  ///
+  /// In tr, this message translates to:
+  /// **'{date} tarihinde yenilenir'**
+  String profileRenewsOn(String date);
+
+  /// No description provided for @profileCompleted.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tamamlanan prova'**
+  String get profileCompleted;
+
+  /// No description provided for @profileAverage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ortalama puan'**
+  String get profileAverage;
+
+  /// No description provided for @profileRole.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hedef pozisyon'**
+  String get profileRole;
+
+  /// No description provided for @profileSeniority.
+  ///
+  /// In tr, this message translates to:
+  /// **'Seviye'**
+  String get profileSeniority;
+
+  /// No description provided for @profileInterviewLanguage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mülakat dili'**
+  String get profileInterviewLanguage;
+
+  /// No description provided for @profileTheme.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tema'**
+  String get profileTheme;
+
+  /// No description provided for @themeSystem.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sistem'**
+  String get themeSystem;
+
+  /// No description provided for @themeLight.
+  ///
+  /// In tr, this message translates to:
+  /// **'Açık'**
+  String get themeLight;
+
+  /// No description provided for @themeDark.
+  ///
+  /// In tr, this message translates to:
+  /// **'Koyu'**
+  String get themeDark;
+
+  /// No description provided for @profileAppLanguage.
+  ///
+  /// In tr, this message translates to:
+  /// **'Uygulama dili'**
+  String get profileAppLanguage;
+
+  /// No description provided for @appLanguageSystem.
+  ///
+  /// In tr, this message translates to:
+  /// **'Cihaz dili'**
+  String get appLanguageSystem;
+
+  /// No description provided for @profileRestore.
+  ///
+  /// In tr, this message translates to:
+  /// **'Satın alımları geri yükle'**
+  String get profileRestore;
+
+  /// No description provided for @profileTerms.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kullanım Koşulları'**
+  String get profileTerms;
+
+  /// No description provided for @profilePrivacy.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gizlilik'**
+  String get profilePrivacy;
+
+  /// No description provided for @profileReset.
+  ///
+  /// In tr, this message translates to:
+  /// **'Verilerimi sıfırla'**
+  String get profileReset;
+
+  /// No description provided for @profileResetTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Tüm veriler silinsin mi?'**
+  String get profileResetTitle;
+
+  /// No description provided for @profileResetBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Profilin, prova geçmişin ve tercihlerin bu cihazdan silinir. Bu işlem geri alınamaz.'**
+  String get profileResetBody;
+
+  /// No description provided for @profileResetConfirm.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sil'**
+  String get profileResetConfirm;
+
+  /// No description provided for @profileCancel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Vazgeç'**
+  String get profileCancel;
+
+  /// No description provided for @profileSave.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kaydet'**
+  String get profileSave;
+
+  /// No description provided for @profileNameLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'Adın'**
+  String get profileNameLabel;
+
+  /// No description provided for @profileVersion.
+  ///
+  /// In tr, this message translates to:
+  /// **'provAi {version}'**
+  String profileVersion(String version);
+
+  /// No description provided for @profileRestored.
+  ///
+  /// In tr, this message translates to:
+  /// **'Satın alımın geri yüklendi.'**
+  String get profileRestored;
+
+  /// No description provided for @profileUpdated.
+  ///
+  /// In tr, this message translates to:
+  /// **'Profil güncellendi.'**
+  String get profileUpdated;
 }
 
 class _AppLocalizationsDelegate

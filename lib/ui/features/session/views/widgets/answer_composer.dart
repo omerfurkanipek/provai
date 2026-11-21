@@ -1,4 +1,5 @@
 import 'package:material_ui/material_ui.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:provai/domain/models/interview.dart';
 import 'package:provai/domain/models/user_profile.dart';
 import 'package:provai/domain/use_cases/speech_metrics.dart';
@@ -348,16 +349,34 @@ class _MicNotice extends StatelessWidget {
     final colors = context.colors;
     return Container(
       margin: const EdgeInsets.only(bottom: AppSpacing.sm),
-      padding: const EdgeInsets.all(AppSpacing.sm),
+      padding: const EdgeInsets.fromLTRB(
+        AppSpacing.sm,
+        AppSpacing.xs,
+        AppSpacing.xs,
+        AppSpacing.xs,
+      ),
       decoration: BoxDecoration(
         color: colors.penSoft,
         borderRadius: BorderRadius.circular(AppRadius.md),
       ),
-      child: Text(
-        denied
-            ? context.l10n.sessionMicDenied
-            : context.l10n.sessionMicUnavailable,
-        style: context.textStyles.label.copyWith(color: colors.ink),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              denied
+                  ? context.l10n.sessionMicDenied
+                  : context.l10n.sessionMicUnavailable,
+              style: context.textStyles.label.copyWith(color: colors.ink),
+            ),
+          ),
+          if (denied)
+            TextButton(
+              // İzin kalıcı reddedildiyse tekrar sorulamaz; ayarlardan açılır.
+              onPressed: openAppSettings,
+              style: TextButton.styleFrom(foregroundColor: colors.pen),
+              child: Text(context.l10n.sessionOpenSettings),
+            ),
+        ],
       ),
     );
   }

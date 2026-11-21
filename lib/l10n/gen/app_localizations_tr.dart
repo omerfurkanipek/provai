@@ -664,4 +664,121 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get scoreOutOf100 => '/100';
+
+  @override
+  String get profileTitle => 'Profil';
+
+  @override
+  String get profileEdit => 'Düzenle';
+
+  @override
+  String get profileNameFallback => 'Aday';
+
+  @override
+  String get profileSubscription => 'Abonelik';
+
+  @override
+  String get profileFreePlan => 'Ücretsiz plan';
+
+  @override
+  String profileFreeLeft(int left, int total) {
+    return '$left/$total prova kaldı';
+  }
+
+  @override
+  String get profileUpgrade => 'Pro\'ya geç';
+
+  @override
+  String get profileProPlan => 'provAi Pro';
+
+  @override
+  String get profileProYearly => 'Yıllık plan';
+
+  @override
+  String get profileProWeekly => 'Haftalık plan';
+
+  @override
+  String profileTrialUntil(String date) {
+    return 'Deneme $date tarihinde bitiyor';
+  }
+
+  @override
+  String profileRenewsOn(String date) {
+    return '$date tarihinde yenilenir';
+  }
+
+  @override
+  String get profileCompleted => 'Tamamlanan prova';
+
+  @override
+  String get profileAverage => 'Ortalama puan';
+
+  @override
+  String get profileRole => 'Hedef pozisyon';
+
+  @override
+  String get profileSeniority => 'Seviye';
+
+  @override
+  String get profileInterviewLanguage => 'Mülakat dili';
+
+  @override
+  String get profileTheme => 'Tema';
+
+  @override
+  String get themeSystem => 'Sistem';
+
+  @override
+  String get themeLight => 'Açık';
+
+  @override
+  String get themeDark => 'Koyu';
+
+  @override
+  String get profileAppLanguage => 'Uygulama dili';
+
+  @override
+  String get appLanguageSystem => 'Cihaz dili';
+
+  @override
+  String get profileRestore => 'Satın alımları geri yükle';
+
+  @override
+  String get profileTerms => 'Kullanım Koşulları';
+
+  @override
+  String get profilePrivacy => 'Gizlilik';
+
+  @override
+  String get profileReset => 'Verilerimi sıfırla';
+
+  @override
+  String get profileResetTitle => 'Tüm veriler silinsin mi?';
+
+  @override
+  String get profileResetBody =>
+      'Profilin, prova geçmişin ve tercihlerin bu cihazdan silinir. Bu işlem geri alınamaz.';
+
+  @override
+  String get profileResetConfirm => 'Sil';
+
+  @override
+  String get profileCancel => 'Vazgeç';
+
+  @override
+  String get profileSave => 'Kaydet';
+
+  @override
+  String get profileNameLabel => 'Adın';
+
+  @override
+  String profileVersion(String version) {
+    return 'provAi $version';
+  }
+
+  @override
+  String get profileRestored => 'Satın alımın geri yüklendi.';
+
+  @override
+  String get profileUpdated => 'Profil güncellendi.';
 }

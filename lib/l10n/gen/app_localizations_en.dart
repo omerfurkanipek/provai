@@ -668,4 +668,121 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get scoreOutOf100 => '/100';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get profileEdit => 'Edit';
+
+  @override
+  String get profileNameFallback => 'Candidate';
+
+  @override
+  String get profileSubscription => 'Subscription';
+
+  @override
+  String get profileFreePlan => 'Free plan';
+
+  @override
+  String profileFreeLeft(int left, int total) {
+    return '$left/$total mocks left';
+  }
+
+  @override
+  String get profileUpgrade => 'Upgrade to Pro';
+
+  @override
+  String get profileProPlan => 'provAi Pro';
+
+  @override
+  String get profileProYearly => 'Yearly plan';
+
+  @override
+  String get profileProWeekly => 'Weekly plan';
+
+  @override
+  String profileTrialUntil(String date) {
+    return 'Trial ends on $date';
+  }
+
+  @override
+  String profileRenewsOn(String date) {
+    return 'Renews on $date';
+  }
+
+  @override
+  String get profileCompleted => 'Completed mocks';
+
+  @override
+  String get profileAverage => 'Average score';
+
+  @override
+  String get profileRole => 'Target role';
+
+  @override
+  String get profileSeniority => 'Level';
+
+  @override
+  String get profileInterviewLanguage => 'Interview language';
+
+  @override
+  String get profileTheme => 'Theme';
+
+  @override
+  String get themeSystem => 'System';
+
+  @override
+  String get themeLight => 'Light';
+
+  @override
+  String get themeDark => 'Dark';
+
+  @override
+  String get profileAppLanguage => 'App language';
+
+  @override
+  String get appLanguageSystem => 'Device language';
+
+  @override
+  String get profileRestore => 'Restore purchases';
+
+  @override
+  String get profileTerms => 'Terms of Use';
+
+  @override
+  String get profilePrivacy => 'Privacy';
+
+  @override
+  String get profileReset => 'Reset my data';
+
+  @override
+  String get profileResetTitle => 'Delete all data?';
+
+  @override
+  String get profileResetBody =>
+      'Your profile, mock history and preferences will be removed from this device. This can\'t be undone.';
+
+  @override
+  String get profileResetConfirm => 'Delete';
+
+  @override
+  String get profileCancel => 'Cancel';
+
+  @override
+  String get profileSave => 'Save';
+
+  @override
+  String get profileNameLabel => 'Your name';
+
+  @override
+  String profileVersion(String version) {
+    return 'provAi $version';
+  }
+
+  @override
+  String get profileRestored => 'Your purchase was restored.';
+
+  @override
+  String get profileUpdated => 'Profile updated.';
 }

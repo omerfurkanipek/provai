@@ -393,5 +393,72 @@
         "type": "String"
       }
     }
+  },
+  "profileTitle": "Profil",
+  "profileEdit": "Düzenle",
+  "profileNameFallback": "Aday",
+  "profileSubscription": "Abonelik",
+  "profileFreePlan": "Ücretsiz plan",
+  "profileFreeLeft": "{left}/{total} prova kaldı",
+  "profileUpgrade": "Pro'ya geç",
+  "profileProPlan": "provAi Pro",
+  "profileProYearly": "Yıllık plan",
+  "profileProWeekly": "Haftalık plan",
+  "profileTrialUntil": "Deneme {date} tarihinde bitiyor",
+  "profileRenewsOn": "{date} tarihinde yenilenir",
+  "profileCompleted": "Tamamlanan prova",
+  "profileAverage": "Ortalama puan",
+  "profileRole": "Hedef pozisyon",
+  "profileSeniority": "Seviye",
+  "profileInterviewLanguage": "Mülakat dili",
+  "profileTheme": "Tema",
+  "themeSystem": "Sistem",
+  "themeLight": "Açık",
+  "themeDark": "Koyu",
+  "profileAppLanguage": "Uygulama dili",
+  "appLanguageSystem": "Cihaz dili",
+  "profileRestore": "Satın alımları geri yükle",
+  "profileTerms": "Kullanım Koşulları",
+  "profilePrivacy": "Gizlilik",
+  "profileReset": "Verilerimi sıfırla",
+  "profileResetTitle": "Tüm veriler silinsin mi?",
+  "profileResetBody": "Profilin, prova geçmişin ve tercihlerin bu cihazdan silinir. Bu işlem geri alınamaz.",
+  "profileResetConfirm": "Sil",
+  "profileCancel": "Vazgeç",
+  "profileSave": "Kaydet",
+  "profileNameLabel": "Adın",
+  "profileVersion": "provAi {version}",
+  "profileRestored": "Satın alımın geri yüklendi.",
+  "profileUpdated": "Profil güncellendi.",
+  "@profileFreeLeft": {
+    "placeholders": {
+      "left": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@profileTrialUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@profileRenewsOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@profileVersion": {
+    "placeholders": {
+      "version": {
+        "type": "String"
+      }
+    }
   }
 }

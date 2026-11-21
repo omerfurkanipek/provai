@@ -54,6 +54,10 @@ class SessionScreen extends ConsumerWidget {
       switch (effect) {
         case SessionEffectShowError(:final error):
           context.showMessage(error.message(context.l10n));
+        case SessionEffectAnswerTooShort():
+          context.showMessage(
+            context.l10n.sessionAnswerTooShort(SessionState.minWords),
+          );
         case SessionEffectOpenResult(:final sessionId):
           // Rapor, provanın yerini alır: geri tuşu Home'a döner.
           ResultRoute(sessionId: sessionId).pushReplacement(context);
@@ -142,9 +146,9 @@ class SessionScreen extends ConsumerWidget {
                                     onToggleRecording:
                                         viewModel.toggleRecording,
                                     onRestart: viewModel.restartAnswer,
-                                    onModeChanged: viewModel.setInputMode,
-                                    onTypedChanged:
-                                        viewModel.onTypedAnswerChanged,
+                                    onEdited: viewModel.onAnswerEdited,
+                                    onFieldFocused:
+                                        viewModel.onAnswerFieldFocused,
                                   ),
                                 ),
                               ],
@@ -180,7 +184,7 @@ class SessionScreen extends ConsumerWidget {
                 switch (state.phase) {
                   SessionPhase.answering => AppButton(
                     label: context.l10n.sessionSubmit,
-                    onPressed: state.canSubmit ? viewModel.submit : null,
+                    onPressed: viewModel.submit,
                   ),
                   SessionPhase.evaluating => const SizedBox.shrink(),
                   SessionPhase.feedback => AppButton(

@@ -1,6 +1,5 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:provai/domain/models/interview.dart';
 import 'package:provai/domain/models/user_profile.dart';
 import 'package:provai/domain/use_cases/speech_metrics.dart';
 import 'package:provai/ui/core/extensions/context_x.dart';
@@ -10,213 +9,139 @@ import 'package:provai/ui/core/widgets/ruled_paper.dart';
 import 'package:provai/ui/features/session/view_models/session_state.dart';
 import 'package:provai/ui/features/session/views/widgets/record_button.dart';
 
-/// Cevap alanı: sesli modda canlı transkript + metrikler + kayıt kontrolleri,
-/// yazılı modda çizgili metin alanı.
-class AnswerComposer extends StatelessWidget {
+/// Tek cevap alanı: her zaman klavyeyle yazılabilir; mikrofonla konuşulan
+/// metin de aynı alana eklenir. Böylece sesle başlayıp klavyeyle düzeltmek
+/// (ya da tersi) için mod değiştirmek gerekmez.
+class AnswerComposer extends StatefulWidget {
   const AnswerComposer({
     required this.state,
     required this.language,
     required this.onToggleRecording,
     required this.onRestart,
-    required this.onModeChanged,
-    required this.onTypedChanged,
+    required this.onEdited,
+    required this.onFieldFocused,
     this.compact = false,
     super.key,
   });
 
-  /// Kısa ekran: boşluklar ve kayıt butonu küçülür.
-  final bool compact;
   final SessionState state;
   final InterviewLanguage language;
   final VoidCallback onToggleRecording;
   final VoidCallback onRestart;
-  final ValueChanged<AnswerInputMode> onModeChanged;
-  final ValueChanged<String> onTypedChanged;
+  final ValueChanged<String> onEdited;
+
+  /// Alana odaklanıldı (dinleme sürüyorsa durdurulması için).
+  final VoidCallback onFieldFocused;
+
+  /// Kısa ekran: boşluklar ve kayıt butonu küçülür.
+  final bool compact;
 
   @override
-  Widget build(BuildContext context) {
-    final isVoice = state.inputMode == AnswerInputMode.voice;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        if (state.mic == MicAvailability.denied ||
-            state.mic == MicAvailability.unavailable)
-          _MicNotice(denied: state.mic == MicAvailability.denied),
-        Expanded(
-          child: isVoice
-              ? _VoiceTranscript(state: state)
-              : _TypedAnswer(
-                  // Soru değişince alan sıfırlansın.
-                  key: ValueKey(state.currentIndex),
-                  initialValue: state.typedAnswer,
-                  onChanged: onTypedChanged,
-                ),
-        ),
-        const SizedBox(height: AppSpacing.sm),
-        if (isVoice) ...[
-          _Metrics(state: state, language: language),
-          SizedBox(height: compact ? AppSpacing.xs : AppSpacing.md),
-          Row(
-            children: [
-              Expanded(
-                child: _SideAction(
-                  icon: PenIcons.keyboard,
-                  label: context.l10n.sessionType,
-                  onTap: () => onModeChanged(AnswerInputMode.text),
-                ),
-              ),
-              RecordButton(
-                isListening: state.recording == RecordingState.listening,
-                onPressed: onToggleRecording,
-                size: compact ? 72 : 96,
-              ),
-              Expanded(
-                child: _SideAction(
-                  icon: PenIcons.retry,
-                  label: context.l10n.sessionRestart,
-                  onTap: state.spokenTranscript.isEmpty ? null : onRestart,
-                ),
-              ),
-            ],
-          ),
-        ] else if (state.mic != MicAvailability.denied &&
-            state.mic != MicAvailability.unavailable)
-          Align(
-            child: TextButton.icon(
-              onPressed: () => onModeChanged(AnswerInputMode.voice),
-              icon: const Icon(PenIcons.mic, size: 18),
-              label: Text(context.l10n.sessionSpeak),
-              style: TextButton.styleFrom(foregroundColor: context.colors.ink),
-            ),
-          ),
-      ],
-    );
-  }
+  State<AnswerComposer> createState() => _AnswerComposerState();
 }
 
-class _VoiceTranscript extends StatelessWidget {
-  const _VoiceTranscript({required this.state});
-
-  final SessionState state;
-
-  @override
-  Widget build(BuildContext context) {
-    final colors = context.colors;
-    final styles = context.textStyles;
-    final hasText = state.spokenTranscript.isNotEmpty;
-    final content = hasText
-        ? Text.rich(
-            TextSpan(
-              children: [
-                TextSpan(text: state.committedTranscript),
-                if (state.partialTranscript.isNotEmpty)
-                  TextSpan(
-                    text:
-                        '${state.committedTranscript.isEmpty ? '' : ' '}'
-                        '${state.partialTranscript}',
-                    style: TextStyle(color: colors.inkMuted),
-                  ),
-              ],
-            ),
-            style: styles.bodyLarge.copyWith(height: 28 / 17),
-          )
-        : Text(
-            state.recording == RecordingState.listening
-                ? context.l10n.sessionListening
-                : context.l10n.sessionTranscriptPlaceholder,
-            style: styles.bodyLarge.copyWith(
-              color: colors.inkSubtle,
-              height: 28 / 17,
-            ),
-          );
-    return _PaperBox(
-      // reverse: uzun transkriptte en son söylenen görünür kalır; minHeight +
-      // Align kısa metnin kutunun altına düşmesini engeller.
-      child: LayoutBuilder(
-        builder: (context, constraints) => SingleChildScrollView(
-          reverse: true,
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: Align(alignment: Alignment.topLeft, child: content),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _TypedAnswer extends StatefulWidget {
-  const _TypedAnswer({
-    required this.initialValue,
-    required this.onChanged,
-    super.key,
-  });
-
-  final String initialValue;
-  final ValueChanged<String> onChanged;
-
-  @override
-  State<_TypedAnswer> createState() => _TypedAnswerState();
-}
-
-class _TypedAnswerState extends State<_TypedAnswer> {
-  // Sesten taşınan metinde imleç sonda başlasın, kullanıcı devam edebilsin.
-  late final _controller = TextEditingController.fromValue(
-    TextEditingValue(
-      text: widget.initialValue,
-      selection: TextSelection.collapsed(offset: widget.initialValue.length),
-    ),
+class _AnswerComposerState extends State<AnswerComposer> {
+  late final _controller = TextEditingController(
+    text: widget.state.displayText,
   );
+  final _focusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    _focusNode.addListener(() {
+      if (_focusNode.hasFocus) widget.onFieldFocused();
+    });
+  }
+
+  @override
+  void didUpdateWidget(AnswerComposer old) {
+    super.didUpdateWidget(old);
+    // Konuşulan metin (veya "Baştan") alana yansıtılır. Kullanıcı klavyeyle
+    // yazarken alanın metnine dokunulmaz; imleç kaymasın.
+    final text = widget.state.displayText;
+    final listening = widget.state.recording == RecordingState.listening;
+    if (text != _controller.text && (listening || !_focusNode.hasFocus)) {
+      _controller.value = TextEditingValue(
+        text: text,
+        selection: TextSelection.collapsed(offset: text.length),
+      );
+    }
+  }
 
   @override
   void dispose() {
     _controller.dispose();
+    _focusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    final styles = context.textStyles;
-    return _PaperBox(
-      child: TextField(
-        controller: _controller,
-        onChanged: widget.onChanged,
-        autofocus: true,
-        expands: true,
-        maxLines: null,
-        maxLength: 6000,
-        textAlignVertical: TextAlignVertical.top,
-        keyboardType: TextInputType.multiline,
-        textCapitalization: TextCapitalization.sentences,
-        style: styles.bodyLarge.copyWith(height: 28 / 17),
-        decoration: InputDecoration(
-          hintText: context.l10n.sessionTypeHint,
-          hintStyle: styles.bodyLarge.copyWith(
-            color: context.colors.inkSubtle,
-            height: 28 / 17,
+    final state = widget.state;
+    final l10n = context.l10n;
+    final micBlocked =
+        state.mic == MicAvailability.denied ||
+        state.mic == MicAvailability.unavailable;
+    final listening = state.recording == RecordingState.listening;
+    // Scaffold klavye yüksekliğini alt widget'lardan gizler (viewInsets = 0);
+    // bu yüzden doğrudan pencereden okunur.
+    final keyboardOpen = View.of(context).viewInsets.bottom > 0;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (micBlocked) _MicNotice(denied: state.mic == MicAvailability.denied),
+        Expanded(child: _answerField(context, listening: listening)),
+        // Klavye açıkken metrikler ve kayıt kontrolleri gizlenir; ekran cevaba kalır.
+        if (!keyboardOpen) ...[
+          const SizedBox(height: AppSpacing.sm),
+          _Metrics(state: state, language: widget.language),
+          SizedBox(height: widget.compact ? AppSpacing.xs : AppSpacing.md),
+          Row(
+            children: [
+              Expanded(
+                child: _SideAction(
+                  icon: PenIcons.keyboard,
+                  label: l10n.sessionType,
+                  onTap: _focusNode.requestFocus,
+                ),
+              ),
+              if (micBlocked)
+                SizedBox.square(dimension: widget.compact ? 72 : 96)
+              else
+                RecordButton(
+                  isListening: listening,
+                  onPressed: () {
+                    // Kayda başlarken klavyeyi kapat; metin alana akmaya devam eder.
+                    _focusNode.unfocus();
+                    widget.onToggleRecording();
+                  },
+                  size: widget.compact ? 72 : 96,
+                ),
+              Expanded(
+                child: _SideAction(
+                  icon: PenIcons.retry,
+                  label: l10n.sessionRestart,
+                  onTap: state.displayText.isEmpty ? null : widget.onRestart,
+                ),
+              ),
+            ],
           ),
-          border: InputBorder.none,
-          isCollapsed: true,
-          counterText: '',
-        ),
-      ),
+        ],
+      ],
     );
   }
-}
 
-class _PaperBox extends StatelessWidget {
-  const _PaperBox({required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _answerField(BuildContext context, {required bool listening}) {
     final colors = context.colors;
+    final styles = context.textStyles;
+    final lineStyle = styles.bodyLarge.copyWith(height: 28 / 17);
     return Container(
       decoration: BoxDecoration(
         color: colors.surface,
         borderRadius: AppRadius.card,
-        border: Border.all(color: colors.line),
+        border: Border.all(color: listening ? colors.pen : colors.line),
       ),
       clipBehavior: Clip.antiAlias,
       child: RuledPaper(
@@ -224,7 +149,28 @@ class _PaperBox extends StatelessWidget {
         offset: AppSpacing.md - 2,
         child: Padding(
           padding: const EdgeInsets.all(AppSpacing.md),
-          child: child,
+          child: TextField(
+            controller: _controller,
+            focusNode: _focusNode,
+            onChanged: widget.onEdited,
+            expands: true,
+            maxLines: null,
+            maxLength: 6000,
+            textAlignVertical: TextAlignVertical.top,
+            keyboardType: TextInputType.multiline,
+            textCapitalization: TextCapitalization.sentences,
+            style: lineStyle,
+            decoration: InputDecoration(
+              hintText: listening
+                  ? context.l10n.sessionListening
+                  : context.l10n.sessionTranscriptPlaceholder,
+              hintStyle: lineStyle.copyWith(color: colors.inkSubtle),
+              hintMaxLines: 3,
+              border: InputBorder.none,
+              isCollapsed: true,
+              counterText: '',
+            ),
+          ),
         ),
       ),
     );
@@ -237,36 +183,112 @@ class _Metrics extends StatelessWidget {
   final SessionState state;
   final InterviewLanguage language;
 
+  /// Hız, bu kadar veri birikmeden gösterilmez: ilk saniyelerdeki birkaç kelime
+  /// sayıyı anlamsızca oynatır.
+  static const _minSecondsForPace = 15;
+  static const _minWordsForPace = 10;
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final text = state.spokenTranscript;
+    final text = state.displayText;
     final elapsed = Duration(seconds: state.elapsedSeconds);
-    final wpm = SpeechMetrics.wordsPerMinute(text, elapsed);
+    final enoughData =
+        state.usedVoice &&
+        elapsed.inSeconds >= _minSecondsForPace &&
+        SpeechMetrics.wordCount(text) >= _minWordsForPace;
+    final wpm = enoughData ? SpeechMetrics.wordsPerMinute(text, elapsed) : null;
     final fillers = SpeechMetrics.fillerCount(text, language);
     final minutes = elapsed.inMinutes.toString().padLeft(2, '0');
     final seconds = (elapsed.inSeconds % 60).toString().padLeft(2, '0');
-    return Row(
-      children: [
-        Expanded(
-          child: _Metric(
-            value: '$minutes:$seconds',
-            label: l10n.sessionIdealDuration,
+
+    return Semantics(
+      button: true,
+      label: l10n.metricsInfoTitle,
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: () => _showMetricsInfo(context),
+        // Etiket iki satıra inerse kutular eşit yükseklikte kalsın.
+        child: IntrinsicHeight(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: _Metric(
+                  value: '$minutes:$seconds',
+                  label: l10n.metricDurationLabel,
+                ),
+              ),
+              const SizedBox(width: AppSpacing.xs),
+              Expanded(
+                child: _Metric(
+                  value: wpm?.toString() ?? '–',
+                  label: l10n.metricPaceLabel,
+                  // İdeal aralığın dışındaysa kırmızı kalem.
+                  highlight: wpm != null && (wpm < 110 || wpm > 160),
+                ),
+              ),
+              const SizedBox(width: AppSpacing.xs),
+              Expanded(
+                child: _Metric(
+                  value: '$fillers',
+                  label: l10n.metricFillersLabel,
+                  highlight: fillers >= 3,
+                ),
+              ),
+            ],
           ),
         ),
-        const SizedBox(width: AppSpacing.xs),
-        Expanded(
-          child: _Metric(value: wpm?.toString() ?? '–', label: l10n.sessionWpm),
-        ),
-        const SizedBox(width: AppSpacing.xs),
-        Expanded(
-          child: _Metric(
-            value: '$fillers',
-            label: l10n.sessionFillers,
-            highlight: fillers >= 3,
+      ),
+    );
+  }
+
+  void _showMetricsInfo(BuildContext context) {
+    final l10n = context.l10n;
+    final styles = context.textStyles;
+    final colors = context.colors;
+    Widget item(String title, String body) => Padding(
+      padding: const EdgeInsets.only(bottom: AppSpacing.md),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: styles.bodyLarge.copyWith(fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(height: AppSpacing.xxs),
+          Text(body, style: styles.bodySmall.copyWith(color: colors.inkMuted)),
+        ],
+      ),
+    );
+    showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      backgroundColor: colors.paper,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(
+            AppSpacing.lg,
+            0,
+            AppSpacing.lg,
+            AppSpacing.md,
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(l10n.metricsInfoTitle, style: styles.titleSmall),
+              const SizedBox(height: AppSpacing.md),
+              item(l10n.metricDurationTitle, l10n.metricDurationBody),
+              item(l10n.metricPaceTitle, l10n.metricPaceBody),
+              item(l10n.metricFillersTitle, l10n.metricFillersBody),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 }
@@ -305,8 +327,7 @@ class _Metric extends StatelessWidget {
           ),
           Text(
             label,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
             style: context.textStyles.label.copyWith(color: colors.inkMuted),
           ),
         ],

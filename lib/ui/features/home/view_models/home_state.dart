@@ -14,6 +14,9 @@ sealed class HomeEffect with _$HomeEffect {
 
   /// İlan/pozisyon metni boşken başlatılmaya çalışıldı.
   const factory HomeEffect.postingRequired() = HomeEffectPostingRequired;
+
+  /// İlan metni anlamlı soru üretmek için çok kısa.
+  const factory HomeEffect.postingTooShort() = HomeEffectPostingTooShort;
   const factory HomeEffect.showError(AppException error) = HomeEffectShowError;
 }
 
@@ -50,5 +53,5 @@ abstract class HomeState with _$HomeState {
     return length > 0 && length < minPostingLength;
   }
 
-  bool get canSubmit => !isGenerating && !isPostingTooShort;
+  bool get canSubmit => !isGenerating;
 }

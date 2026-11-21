@@ -85,6 +85,10 @@ class HomeViewModel extends _$HomeViewModel {
       state = state.copyWith(effect: const HomeEffect.postingRequired());
       return;
     }
+    if (state.isPostingTooShort) {
+      state = state.copyWith(effect: const HomeEffect.postingTooShort());
+      return;
+    }
     if (!state.canStartSession) {
       state = state.copyWith(effect: const HomeEffect.openPaywall());
       return;

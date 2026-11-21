@@ -53,6 +53,10 @@ class HomeScreen extends ConsumerWidget {
           );
         case HomeEffectPostingRequired():
           context.showMessage(context.l10n.homePostingRequired);
+        case HomeEffectPostingTooShort():
+          context.showMessage(
+            context.l10n.homePostingTooShort(HomeState.minPostingLength),
+          );
         case HomeEffectShowError(:final error):
           context.showMessage(error.message(context.l10n));
       }

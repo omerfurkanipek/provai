@@ -514,7 +514,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sessionPaused => 'Duraklatıldı';
 
   @override
-  String get sessionType => 'Yazarak cevapla';
+  String get sessionType => 'Yaz';
 
   @override
   String get sessionSpeak => 'Sesle cevapla';
@@ -524,7 +524,7 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get sessionTranscriptPlaceholder =>
-      'Konuştukça cevabın burada belirecek.';
+      'Mikrofona dokunup konuş ya da buraya yaz.';
 
   @override
   String get sessionRestart => 'Baştan';
@@ -547,17 +547,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get sessionOpenSettings => 'Ayarlar';
 
   @override
-  String get sessionWpm => 'kelime/dk';
-
-  @override
-  String get sessionFillers => 'dolgu kelime';
-
-  @override
-  String get sessionIdealDuration => 'hedef ~2 dk';
-
-  @override
-  String get sessionAnswerTooShort =>
-      'Cevabın çok kısa. Değerlendirme için biraz daha anlat.';
+  String sessionAnswerTooShort(int min) {
+    return 'Cevabın çok kısa. Değerlendirme için en az $min kelimelik bir cevap ver.';
+  }
 
   @override
   String get sessionYourAnswer => 'Cevabın';
@@ -797,4 +789,37 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get profileNetworkInspector => 'Ağ istekleri (debug)';
+
+  @override
+  String get metricDurationLabel => 'süre';
+
+  @override
+  String get metricPaceLabel => 'konuşma hızı';
+
+  @override
+  String get metricFillersLabel => 'dolgu kelime';
+
+  @override
+  String get metricsInfoTitle => 'Bu sayılar ne anlatıyor?';
+
+  @override
+  String get metricDurationTitle => 'Süre';
+
+  @override
+  String get metricDurationBody =>
+      'Sesli cevabının ne kadar sürdüğü. Mülakatta bir soruya 1,5–2 dakikalık cevap idealdir; çok kısa cevap yüzeysel, çok uzun cevap dağınık görünür.';
+
+  @override
+  String get metricPaceTitle => 'Konuşma hızı (kelime/dakika)';
+
+  @override
+  String get metricPaceBody =>
+      'Şu ana kadar söylediğin kelime sayısının geçen süreye oranı; düşünmek için verdiğin aralar da dahil. İdeal aralık dakikada 110–150 kelime. Sayı yeterli veri birikince (15 saniye ve 10 kelime) görünür; durup düşündükçe düşmesi normaldir.';
+
+  @override
+  String get metricFillersTitle => 'Dolgu kelime';
+
+  @override
+  String get metricFillersBody =>
+      '\"Ee\", \"şey\", \"yani\", \"işte\", \"hani\" gibi anlam katmayan ara sözler. Az olması daha akıcı ve kendinden emin gösterir; 3 ve üzeri kırmızıyla işaretlenir. Koç değerlendirmede bunu da dikkate alır.';
 }

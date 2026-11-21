@@ -977,7 +977,7 @@ abstract class AppLocalizations {
   /// No description provided for @sessionType.
   ///
   /// In tr, this message translates to:
-  /// **'Yazarak cevapla'**
+  /// **'Yaz'**
   String get sessionType;
 
   /// No description provided for @sessionSpeak.
@@ -995,7 +995,7 @@ abstract class AppLocalizations {
   /// No description provided for @sessionTranscriptPlaceholder.
   ///
   /// In tr, this message translates to:
-  /// **'Konuştukça cevabın burada belirecek.'**
+  /// **'Mikrofona dokunup konuş ya da buraya yaz.'**
   String get sessionTranscriptPlaceholder;
 
   /// No description provided for @sessionRestart.
@@ -1034,29 +1034,11 @@ abstract class AppLocalizations {
   /// **'Ayarlar'**
   String get sessionOpenSettings;
 
-  /// No description provided for @sessionWpm.
-  ///
-  /// In tr, this message translates to:
-  /// **'kelime/dk'**
-  String get sessionWpm;
-
-  /// No description provided for @sessionFillers.
-  ///
-  /// In tr, this message translates to:
-  /// **'dolgu kelime'**
-  String get sessionFillers;
-
-  /// No description provided for @sessionIdealDuration.
-  ///
-  /// In tr, this message translates to:
-  /// **'hedef ~2 dk'**
-  String get sessionIdealDuration;
-
   /// No description provided for @sessionAnswerTooShort.
   ///
   /// In tr, this message translates to:
-  /// **'Cevabın çok kısa. Değerlendirme için biraz daha anlat.'**
-  String get sessionAnswerTooShort;
+  /// **'Cevabın çok kısa. Değerlendirme için en az {min} kelimelik bir cevap ver.'**
+  String sessionAnswerTooShort(int min);
 
   /// No description provided for @sessionYourAnswer.
   ///
@@ -1495,6 +1477,66 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Ağ istekleri (debug)'**
   String get profileNetworkInspector;
+
+  /// No description provided for @metricDurationLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'süre'**
+  String get metricDurationLabel;
+
+  /// No description provided for @metricPaceLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'konuşma hızı'**
+  String get metricPaceLabel;
+
+  /// No description provided for @metricFillersLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'dolgu kelime'**
+  String get metricFillersLabel;
+
+  /// No description provided for @metricsInfoTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu sayılar ne anlatıyor?'**
+  String get metricsInfoTitle;
+
+  /// No description provided for @metricDurationTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Süre'**
+  String get metricDurationTitle;
+
+  /// No description provided for @metricDurationBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sesli cevabının ne kadar sürdüğü. Mülakatta bir soruya 1,5–2 dakikalık cevap idealdir; çok kısa cevap yüzeysel, çok uzun cevap dağınık görünür.'**
+  String get metricDurationBody;
+
+  /// No description provided for @metricPaceTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Konuşma hızı (kelime/dakika)'**
+  String get metricPaceTitle;
+
+  /// No description provided for @metricPaceBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Şu ana kadar söylediğin kelime sayısının geçen süreye oranı; düşünmek için verdiğin aralar da dahil. İdeal aralık dakikada 110–150 kelime. Sayı yeterli veri birikince (15 saniye ve 10 kelime) görünür; durup düşündükçe düşmesi normaldir.'**
+  String get metricPaceBody;
+
+  /// No description provided for @metricFillersTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Dolgu kelime'**
+  String get metricFillersTitle;
+
+  /// No description provided for @metricFillersBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'\"Ee\", \"şey\", \"yani\", \"işte\", \"hani\" gibi anlam katmayan ara sözler. Az olması daha akıcı ve kendinden emin gösterir; 3 ve üzeri kırmızıyla işaretlenir. Koç değerlendirmede bunu da dikkate alır.'**
+  String get metricFillersBody;
 }
 
 class _AppLocalizationsDelegate

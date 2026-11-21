@@ -77,10 +77,8 @@ class SessionViewModel extends _$SessionViewModel {
       if (!ready) {
         // initialize false: izin reddedildi ya da cihazda tanıyıcı yok.
         if (state.mic == MicAvailability.unknown) {
-          state = state.copyWith(
-            mic: MicAvailability.unavailable,
-            inputMode: AnswerInputMode.text,
-          );
+          // Alan zaten yazılabilir; yalnızca mikrofonun olmadığı bildirilir.
+          state = state.copyWith(mic: MicAvailability.unavailable);
         }
         return;
       }
@@ -89,7 +87,10 @@ class SessionViewModel extends _$SessionViewModel {
     if (state.mic != MicAvailability.available) return;
 
     _userStopped = false;
-    state = state.copyWith(recording: RecordingState.listening);
+    state = state.copyWith(
+      recording: RecordingState.listening,
+      usedVoice: true,
+    );
     _startTimer();
     await _listen();
   }
@@ -102,10 +103,7 @@ class SessionViewModel extends _$SessionViewModel {
       if (!ref.mounted) return;
       if (isFinal) {
         state = state.copyWith(
-          committedTranscript: [
-            state.committedTranscript,
-            words,
-          ].where((p) => p.trim().isNotEmpty).join(' '),
+          answer: _join(state.answer, words),
           partialTranscript: '',
         );
       } else {
@@ -122,7 +120,7 @@ class SessionViewModel extends _$SessionViewModel {
     state = state.copyWith(
       recording: RecordingState.paused,
       // Son kısmi sonucu kaybetme.
-      committedTranscript: state.spokenTranscript,
+      answer: state.displayText,
       partialTranscript: '',
     );
   }
@@ -132,10 +130,7 @@ class SessionViewModel extends _$SessionViewModel {
     if (!stopped || _userStopped || !ref.mounted) return;
     if (state.recording != RecordingState.listening) return;
     // Android tanıyıcısı sessizlikte durdu; kullanıcı hâlâ konuşuyor sayılır.
-    state = state.copyWith(
-      committedTranscript: state.spokenTranscript,
-      partialTranscript: '',
-    );
+    state = state.copyWith(answer: state.displayText, partialTranscript: '');
     unawaited(_listen());
   }
 
@@ -148,7 +143,6 @@ class SessionViewModel extends _$SessionViewModel {
       state = state.copyWith(
         mic: MicAvailability.denied,
         recording: RecordingState.idle,
-        inputMode: AnswerInputMode.text,
       );
     }
     // error_no_match / error_speech_timeout: sessizlik; status akışı yeniden başlatır.
@@ -165,56 +159,47 @@ class SessionViewModel extends _$SessionViewModel {
   Future<void> restartAnswer() async {
     if (state.recording == RecordingState.listening) await _pause();
     state = state.copyWith(
-      committedTranscript: '',
+      answer: '',
       partialTranscript: '',
-      typedAnswer: '',
+      usedVoice: false,
       elapsedSeconds: 0,
       recording: RecordingState.idle,
     );
   }
 
-  // --- Yazılı cevap ------------------------------------------------------
+  // --- Yazı -----------------------------------------------------------
 
-  /// Ses ve yazı aynı cevabın iki giriş yolu: moda geçerken metin taşınır,
-  /// kullanıcı sesle başlayıp klavyeyle düzeltebilir (veya tersi).
-  Future<void> setInputMode(AnswerInputMode mode) async {
-    if (mode == state.inputMode) return;
+  /// Kullanıcı alanı klavyeyle düzenledi. Dinleme sürüyorsa önce durdurulur;
+  /// ses ve yazı aynı metni paylaşır.
+  void onAnswerEdited(String value) => state = state.copyWith(answer: value);
+
+  /// Alana dokunulduğunda: kayıt sürüyorsa durdur, klavye devralsın.
+  Future<void> onAnswerFieldFocused() async {
     if (state.recording == RecordingState.listening) await _pause();
-    if (mode == AnswerInputMode.text) {
-      final merged = [
-        state.typedAnswer.trim(),
-        state.spokenTranscript,
-      ].where((part) => part.isNotEmpty).join(' ');
-      state = state.copyWith(
-        inputMode: mode,
-        typedAnswer: merged,
-        committedTranscript: '',
-        partialTranscript: '',
-      );
-    } else {
-      state = state.copyWith(
-        inputMode: mode,
-        committedTranscript: state.typedAnswer.trim(),
-        partialTranscript: '',
-        typedAnswer: '',
-      );
-    }
   }
 
-  void onTypedAnswerChanged(String value) =>
-      state = state.copyWith(typedAnswer: value);
+  static String _join(String a, String b) =>
+      [a.trim(), b.trim()].where((part) => part.isNotEmpty).join(' ');
 
   // --- Değerlendirme -----------------------------------------------------
 
   Future<void> submit() async {
     final session = state.session;
     final question = state.question;
-    if (session == null || question == null || !state.canSubmit) return;
+    if (session == null || question == null) return;
+    if (state.phase != SessionPhase.answering) return;
+    // Kayıt sürüyorsa önce durdurulur; son kısmi metin cevaba eklenir.
+    if (state.recording == RecordingState.listening) await _pause();
+    if (!ref.mounted) return;
+    if (!state.isAnswerLongEnough) {
+      state = state.copyWith(effect: const SessionEffect.answerTooShort());
+      return;
+    }
 
     final profile =
         ref.read(profileRepositoryProvider).getProfile() ?? const UserProfile();
     final isVoice = state.inputMode == AnswerInputMode.voice;
-    final transcript = state.answerText;
+    final transcript = state.displayText;
     final cancel = _cancel = CancelHandle();
     state = state.copyWith(phase: SessionPhase.evaluating);
 
@@ -269,16 +254,10 @@ class SessionViewModel extends _$SessionViewModel {
       currentIndex: state.currentIndex + 1,
       phase: SessionPhase.answering,
       recording: RecordingState.idle,
-      committedTranscript: '',
+      answer: '',
       partialTranscript: '',
-      typedAnswer: '',
+      usedVoice: false,
       elapsedSeconds: 0,
-      // Mikrofon kullanılabiliyorsa yeni soruda sesli moda dön.
-      inputMode:
-          state.mic == MicAvailability.available ||
-              state.mic == MicAvailability.unknown
-          ? AnswerInputMode.voice
-          : AnswerInputMode.text,
     );
   }
 

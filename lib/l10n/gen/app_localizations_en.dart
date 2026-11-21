@@ -518,7 +518,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sessionPaused => 'Paused';
 
   @override
-  String get sessionType => 'Type instead';
+  String get sessionType => 'Type';
 
   @override
   String get sessionSpeak => 'Answer by voice';
@@ -528,7 +528,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sessionTranscriptPlaceholder =>
-      'Your answer appears here as you speak.';
+      'Tap the mic and speak, or type here.';
 
   @override
   String get sessionRestart => 'Restart';
@@ -551,17 +551,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sessionOpenSettings => 'Settings';
 
   @override
-  String get sessionWpm => 'words/min';
-
-  @override
-  String get sessionFillers => 'filler words';
-
-  @override
-  String get sessionIdealDuration => 'target ~2 min';
-
-  @override
-  String get sessionAnswerTooShort =>
-      'Your answer is too short. Say a bit more so it can be evaluated.';
+  String sessionAnswerTooShort(int min) {
+    return 'Your answer is too short. Give at least $min words so it can be evaluated.';
+  }
 
   @override
   String get sessionYourAnswer => 'Your answer';
@@ -801,4 +793,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get profileNetworkInspector => 'Network requests (debug)';
+
+  @override
+  String get metricDurationLabel => 'time';
+
+  @override
+  String get metricPaceLabel => 'pace';
+
+  @override
+  String get metricFillersLabel => 'filler words';
+
+  @override
+  String get metricsInfoTitle => 'What do these numbers mean?';
+
+  @override
+  String get metricDurationTitle => 'Time';
+
+  @override
+  String get metricDurationBody =>
+      'How long your spoken answer lasts. In interviews 1.5–2 minutes per answer is ideal; too short looks shallow, too long looks unfocused.';
+
+  @override
+  String get metricPaceTitle => 'Speaking pace (words per minute)';
+
+  @override
+  String get metricPaceBody =>
+      'Words spoken so far divided by elapsed time, including pauses to think. The ideal range is 110–150 words per minute. It appears once there is enough data (15 seconds and 10 words); it naturally drops while you pause.';
+
+  @override
+  String get metricFillersTitle => 'Filler words';
+
+  @override
+  String get metricFillersBody =>
+      'Words like \"um\", \"uh\", \"like\", \"basically\" that add no meaning. Fewer sounds more fluent and confident; 3 or more is marked red. The coach takes this into account too.';
 }

@@ -19,6 +19,9 @@ sealed class SessionEffect with _$SessionEffect {
   const factory SessionEffect.openResult(String sessionId) =
       SessionEffectOpenResult;
   const factory SessionEffect.openPaywall() = SessionEffectOpenPaywall;
+
+  /// Değerlendir'e basıldı ama cevap asgari kelime sayısının altında.
+  const factory SessionEffect.answerTooShort() = SessionEffectAnswerTooShort;
 }
 
 @freezed
@@ -27,12 +30,17 @@ abstract class SessionState with _$SessionState {
     required InterviewSession? session,
     @Default(0) int currentIndex,
     @Default(SessionPhase.answering) SessionPhase phase,
-    @Default(AnswerInputMode.voice) AnswerInputMode inputMode,
     @Default(RecordingState.idle) RecordingState recording,
     @Default(MicAvailability.unknown) MicAvailability mic,
-    @Default('') String committedTranscript,
+
+    /// Cevabın kesinleşmiş metni: yazılan ve sesle tanınıp kesinleşen kısımlar.
+    @Default('') String answer,
+
+    /// Konuşurken henüz kesinleşmemiş son parça (yalnızca dinlerken dolu).
     @Default('') String partialTranscript,
-    @Default('') String typedAnswer,
+
+    /// Bu cevapta mikrofon kullanıldı mı? Değerlendirmede cevap türünü belirler.
+    @Default(false) bool usedVoice,
     @Default(0) int elapsedSeconds,
     @Default(false) bool isPro,
     SessionEffect? effect,
@@ -57,20 +65,19 @@ abstract class SessionState with _$SessionState {
   int get totalQuestions => session?.questions.length ?? 0;
   bool get isLastQuestion => currentIndex >= totalQuestions - 1;
 
-  String get spokenTranscript => [
-    committedTranscript,
-    partialTranscript,
-  ].where((part) => part.trim().isNotEmpty).join(' ').trim();
+  /// Alanda görünen metin: kesinleşmiş cevap + dinlerken gelen kısmi parça.
+  String get displayText => [
+    answer.trim(),
+    partialTranscript.trim(),
+  ].where((part) => part.isNotEmpty).join(' ');
 
-  String get answerText => inputMode == AnswerInputMode.voice
-      ? spokenTranscript
-      : typedAnswer.trim();
+  AnswerInputMode get inputMode =>
+      usedVoice ? AnswerInputMode.voice : AnswerInputMode.text;
 
   int get answerWordCount =>
-      answerText.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).length;
+      displayText.split(RegExp(r'\s+')).where((w) => w.isNotEmpty).length;
 
-  bool get canSubmit =>
-      phase == SessionPhase.answering &&
-      recording != RecordingState.listening &&
-      answerWordCount >= minWords;
+  /// Buton yalnızca değerlendirme sürerken kapalıdır; diğer durumlarda basılır
+  /// ve eksik varsa kullanıcıya nedeni söylenir.
+  bool get isAnswerLongEnough => answerWordCount >= minWords;
 }

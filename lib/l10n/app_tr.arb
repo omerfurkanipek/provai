@@ -239,20 +239,17 @@
   "sessionTapToSpeak": "Konuşmak için dokun",
   "sessionListening": "Dinliyorum",
   "sessionPaused": "Duraklatıldı",
-  "sessionType": "Yazarak cevapla",
+  "sessionType": "Yaz",
   "sessionSpeak": "Sesle cevapla",
   "sessionTypeHint": "Cevabını buraya yaz…",
-  "sessionTranscriptPlaceholder": "Konuştukça cevabın burada belirecek.",
+  "sessionTranscriptPlaceholder": "Mikrofona dokunup konuş ya da buraya yaz.",
   "sessionRestart": "Baştan",
   "sessionSubmit": "Değerlendir",
   "sessionEvaluating": "Koç cevabını okuyor…",
   "sessionMicDenied": "Mikrofon izni verilmedi. Cevabını yazarak verebilir ya da ayarlardan izin verebilirsin.",
   "sessionMicUnavailable": "Bu cihazda konuşma tanıma kullanılamıyor. Cevabını yazarak verebilirsin.",
   "sessionOpenSettings": "Ayarlar",
-  "sessionWpm": "kelime/dk",
-  "sessionFillers": "dolgu kelime",
-  "sessionIdealDuration": "hedef ~2 dk",
-  "sessionAnswerTooShort": "Cevabın çok kısa. Değerlendirme için biraz daha anlat.",
+  "sessionAnswerTooShort": "Cevabın çok kısa. Değerlendirme için en az {min} kelimelik bir cevap ver.",
   "sessionYourAnswer": "Cevabın",
   "sessionDuration": "{seconds} sn",
   "sessionStrengths": "İyi yaptıkların",
@@ -458,5 +455,22 @@
   "paywallPurchaseFailedBody": "Ödeme tamamlanamadı ve senden ücret alınmadı. Bu demo sürümünde mağaza bağlantısı bulunmuyor.",
   "commonOk": "Tamam",
   "homePostingRequired": "Lütfen önce iş ilanını ya da hazırlandığın pozisyonu anlatan bir metin gir.",
-  "profileNetworkInspector": "Ağ istekleri (debug)"
+  "profileNetworkInspector": "Ağ istekleri (debug)",
+  "@sessionAnswerTooShort": {
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "metricDurationLabel": "süre",
+  "metricPaceLabel": "konuşma hızı",
+  "metricFillersLabel": "dolgu kelime",
+  "metricsInfoTitle": "Bu sayılar ne anlatıyor?",
+  "metricDurationTitle": "Süre",
+  "metricDurationBody": "Sesli cevabının ne kadar sürdüğü. Mülakatta bir soruya 1,5–2 dakikalık cevap idealdir; çok kısa cevap yüzeysel, çok uzun cevap dağınık görünür.",
+  "metricPaceTitle": "Konuşma hızı (kelime/dakika)",
+  "metricPaceBody": "Şu ana kadar söylediğin kelime sayısının geçen süreye oranı; düşünmek için verdiğin aralar da dahil. İdeal aralık dakikada 110–150 kelime. Sayı yeterli veri birikince (15 saniye ve 10 kelime) görünür; durup düşündükçe düşmesi normaldir.",
+  "metricFillersTitle": "Dolgu kelime",
+  "metricFillersBody": "\"Ee\", \"şey\", \"yani\", \"işte\", \"hani\" gibi anlam katmayan ara sözler. Az olması daha akıcı ve kendinden emin gösterir; 3 ve üzeri kırmızıyla işaretlenir. Koç değerlendirmede bunu da dikkate alır."
 }

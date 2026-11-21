@@ -2,6 +2,21 @@
 
 **İlana özel mülakat provası.** Başvurduğun iş ilanını yapıştırırsın; provAi o ilana göre mülakat soruları üretir, sen sesli ya da yazılı cevap verirsin, yapay zeka koç cevabını dört kriterde puanlar ve zayıf ifadelerinin altını kırmızı kalemle çizer.
 
+<p align="center">
+  <img src="docs/screenshots/1-onboarding.png" width="200" alt="Onboarding">
+  <img src="docs/screenshots/3-paywall.png" width="200" alt="Paywall">
+  <img src="docs/screenshots/4-ana-sayfa.png" width="200" alt="Ana sayfa">
+  <img src="docs/screenshots/5-prova.png" width="200" alt="Prova">
+</p>
+<p align="center">
+  <img src="docs/screenshots/6-geri-bildirim.png" width="200" alt="Geri bildirim">
+  <img src="docs/screenshots/7-rapor.png" width="200" alt="Rapor">
+  <img src="docs/screenshots/2-kisisellestirme.png" width="200" alt="Kişiselleştirme">
+  <img src="docs/screenshots/8-profil.png" width="200" alt="Profil">
+</p>
+
+**APK:** [Releases](https://github.com/omerfurkanipek/provai/releases/latest) sayfasından `provai-arm64.apk` (çoğu Android telefon) ya da `provai-universal.apk` (tüm cihazlar) indirilebilir. Android 8.0 (API 26) ve üzeri.
+
 ## Fikir
 
 İnternetteki "en sık sorulan 50 mülakat sorusu" listeleri başvurduğun ilanı bilmez; provAi ise ilandaki teknolojiye, kıdeme ve beklentilere göre soru sorar. Hedef kullanıcı iş arayan yeni mezunlar ve kariyer değiştirenler, özellikle İngilizce mülakata hazırlanan Türk adaylar. Gerçek mülakatta konuşarak cevap verildiği için uygulama sesli cevabı merkeze alır; süre, konuşma hızı ve dolgu kelimeleri ölçer. Kullanıcı para öder çünkü tek bir iş teklifi aylık aboneliğin yüzlerce katı değer taşır ve prova ancak tekrarla işe yarar: ilk prova ücretsiz, sınırsız prova ve örnek cevaplar Pro'da.

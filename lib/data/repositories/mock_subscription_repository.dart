@@ -9,9 +9,9 @@ import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'mock_subscription_repository.g.dart';
 
-/// Mağaza bağlantısı olmayan demo: planlar sabit, satın alma her zaman başarısız
-/// döner (brief statik paywall istiyor). "Geri yükle" yerelde kayıtlı bir satın alım
-/// arar; demo'da böyle bir kayıt oluşmadığı için "bulunamadı" sonucu verir.
+/// Mağaza bağlantısı olmayan demo: planlar sabit; yıllık satın alma başarısız,
+/// haftalık başarılı döner. Satın alınan plan cihazda saklanır ve "Geri yükle"
+/// bu kaydı bulur (mağazadaki satın alma geçmişinin karşılığı).
 class MockSubscriptionRepository implements SubscriptionRepository {
   MockSubscriptionRepository(this._storage) : _status = _read(_storage);
 
@@ -49,15 +49,26 @@ class MockSubscriptionRepository implements SubscriptionRepository {
   Future<Result<List<SubscriptionPlan>>> fetchPlans() async =>
       const Success(plans);
 
-  /// Brief statik paywall istiyor: satın alma gerçekleşmez. Gecikmeden sonra
-  /// mağazanın işlemi tamamlamadığı durum döner; UI bunu yerel uyarı penceresiyle
-  /// gösterir. Prod'da RevenueCat `Purchases.purchasePackage` buraya gelir.
+  /// Demo davranışı (brief statik paywall istiyor, iki sonucu da gösterebilmek
+  /// için): yıllık plan mağazanın işlemi tamamlamadığı durumu döner ve UI yerel
+  /// uyarı penceresi gösterir; haftalık plan satın alınır ve Pro açılır.
+  /// Prod'da RevenueCat `Purchases.purchasePackage` buraya gelir.
   @override
   Future<Result<SubscriptionStatus>> purchase(SubscriptionPlan plan) async {
     await Future<void>.delayed(_latency);
-    return const Failure(
-      PurchaseFailedException('Store is not connected in the demo build'),
+    if (plan.period == PlanPeriod.yearly) {
+      return const Failure(
+        PurchaseFailedException('Demo: yearly purchase is not completed'),
+      );
+    }
+    final renewsAt = DateTime.now().add(const Duration(days: 7));
+    await _storage.setString(StorageKeys.purchasedPlanId, plan.id);
+    await _storage.setInt(
+      StorageKeys.subscriptionRenewsAt,
+      renewsAt.millisecondsSinceEpoch,
     );
+    _emit(_read(_storage));
+    return Success(_status);
   }
 
   @override

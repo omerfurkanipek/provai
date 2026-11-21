@@ -12,13 +12,30 @@
 |---|---|
 | Splash | Kayıtlı profile bakıp onboarding'e ya da ana sayfaya yönlendirir. |
 | Onboarding | İki değer sayfası, altı kişiselleştirme sorusu (isim, pozisyon, seviye, mülakat dili, en çok zorlanılan alan, mülakat zamanı) ve cevapları geri yansıtan "planın hazırlanıyor" adımı. Sonunda paywall. |
-| Paywall | Profile göre kişisel başlık, kırmızı kalemli örnek düzeltme, yıllık (3 gün deneme) ve haftalık plan, satın al, geri yükle, Kullanım Koşulları, Gizlilik. Statik: satın alma native bir uyarıyla "gerçekleşemedi" döner. |
+| Paywall | Profile göre kişisel başlık, kırmızı kalemli örnek düzeltme, yıllık (3 gün deneme) ve haftalık plan, satın al, geri yükle, Kullanım Koşulları, Gizlilik. Statik paywall; satın alma sonuçları aşağıdaki "Demoyu deneme" bölümünde. |
 | Ana sayfa | Navigation bar yok. İlan alanı, mülakat dili, soru sayısı, ücretsiz hak durumu, son provalar. |
 | Prova | Soru kartı, sesli cevap (canlı transkript, süre, kelime/dk, dolgu kelime) veya yazılı cevap; ardından değerlendirme kartı. |
 | Rapor | 100 üzerinden puan, kriter karnesi, "önce bunları çalış" listesi, soru soru detay, paylaş, aynı ilanla tekrar prova. |
 | Profil | Kullanıcı bilgisi, abonelik durumu, istatistikler, mülakat dili, tema, uygulama dili, geri yükle, yasal linkler, verileri sıfırla. |
 
 Ücretsiz kullanıcı 1 prova (3 soru) yapar. Hak bitince yeni prova, soru sayısını değiştirme ve örnek cevaplar paywall'a yönlendirir.
+
+## Demoyu deneme
+
+Paywall statik; gerçek ödeme alınmaz. İki sonucu da görebilmen için planlar farklı davranır:
+
+| Seçilen plan | Sonuç |
+|---|---|
+| **Yıllık** (3 gün deneme) | Platformun yerel uyarı penceresi açılır: "Satın alma gerçekleşemedi". Pro açılmaz. |
+| **Haftalık** | Satın alma başarılı olur, Pro açılır: sınırsız prova, 5 veya 7 soru, örnek cevaplar. Profil'de plan ve yenilenme tarihi görünür. |
+
+Önerilen deneme sırası:
+
+1. Onboarding'i tamamla, paywall'da **Önce ücretsiz dene**'ye bas.
+2. Ana sayfada bir iş ilanı yapıştırıp ücretsiz provayı (3 soru) sesli ya da yazılı cevapla, raporu incele.
+3. Yeni prova başlatmaya çalış: ücretsiz hak bittiği için paywall açılır.
+4. **Yıllık** ile satın almayı dene (başarısız), sonra **Haftalık** ile satın al (başarılı).
+5. Profil → **Satın alımları geri yükle** haftalık satın alımı bulur. Profil → **Verilerimi sıfırla** her şeyi başa alır.
 
 ## Kurulum
 

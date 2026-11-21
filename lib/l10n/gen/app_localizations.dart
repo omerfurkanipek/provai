@@ -1049,7 +1049,7 @@ abstract class AppLocalizations {
   /// No description provided for @sessionIdealDuration.
   ///
   /// In tr, this message translates to:
-  /// **'hedef 1:30–2:00'**
+  /// **'hedef ~2 dk'**
   String get sessionIdealDuration;
 
   /// No description provided for @sessionAnswerTooShort.

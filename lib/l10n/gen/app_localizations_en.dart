@@ -558,7 +558,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get sessionFillers => 'filler words';
 
   @override
-  String get sessionIdealDuration => 'target 1:30–2:00';
+  String get sessionIdealDuration => 'target ~2 min';
 
   @override
   String get sessionAnswerTooShort =>

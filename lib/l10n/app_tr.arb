@@ -251,7 +251,7 @@
   "sessionOpenSettings": "Ayarlar",
   "sessionWpm": "kelime/dk",
   "sessionFillers": "dolgu kelime",
-  "sessionIdealDuration": "hedef 1:30–2:00",
+  "sessionIdealDuration": "hedef ~2 dk",
   "sessionAnswerTooShort": "Cevabın çok kısa. Değerlendirme için biraz daha anlat.",
   "sessionYourAnswer": "Cevabın",
   "sessionDuration": "{seconds} sn",

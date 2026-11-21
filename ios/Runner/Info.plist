@@ -2,12 +2,16 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Mülakat sorularını sesli cevaplayabilmen için mikrofon gerekiyor. Ses kaydı sunucuya gönderilmez.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Sesli cevabını metne çevirmek için konuşma tanıma kullanılır. Yalnızca metin değerlendirilir.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Provai</string>
+	<string>provAi</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

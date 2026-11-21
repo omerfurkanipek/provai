@@ -1,0 +1,7 @@
+# Yalnızca uzak projede değiştirmek istediğimiz ayarlar (config push, bildirilmeyen
+# ayarlara dokunmaz). Yerel Supabase stack'i bu projede kullanılmıyor.
+project_id = "provai"
+
+[auth]
+# İstemci, Edge Function'ları kullanıcı başına sınırlamak için anonim oturum açar.
+enable_anonymous_sign_ins = true

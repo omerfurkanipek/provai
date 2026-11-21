@@ -1,0 +1,21 @@
+{
+  // Cursor / VS Code: Run and Debug panelinden "provAi (dev)" seç, F5.
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "provAi (dev)",
+      "request": "launch",
+      "type": "dart",
+      "program": "lib/main.dart",
+      "args": ["--dart-define-from-file=env/dev.json"]
+    },
+    {
+      "name": "provAi (release)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "lib/main.dart",
+      "args": ["--dart-define-from-file=env/dev.json"]
+    }
+  ]
+}

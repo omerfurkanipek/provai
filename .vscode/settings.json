@@ -1,0 +1,15 @@
+{
+  // FVM ile sabitlenmiş Flutter 3.50.1'i kullan (global sürüm değil).
+  "dart.flutterSdkPath": ".fvm/flutter_sdk",
+  "search.exclude": {
+    "**/.fvm": true,
+    "**/*.g.dart": true,
+    "**/*.freezed.dart": true
+  },
+  "files.watcherExclude": { "**/.fvm": true },
+  "editor.formatOnSave": true,
+  "[dart]": {
+    "editor.rulers": [80],
+    "editor.defaultFormatter": "Dart-Code.dart-code"
+  }
+}

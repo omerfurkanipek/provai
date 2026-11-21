@@ -157,6 +157,420 @@ abstract class AppLocalizations {
   /// In tr, this message translates to:
   /// **'Beklenmeyen bir hata oluştu.'**
   String get errorUnknown;
+
+  /// No description provided for @onbSkip.
+  ///
+  /// In tr, this message translates to:
+  /// **'Atla'**
+  String get onbSkip;
+
+  /// No description provided for @onbStart.
+  ///
+  /// In tr, this message translates to:
+  /// **'Başlayalım'**
+  String get onbStart;
+
+  /// No description provided for @onbProgress.
+  ///
+  /// In tr, this message translates to:
+  /// **'{current}/{total}'**
+  String onbProgress(int current, int total);
+
+  /// No description provided for @onbValue1Title.
+  ///
+  /// In tr, this message translates to:
+  /// **'İlanı yapıştır. Konuşarak cevapla. Neyi düzelteceğini gör.'**
+  String get onbValue1Title;
+
+  /// No description provided for @onbValue1Body.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sorular başvurduğun ilana göre hazırlanır, her cevabın bir koç gibi işaretlenir.'**
+  String get onbValue1Body;
+
+  /// No description provided for @onbValue1PostingLabel.
+  ///
+  /// In tr, this message translates to:
+  /// **'İş ilanı'**
+  String get onbValue1PostingLabel;
+
+  /// No description provided for @onbValue1PostingTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mid-level Flutter Developer'**
+  String get onbValue1PostingTitle;
+
+  /// No description provided for @onbValue1PostingBody.
+  ///
+  /// In tr, this message translates to:
+  /// **'Riverpod, CI/CD ve performans optimizasyonu deneyimi…'**
+  String get onbValue1PostingBody;
+
+  /// No description provided for @onbValue1Answer.
+  ///
+  /// In tr, this message translates to:
+  /// **'\"Performans sorununu önce profilleyerek…\"'**
+  String get onbValue1Answer;
+
+  /// No description provided for @onbValue1MarkedBefore.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kare süresini '**
+  String get onbValue1MarkedBefore;
+
+  /// No description provided for @onbValue1MarkedPhrase.
+  ///
+  /// In tr, this message translates to:
+  /// **'baya düşürdüm'**
+  String get onbValue1MarkedPhrase;
+
+  /// No description provided for @onbValue1MarkedAfter.
+  ///
+  /// In tr, this message translates to:
+  /// **'.'**
+  String get onbValue1MarkedAfter;
+
+  /// No description provided for @onbValue1Fix.
+  ///
+  /// In tr, this message translates to:
+  /// **'→ Rakam ver: 34 ms\'den 12 ms\'ye.'**
+  String get onbValue1Fix;
+
+  /// No description provided for @onbValue2Title.
+  ///
+  /// In tr, this message translates to:
+  /// **'Gerçek mülakat gibi çalış.'**
+  String get onbValue2Title;
+
+  /// No description provided for @onbValue2Body.
+  ///
+  /// In tr, this message translates to:
+  /// **'Soruları sesli cevaplarsın, koç her cevabı aynı kriterlerle puanlar. Böylece neyin geliştiğini görürsün.'**
+  String get onbValue2Body;
+
+  /// No description provided for @onbValue2Point1.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sesli cevap ve canlı transkript'**
+  String get onbValue2Point1;
+
+  /// No description provided for @onbValue2Point2.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yapı, alakalılık, somutluk ve netlik puanı'**
+  String get onbValue2Point2;
+
+  /// No description provided for @onbValue2Point3.
+  ///
+  /// In tr, this message translates to:
+  /// **'Her soruda geliştirilmiş örnek cevap'**
+  String get onbValue2Point3;
+
+  /// No description provided for @onbNameTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sana nasıl hitap edelim?'**
+  String get onbNameTitle;
+
+  /// No description provided for @onbNameSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ana sayfada ve raporlarında görünür. İstersen boş bırakabilirsin.'**
+  String get onbNameSubtitle;
+
+  /// No description provided for @onbNameHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Adın'**
+  String get onbNameHint;
+
+  /// No description provided for @onbRoleTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hangi pozisyona hazırlanıyorsun?'**
+  String get onbRoleTitle;
+
+  /// No description provided for @onbRoleSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yaz ya da aşağıdan seç.'**
+  String get onbRoleSubtitle;
+
+  /// No description provided for @onbRoleHint.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ör. Flutter Developer'**
+  String get onbRoleHint;
+
+  /// No description provided for @onbRoleMobile.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mobil Geliştirici'**
+  String get onbRoleMobile;
+
+  /// No description provided for @onbRoleBackend.
+  ///
+  /// In tr, this message translates to:
+  /// **'Backend Geliştirici'**
+  String get onbRoleBackend;
+
+  /// No description provided for @onbRoleFrontend.
+  ///
+  /// In tr, this message translates to:
+  /// **'Frontend Geliştirici'**
+  String get onbRoleFrontend;
+
+  /// No description provided for @onbRoleProduct.
+  ///
+  /// In tr, this message translates to:
+  /// **'Ürün Yöneticisi'**
+  String get onbRoleProduct;
+
+  /// No description provided for @onbRoleData.
+  ///
+  /// In tr, this message translates to:
+  /// **'Veri Analisti'**
+  String get onbRoleData;
+
+  /// No description provided for @onbRoleDesign.
+  ///
+  /// In tr, this message translates to:
+  /// **'UI/UX Tasarımcı'**
+  String get onbRoleDesign;
+
+  /// No description provided for @onbSeniorityTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hangi seviyede bir pozisyona başvuruyorsun?'**
+  String get onbSeniorityTitle;
+
+  /// No description provided for @onbSenioritySubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Soruların zorluğunu ve beklentiyi buna göre ayarlayacağız.'**
+  String get onbSenioritySubtitle;
+
+  /// No description provided for @seniorityIntern.
+  ///
+  /// In tr, this message translates to:
+  /// **'Stajyer'**
+  String get seniorityIntern;
+
+  /// No description provided for @seniorityInternDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Okul ve kişisel projeler'**
+  String get seniorityInternDesc;
+
+  /// No description provided for @seniorityJunior.
+  ///
+  /// In tr, this message translates to:
+  /// **'Junior'**
+  String get seniorityJunior;
+
+  /// No description provided for @seniorityJuniorDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'0–2 yıl deneyim'**
+  String get seniorityJuniorDesc;
+
+  /// No description provided for @seniorityMid.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mid-level'**
+  String get seniorityMid;
+
+  /// No description provided for @seniorityMidDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'2–5 yıl, bağımsız çalışabiliyorum'**
+  String get seniorityMidDesc;
+
+  /// No description provided for @senioritySenior.
+  ///
+  /// In tr, this message translates to:
+  /// **'Senior'**
+  String get senioritySenior;
+
+  /// No description provided for @senioritySeniorDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'5+ yıl, teknik kararlar alıyorum'**
+  String get senioritySeniorDesc;
+
+  /// No description provided for @onbLanguageTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mülakat hangi dilde olacak?'**
+  String get onbLanguageTitle;
+
+  /// No description provided for @onbLanguageSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Sorular ve geri bildirim bu dilde gelir. Sonradan değiştirebilirsin.'**
+  String get onbLanguageSubtitle;
+
+  /// No description provided for @languageTr.
+  ///
+  /// In tr, this message translates to:
+  /// **'Türkçe'**
+  String get languageTr;
+
+  /// No description provided for @languageTrDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Yerel şirketler ve Türkçe süreçler'**
+  String get languageTrDesc;
+
+  /// No description provided for @languageEn.
+  ///
+  /// In tr, this message translates to:
+  /// **'İngilizce'**
+  String get languageEn;
+
+  /// No description provided for @languageEnDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Global şirketler, uzaktan pozisyonlar'**
+  String get languageEnDesc;
+
+  /// No description provided for @onbStruggleTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'En çok neyde zorlanıyorsun?'**
+  String get onbStruggleTitle;
+
+  /// No description provided for @onbStruggleSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Koçun geri bildirimlerinde buna öncelik verir.'**
+  String get onbStruggleSubtitle;
+
+  /// No description provided for @struggleSelfIntro.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kendimi anlatmak'**
+  String get struggleSelfIntro;
+
+  /// No description provided for @struggleSelfIntroDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'\"Bize biraz kendinden bahset\"'**
+  String get struggleSelfIntroDesc;
+
+  /// No description provided for @struggleTechnical.
+  ///
+  /// In tr, this message translates to:
+  /// **'Teknik sorular'**
+  String get struggleTechnical;
+
+  /// No description provided for @struggleTechnicalDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kavramlar, tasarım kararları'**
+  String get struggleTechnicalDesc;
+
+  /// No description provided for @struggleBehavioral.
+  ///
+  /// In tr, this message translates to:
+  /// **'Davranışsal sorular'**
+  String get struggleBehavioral;
+
+  /// No description provided for @struggleBehavioralDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Çatışma, hata, takım çalışması'**
+  String get struggleBehavioralDesc;
+
+  /// No description provided for @struggleNerves.
+  ///
+  /// In tr, this message translates to:
+  /// **'Heyecan ve akıcılık'**
+  String get struggleNerves;
+
+  /// No description provided for @struggleNervesDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Takılmadan, net konuşmak'**
+  String get struggleNervesDesc;
+
+  /// No description provided for @onbTimingTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Mülakatın ne zaman?'**
+  String get onbTimingTitle;
+
+  /// No description provided for @onbTimingSubtitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Hazırlık planını buna göre kuracağız.'**
+  String get onbTimingSubtitle;
+
+  /// No description provided for @timingThisWeek.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu hafta'**
+  String get timingThisWeek;
+
+  /// No description provided for @timingThisWeekDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Kısa sürede yoğun prova'**
+  String get timingThisWeekDesc;
+
+  /// No description provided for @timingThisMonth.
+  ///
+  /// In tr, this message translates to:
+  /// **'Bu ay'**
+  String get timingThisMonth;
+
+  /// No description provided for @timingThisMonthDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Haftada birkaç düzenli oturum'**
+  String get timingThisMonthDesc;
+
+  /// No description provided for @timingNotScheduled.
+  ///
+  /// In tr, this message translates to:
+  /// **'Henüz belli değil'**
+  String get timingNotScheduled;
+
+  /// No description provided for @timingNotScheduledDesc.
+  ///
+  /// In tr, this message translates to:
+  /// **'Temelden başlayalım'**
+  String get timingNotScheduledDesc;
+
+  /// No description provided for @onbPreparingTitle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Planın hazırlanıyor'**
+  String get onbPreparingTitle;
+
+  /// No description provided for @onbPreparingStepRole.
+  ///
+  /// In tr, this message translates to:
+  /// **'{role} mülakatlarının konuları seçiliyor'**
+  String onbPreparingStepRole(String role);
+
+  /// No description provided for @onbPreparingStepSeniority.
+  ///
+  /// In tr, this message translates to:
+  /// **'{seniority} seviyesine göre zorluk ayarlanıyor'**
+  String onbPreparingStepSeniority(String seniority);
+
+  /// No description provided for @onbPreparingStepStruggle.
+  ///
+  /// In tr, this message translates to:
+  /// **'Öncelikli geri bildirim: {struggle}'**
+  String onbPreparingStepStruggle(String struggle);
+
+  /// No description provided for @onbRoleFallback.
+  ///
+  /// In tr, this message translates to:
+  /// **'Genel'**
+  String get onbRoleFallback;
 }
 
 class _AppLocalizationsDelegate

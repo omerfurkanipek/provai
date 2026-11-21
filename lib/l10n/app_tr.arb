@@ -2,7 +2,9 @@
   "@@locale": "tr",
   "appName": "provAi",
   "appTagline": "İlana özel mülakat provası",
-  "@appTagline": { "description": "Splash ekranındaki slogan" },
+  "@appTagline": {
+    "description": "Splash ekranındaki slogan"
+  },
   "commonContinue": "Devam",
   "commonRetry": "Tekrar dene",
   "commonClose": "Kapat",
@@ -10,5 +12,105 @@
   "errorNetwork": "İnternet bağlantısı yok. Bağlantını kontrol edip tekrar dene.",
   "errorServer": "Sunucuda bir sorun oluştu. Biraz sonra tekrar dene.",
   "errorRateLimit": "Şu an çok fazla istek var. Bir dakika sonra tekrar dene.",
-  "errorUnknown": "Beklenmeyen bir hata oluştu."
+  "errorUnknown": "Beklenmeyen bir hata oluştu.",
+  "onbSkip": "Atla",
+  "onbStart": "Başlayalım",
+  "onbProgress": "{current}/{total}",
+  "onbValue1Title": "İlanı yapıştır. Konuşarak cevapla. Neyi düzelteceğini gör.",
+  "onbValue1Body": "Sorular başvurduğun ilana göre hazırlanır, her cevabın bir koç gibi işaretlenir.",
+  "onbValue1PostingLabel": "İş ilanı",
+  "onbValue1PostingTitle": "Mid-level Flutter Developer",
+  "onbValue1PostingBody": "Riverpod, CI/CD ve performans optimizasyonu deneyimi…",
+  "onbValue1Answer": "\"Performans sorununu önce profilleyerek…\"",
+  "onbValue1MarkedBefore": "Kare süresini ",
+  "onbValue1MarkedPhrase": "baya düşürdüm",
+  "onbValue1MarkedAfter": ".",
+  "onbValue1Fix": "→ Rakam ver: 34 ms'den 12 ms'ye.",
+  "onbValue2Title": "Gerçek mülakat gibi çalış.",
+  "onbValue2Body": "Soruları sesli cevaplarsın, koç her cevabı aynı kriterlerle puanlar. Böylece neyin geliştiğini görürsün.",
+  "onbValue2Point1": "Sesli cevap ve canlı transkript",
+  "onbValue2Point2": "Yapı, alakalılık, somutluk ve netlik puanı",
+  "onbValue2Point3": "Her soruda geliştirilmiş örnek cevap",
+  "onbNameTitle": "Sana nasıl hitap edelim?",
+  "onbNameSubtitle": "Ana sayfada ve raporlarında görünür. İstersen boş bırakabilirsin.",
+  "onbNameHint": "Adın",
+  "onbRoleTitle": "Hangi pozisyona hazırlanıyorsun?",
+  "onbRoleSubtitle": "Yaz ya da aşağıdan seç.",
+  "onbRoleHint": "Ör. Flutter Developer",
+  "onbRoleMobile": "Mobil Geliştirici",
+  "onbRoleBackend": "Backend Geliştirici",
+  "onbRoleFrontend": "Frontend Geliştirici",
+  "onbRoleProduct": "Ürün Yöneticisi",
+  "onbRoleData": "Veri Analisti",
+  "onbRoleDesign": "UI/UX Tasarımcı",
+  "onbSeniorityTitle": "Hangi seviyede bir pozisyona başvuruyorsun?",
+  "onbSenioritySubtitle": "Soruların zorluğunu ve beklentiyi buna göre ayarlayacağız.",
+  "seniorityIntern": "Stajyer",
+  "seniorityInternDesc": "Okul ve kişisel projeler",
+  "seniorityJunior": "Junior",
+  "seniorityJuniorDesc": "0–2 yıl deneyim",
+  "seniorityMid": "Mid-level",
+  "seniorityMidDesc": "2–5 yıl, bağımsız çalışabiliyorum",
+  "senioritySenior": "Senior",
+  "senioritySeniorDesc": "5+ yıl, teknik kararlar alıyorum",
+  "onbLanguageTitle": "Mülakat hangi dilde olacak?",
+  "onbLanguageSubtitle": "Sorular ve geri bildirim bu dilde gelir. Sonradan değiştirebilirsin.",
+  "languageTr": "Türkçe",
+  "languageTrDesc": "Yerel şirketler ve Türkçe süreçler",
+  "languageEn": "İngilizce",
+  "languageEnDesc": "Global şirketler, uzaktan pozisyonlar",
+  "onbStruggleTitle": "En çok neyde zorlanıyorsun?",
+  "onbStruggleSubtitle": "Koçun geri bildirimlerinde buna öncelik verir.",
+  "struggleSelfIntro": "Kendimi anlatmak",
+  "struggleSelfIntroDesc": "\"Bize biraz kendinden bahset\"",
+  "struggleTechnical": "Teknik sorular",
+  "struggleTechnicalDesc": "Kavramlar, tasarım kararları",
+  "struggleBehavioral": "Davranışsal sorular",
+  "struggleBehavioralDesc": "Çatışma, hata, takım çalışması",
+  "struggleNerves": "Heyecan ve akıcılık",
+  "struggleNervesDesc": "Takılmadan, net konuşmak",
+  "onbTimingTitle": "Mülakatın ne zaman?",
+  "onbTimingSubtitle": "Hazırlık planını buna göre kuracağız.",
+  "timingThisWeek": "Bu hafta",
+  "timingThisWeekDesc": "Kısa sürede yoğun prova",
+  "timingThisMonth": "Bu ay",
+  "timingThisMonthDesc": "Haftada birkaç düzenli oturum",
+  "timingNotScheduled": "Henüz belli değil",
+  "timingNotScheduledDesc": "Temelden başlayalım",
+  "onbPreparingTitle": "Planın hazırlanıyor",
+  "onbPreparingStepRole": "{role} mülakatlarının konuları seçiliyor",
+  "onbPreparingStepSeniority": "{seniority} seviyesine göre zorluk ayarlanıyor",
+  "onbPreparingStepStruggle": "Öncelikli geri bildirim: {struggle}",
+  "onbRoleFallback": "Genel",
+  "@onbProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@onbPreparingStepRole": {
+    "placeholders": {
+      "role": {
+        "type": "String"
+      }
+    }
+  },
+  "@onbPreparingStepSeniority": {
+    "placeholders": {
+      "seniority": {
+        "type": "String"
+      }
+    }
+  },
+  "@onbPreparingStepStruggle": {
+    "placeholders": {
+      "struggle": {
+        "type": "String"
+      }
+    }
+  }
 }

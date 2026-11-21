@@ -33,4 +33,6 @@ LocalStorageService localStorageService(Ref ref) =>
 /// Saklanan anahtarlar tek yerde.
 abstract final class StorageKeys {
   static const themeMode = 'theme_mode';
+  static const userProfile = 'user_profile';
+  static const onboardingCompleted = 'onboarding_completed';
 }

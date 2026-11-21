@@ -34,6 +34,13 @@ class HomeViewModel extends _$HomeViewModel {
       })
       ..onDispose(() => _cancel?.cancel());
 
+    // Prova/rapor ekranından hangi yoldan dönülürse dönülsün geçmiş güncel kalır.
+    final changes = ref
+        .read(interviewRepositoryProvider)
+        .watchChanges()
+        .listen((_) => refresh());
+    ref.onDispose(changes.cancel);
+
     final interviews = ref.read(interviewRepositoryProvider);
     return HomeState(
       profile: profile,

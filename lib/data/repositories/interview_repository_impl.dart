@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:provai/data/models/ai_dtos.dart';
@@ -19,6 +20,7 @@ class InterviewRepositoryImpl implements InterviewRepository {
 
   final AiService _ai;
   final LocalStorageService _storage;
+  final _changes = StreamController<void>.broadcast();
   static const _uuid = Uuid();
 
   /// Cihazda tutulan en fazla oturum sayısı.
@@ -125,6 +127,11 @@ class InterviewRepositoryImpl implements InterviewRepository {
   }
 
   @override
+  Stream<void> watchChanges() => _changes.stream;
+
+  void dispose() => unawaited(_changes.close());
+
+  @override
   InterviewSession? getSession(String id) =>
       getSessions().where((s) => s.id == id).firstOrNull;
 
@@ -141,6 +148,7 @@ class InterviewRepositoryImpl implements InterviewRepository {
       StorageKeys.sessions,
       jsonEncode([for (final s in sessions) s.toJson()]),
     );
+    _changes.add(null);
   }
 
   CandidateDto _candidate(UserProfile profile, InterviewLanguage language) =>
@@ -153,7 +161,11 @@ class InterviewRepositoryImpl implements InterviewRepository {
 }
 
 @Riverpod(keepAlive: true)
-InterviewRepository interviewRepository(Ref ref) => InterviewRepositoryImpl(
-  ref.watch(aiServiceProvider),
-  ref.watch(localStorageServiceProvider),
-);
+InterviewRepository interviewRepository(Ref ref) {
+  final repository = InterviewRepositoryImpl(
+    ref.watch(aiServiceProvider),
+    ref.watch(localStorageServiceProvider),
+  );
+  ref.onDispose(repository.dispose);
+  return repository;
+}

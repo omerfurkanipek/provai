@@ -34,6 +34,10 @@ abstract interface class InterviewRepository {
 
   /// En yeni oturum başta.
   List<InterviewSession> getSessions();
+
+  /// Bir oturum oluşturulduğunda veya cevap eklendiğinde tetiklenir; ekranlar
+  /// hangi yoldan dönülürse dönülsün listeyi tazeleyebilsin diye.
+  Stream<void> watchChanges();
   InterviewSession? getSession(String id);
 
   /// Ücretsiz kullanımda başlatılmış oturum sayısı (silinse bile azalmaz).

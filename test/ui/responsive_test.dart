@@ -136,6 +136,7 @@ void main() {
     ).thenAnswer((_) async => const Success(MockSubscriptionRepository.plans));
     when(() => interviews.startedSessionCount).thenReturn(1);
     when(interviews.getSessions).thenReturn([_session(answered: true)]);
+    when(interviews.watchChanges).thenAnswer((_) => const Stream.empty());
     when(() => speech.statusStream).thenAnswer((_) => const Stream.empty());
     when(() => speech.errorStream).thenAnswer((_) => const Stream.empty());
     when(speech.cancel).thenAnswer((_) async {});

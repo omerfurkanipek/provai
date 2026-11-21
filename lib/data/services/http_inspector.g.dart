@@ -61,4 +61,4 @@ final class HttpInspectorProvider
   }
 }
 
-String _$httpInspectorHash() => r'eb3914b7b347afdfb9b7826900028e7c76ef9988';
+String _$httpInspectorHash() => r'2fc5e8d7cfa315900f02a5db058f297537cb167d';

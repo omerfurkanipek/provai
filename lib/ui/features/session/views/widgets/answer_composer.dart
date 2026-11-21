@@ -156,7 +156,13 @@ class _TypedAnswer extends StatefulWidget {
 }
 
 class _TypedAnswerState extends State<_TypedAnswer> {
-  late final _controller = TextEditingController(text: widget.initialValue);
+  // Sesten taşınan metinde imleç sonda başlasın, kullanıcı devam edebilsin.
+  late final _controller = TextEditingController.fromValue(
+    TextEditingValue(
+      text: widget.initialValue,
+      selection: TextSelection.collapsed(offset: widget.initialValue.length),
+    ),
+  );
 
   @override
   void dispose() {

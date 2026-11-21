@@ -1,0 +1,14 @@
+flutter_native_splash:
+  # Flutter yüklenene kadar görünen yerel ekran; ardından Flutter Splash'ı devralır.
+  color: "#F3F1EC"
+  image: assets/branding/splash.png
+  color_dark: "#151517"
+  image_dark: assets/branding/splash_dark.png
+  android_12:
+    color: "#F3F1EC"
+    image: assets/branding/icon_foreground.png
+    color_dark: "#151517"
+    image_dark: assets/branding/splash_dark.png
+  ios: true
+  android: true
+  web: false

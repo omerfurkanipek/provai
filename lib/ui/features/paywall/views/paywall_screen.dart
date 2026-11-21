@@ -284,8 +284,8 @@ class _LegalLinks extends StatelessWidget {
         ),
       ),
     );
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+    return Wrap(
+      alignment: WrapAlignment.center,
       children: [
         link(l10n.paywallTerms, AppLinks.terms),
         link(l10n.paywallPrivacy, AppLinks.privacy),

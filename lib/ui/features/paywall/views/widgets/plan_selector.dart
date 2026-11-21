@@ -103,7 +103,10 @@ class _PlanRow extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
+                      // Wrap: büyük yazı boyutunda tasarruf etiketi alt satıra iner.
+                      Wrap(
+                        spacing: AppSpacing.xs,
+                        crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
                           Text(
                             title,
@@ -111,8 +114,7 @@ class _PlanRow extends StatelessWidget {
                               fontWeight: FontWeight.w600,
                             ),
                           ),
-                          if (savingsPercent > 0) ...[
-                            const SizedBox(width: AppSpacing.xs),
+                          if (savingsPercent > 0)
                             Text(
                               l10n.paywallSavings(savingsPercent),
                               style: styles.label.copyWith(
@@ -120,7 +122,6 @@ class _PlanRow extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                          ],
                         ],
                       ),
                       const SizedBox(height: 2),

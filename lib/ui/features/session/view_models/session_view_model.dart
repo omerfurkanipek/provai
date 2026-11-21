@@ -173,9 +173,30 @@ class SessionViewModel extends _$SessionViewModel {
 
   // --- Yazılı cevap ------------------------------------------------------
 
+  /// Ses ve yazı aynı cevabın iki giriş yolu: moda geçerken metin taşınır,
+  /// kullanıcı sesle başlayıp klavyeyle düzeltebilir (veya tersi).
   Future<void> setInputMode(AnswerInputMode mode) async {
+    if (mode == state.inputMode) return;
     if (state.recording == RecordingState.listening) await _pause();
-    state = state.copyWith(inputMode: mode);
+    if (mode == AnswerInputMode.text) {
+      final merged = [
+        state.typedAnswer.trim(),
+        state.spokenTranscript,
+      ].where((part) => part.isNotEmpty).join(' ');
+      state = state.copyWith(
+        inputMode: mode,
+        typedAnswer: merged,
+        committedTranscript: '',
+        partialTranscript: '',
+      );
+    } else {
+      state = state.copyWith(
+        inputMode: mode,
+        committedTranscript: state.typedAnswer.trim(),
+        partialTranscript: '',
+        typedAnswer: '',
+      );
+    }
   }
 
   void onTypedAnswerChanged(String value) =>

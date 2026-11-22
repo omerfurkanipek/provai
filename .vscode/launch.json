@@ -10,6 +10,17 @@
       "args": ["--dart-define-from-file=env/dev.json"]
     },
     {
+      "name": "provAi (release + ağ inspector)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "program": "lib/main.dart",
+      "args": [
+        "--dart-define-from-file=env/dev.json",
+        "--dart-define=HTTP_INSPECTOR=true"
+      ]
+    },
+    {
       "name": "provAi (release)",
       "request": "launch",
       "type": "dart",

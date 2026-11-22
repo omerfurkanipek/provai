@@ -129,7 +129,7 @@ supabase/         Edge Function'lar (Deno + TypeScript) ve SQL migration'ları
 | url_launcher, share_plus, package_info_plus | Yasal linkler, rapor paylaşımı, sürüm bilgisi |
 | intl, flutter_localizations | TR / EN çeviri, tarih ve para biçimi |
 | logger | Debug log'ları |
-| alice, alice_dio | Yalnızca debug build'de HTTP inspector (Chucker benzeri): Edge Function istek ve cevaplarını uygulama içinde gösterir |
+| alice, alice_dio | HTTP inspector (Chucker benzeri): Edge Function istek ve cevaplarını uygulama içinde gösterir. Debug'da açık; release'te yalnızca `--dart-define=HTTP_INSPECTOR=true` ile |
 | very_good_analysis, riverpod_lint, mocktail | Lint kuralları ve testler |
 | flutter_launcher_icons, flutter_native_splash | Uygulama ikonu ve açılış ekranı |
 

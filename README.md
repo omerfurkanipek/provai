@@ -15,7 +15,7 @@
   <img src="docs/screenshots/8-profil.png" width="200" alt="Profil">
 </p>
 
-**Tanıtım videosu (2 dk 43 sn):** [provai-tanitim.mp4](https://github.com/omerfurkanipek/provai/releases/latest/download/provai-tanitim.mp4): onboarding → kişisel paywall → prova → yapay zeka değerlendirmesi → rapor → satın alma.
+**Tanıtım videosu (1 dk 19 sn):** [provai-tanitim.mp4](https://github.com/omerfurkanipek/provai/releases/latest/download/provai-tanitim.mp4): onboarding → kişisel paywall → prova → yapay zeka değerlendirmesi → rapor → satın alma.
 
 **APK:** [Releases](https://github.com/omerfurkanipek/provai/releases/latest) sayfasından `provai-arm64.apk` (çoğu Android telefon) ya da `provai-universal.apk` (tüm cihazlar) indirilebilir. Android 8.0 (API 26) ve üzeri.
 

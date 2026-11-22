@@ -135,11 +135,21 @@ supabase/         Edge Function'lar (Deno + TypeScript) ve SQL migration'ları
 | very_good_analysis, riverpod_lint, mocktail | Lint kuralları ve testler |
 | flutter_launcher_icons, flutter_native_splash | Uygulama ikonu ve açılış ekranı |
 
+### Ağ inspector'ı (Alice)
+
+Geliştirirken uygulamanın attığı her isteği uygulama içinden izlemek için [Alice](https://pub.dev/packages/alice) kurulu (Android'deki Chucker'ın Flutter karşılığı). Debug çalıştırmada açık; ekranda beliren baloncuğa ya da Profil → "Ağ istekleri (debug)" satırına dokununca açılır. Release'te varsayılan olarak kapalı, istenirse `--dart-define=HTTP_INSPECTOR=true` ile açılır. `Authorization` başlığı gizlenir.
+
+<p align="center">
+  <img src="docs/screenshots/9-inspector-liste.jpg" width="200" alt="Alice istek listesi">
+  <img src="docs/screenshots/10-inspector-request.jpg" width="200" alt="Alice istek ayrıntısı">
+  <img src="docs/screenshots/11-inspector-response.jpg" width="200" alt="Alice cevap ayrıntısı">
+</p>
+
 ## Testler
 
 ```bash
 fvm flutter analyze   # 0 uyarı
-fvm flutter test      # 53 test
+fvm flutter test      # 60 test
 ```
 
 - ViewModel testleri: onboarding akışı, paywall satın alma/geri yükleme, tema tercihi.

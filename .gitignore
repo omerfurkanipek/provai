@@ -51,3 +51,4 @@ supabase/.branches/
 # Yerel planlama notları
 docs/REQUIREMENTS.md
 docs/DESIGN_PROMPTS.md
+CLAUDE.md
